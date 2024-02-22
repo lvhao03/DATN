@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class CustomerController extends Controller
 {
-    public function edit(Request $request){
+    public function edit(Request $request){ 
         $image_url = \Auth::user()->image_url;
         if ($request->file('file_image')) {
             $image_url = $request->file('file_image')->store('images/user', 'public');
