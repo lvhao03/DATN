@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CustomerController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,6 +43,7 @@ Route::get('/cart', function () {
     return view('client.cart');
 });
 
+Route::post('/change-info', [CustomerController::class, 'edit']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
