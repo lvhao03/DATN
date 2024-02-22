@@ -3,7 +3,9 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\GoogleController;
+use App\Models\Product;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductController;
 
 
 /*
@@ -28,6 +30,11 @@ Route::get('/shop', function () {
 Route::get('/detail', function () {
     return view('client.detail');
 });
+Route::get('/detail/{id}', [ProductController::class,'detail']);
+Route::get('/themvaogio/{idsp}/{soluong}', [ProductController::class,'themvaogio']);
+Route::get('/hiengiohang', [ProductController::class,'hiengiohang']);
+Route::get('/xoasptronggio/{idsp}', [ProductController::class,'xoasptronggio']);
+Route::get('/xoagiohang', [ProductController::class,'xoagiohang']);
 
 Route::get('/about', function () {
     return view('client.about');

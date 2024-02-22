@@ -11,10 +11,10 @@
   <meta name="keywords" content="bootstrap, bootstrap4" />
 
 		<!-- Bootstrap CSS -->
-		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-		<link href="css/tiny-slider.css" rel="stylesheet">
-		<link href="css/style.css" rel="stylesheet">
+		<link href="{{ asset('css/tiny-slider.css') }}" rel="stylesheet">
+		<link href="{{ asset('css/style.css') }}" rel="stylesheet">
         <link rel="stylesheet" href="css/shop.css">
 		<title>@yield('tieudetrang')</title>
 	</head>
@@ -44,8 +44,8 @@
 					</ul>
 
 					<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-						<li><a class="nav-link" href="/user"><img src="images/user.svg"></a></li>
-						<li><a class="nav-link" href="/cart"><img src="images/cart.svg"></a></li>
+						<li><a class="nav-link" href="/user"><img src="{{ asset('images/user.svg') }}"></a></li>
+						<li><a class="nav-link" href="/cart"><img src="{{ asset('images/cart.svg') }}"></a></li>
 					</ul>
 				</div>
 			</div>
@@ -93,7 +93,7 @@
 				<div class="row">
 					<div class="col-lg-8">
 						<div class="subscription-form">
-							<h3 class="d-flex align-items-center"><span class="me-1"><img src="images/envelope-outline.svg" alt="Image" class="img-fluid"></span><span>Subscribe to Newsletter</span></h3>
+							<h3 class="d-flex align-items-center"><span class="me-1"><img src="{{ asset('images/envelope-outline.svg') }}" alt="Image" class="img-fluid"></span><span>Subscribe to Newsletter</span></h3>
 
 							<form action="#" class="row g-3">
 								<div class="col-auto">

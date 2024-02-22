@@ -40,6 +40,23 @@ CART
                         </tr>
                       </thead>
                       <tbody>
+                      @php 
+                            $tongtien = 0; $tongsoluong = 0;
+                            // Code để hiển thị các sản phẩm trong giỏ 
+                            foreach($cart as $c) {
+                                $productID = $c['productID'];            
+                                $soluong = $c['soluong'];
+
+                                $ten_sp = \DB::table('product')->where('productID', '=', $productID)->value('ten_sp');
+                                $gia = \DB::table('product')->where('productID', '=', $productID)->value('gia');
+                                $hinh = \DB::table('product')->where('productID', '=', $productID)->value('hinh');
+                                
+                                $thanhtien = $gia * $soluong;
+                                $tongtien += $thanhtien; 
+                                $tongsoluong += $soluong; 
+                                $thanhtien = number_format($thanhtien, 0, ',', '.');
+                                $gia = number_format($gia, 0, ',', '.');
+                                echo '
                         <tr>
                           <td class="product-thumbnail">
                             <img src="images/product-1.png" alt="Image" class="img-fluid">
@@ -62,31 +79,9 @@ CART
                           </td>
                           <td>$49.00</td>
                           <td><a href="#" class="btn btn-black btn-sm">X</a></td>
-                        </tr>
-        
-                        <tr>
-                          <td class="product-thumbnail">
-                            <img src="images/product-2.png" alt="Image" class="img-fluid">
-                          </td>
-                          <td class="product-name">
-                            <h2 class="h5 text-black">Product 2</h2>
-                          </td>
-                          <td>$49.00</td>
-                          <td>
-                            <div class="input-group mb-3 d-flex align-items-center quantity-container" style="max-width: 120px;">
-                              <div class="input-group-prepend">
-                                <button class="btn btn-outline-black decrease" type="button">&minus;</button>
-                              </div>
-                              <input type="text" class="form-control text-center quantity-amount" value="1" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
-                              <div class="input-group-append">
-                                <button class="btn btn-outline-black increase" type="button">&plus;</button>
-                              </div>
-                            </div>
-        
-                          </td>
-                          <td>$49.00</td>
-                          <td><a href="#" class="btn btn-black btn-sm">X</a></td>
-                        </tr>
+                        </tr>';
+                        }
+                        @endphp
                       </tbody>
                     </table>
                   </div>
@@ -140,6 +135,7 @@ CART
                           <strong class="text-black">$230.00</strong>
                         </div>
                       </div>
+                      
         
                       <div class="row">
                         <div class="col-md-12">
