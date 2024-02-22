@@ -36,6 +36,9 @@ Route::get('/services', function () {
 });
 
 Route::get('/user', function () {
+    if (!\Auth::user()){
+        return redirect('/login');
+    }
     return view('client.user_profile');
 });
 

@@ -93,7 +93,7 @@ Thông tin người dùng
 								</div>
 							</form>
 						</div>
-						
+						<a href="/logout">Đăng xuất</a>
 					</div> 
 					<!-- End Column 2 -->
 
