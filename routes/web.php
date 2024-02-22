@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\GoogleController;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -47,6 +49,10 @@ Route::get('/cart', function () {
 });
 
 Route::post('/change-info', [CustomerController::class, 'edit']);
+
+Route::get('social/google', [GoogleController::class, 'redirect']);
+ 
+Route::get('social/google/callback', [GoogleController::class, 'googleCallback']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
