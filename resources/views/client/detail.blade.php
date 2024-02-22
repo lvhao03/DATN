@@ -4,48 +4,63 @@ DETAIL PRODUCTS
 @endsection
 @section('noidungchinh')
 
-<body>
+        <!-- Start Hero Section -->
+            <div class="hero">
+				<div class="container">
+					<div class="row justify-content-between">
+						<div class="col-lg-5">
+							<div class="intro-excerpt">
+								<h1>Shop</h1>
+							</div>
+						</div>
+						<div class="col-lg-7">
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		<!-- End Hero Section -->
+
   
   <div class="app">
       <div class="container">
           <div class="grid">
-              <div class="image__wrapper">
-                  <img src="view/img/shop/Rectangle 2.svg" alt="" class="br">
-                  <h2 class="image__title">SẢN PHẨM</h2>
-                  <span class="image__breadcrum">Trang chủ / Cửa hàng / Sản phẩm</span>
-              </div>
+
+
+        
 
 
     
               <div class="spw">
                   <div class="gallery">
                       <div class="gallery__item--huge">
-                          <img src="" alt="">
+                          <img src="{{ asset('images/' .$sp->thumnail) }}" alt="">
                       </div>
                       <div class="spw" style="margin: 0 -7px;">
                           <div class="gallery__item">
-                              <img src="<?php echo $image_path ?>" alt="">
+                              <img src="" alt="">
                           </div>
                           <div class="gallery__item">
-                              <img src="<?php echo $image_path ?>" alt="">
+                              <img src="" alt="">
                           </div>
                           <div class="gallery__item">
-                              <img src="<?php echo $image_path ?>" alt="">
+                              <img src="" alt="">
                           </div>
                           <div class="gallery__item">
-                              <img src="<?php echo $image_path ?>" alt="">
+                              <img src="" alt="">
                           </div>
                       </div>
                   </div>
 
                   <div class="infor">
                       <h1 class="infor__title">
+                      {{ $sp->name }}
                       </h1>
-                      <span class="infor__price"><b><?php echo $current_product['product_price']?> VNĐ</b></span>
-                      <p class="infor__paragraph"><?php echo $current_product['des']?></p>
+                      <span class="infor__price"><b> VNĐ</b></span>
+                      <p class="infor__paragraph"></p>
                       <div class="spw">
                           <span class="infor__status">
-                              Số lượng hàng tồn: <b><?php echo $current_product['kho_hang']?></b>
+                              Số lượng hàng tồn: <b></b>
                           </span>
 
                           <span class="infor__id"> SKU: NO-6700-54</span>
@@ -58,11 +73,16 @@ DETAIL PRODUCTS
 
                           <div class="infor__quantity spw">
                               <a class="infor__quantity-item decrease">-</a>
-                              <a class="infor__quantity-item value">1</a>
+                              <a class="infor__quantity-item value" id="soluong" value="1">1</a>
                               <a class="infor__quantity-item increase">+</a>
                           </div>
-
-                         <button class="btn add-to-cart" id=<?php echo $current_product['id']?>>Thêm vào giỏ</button>
+                <script>
+                function themvaogio(productID){
+                    soluong = document.getElementById('soluong').value;
+                    document.location="/themvaogio/" +productID+"/"+ spluong;
+                }
+              </script>
+                         <button class="primary-btn"onclick="themvaogio({{$sp->productID}})">thêm vào giở hàng</button>
                       </div>
 
                       <hr>
@@ -91,11 +111,11 @@ DETAIL PRODUCTS
                       </div>
                   </div>
               </div>
-              <?php $quantity = get_number_comment($_GET['id'])?>
+
               <div class="description">
                   <div class="description__header">
                       <div href="" class="description__nav des">MÔ TẢ</div>
-                      <div href="" class="description__nav review">BÌNH LUẬN (<?php echo $quantity ?>)</div>
+                      <div href="" class="description__nav review">BÌNH LUẬN ()</div>
                   </div>
                   <hr>
                   <div class="spw detail-sub-content">
@@ -128,7 +148,7 @@ DETAIL PRODUCTS
                   <ul class="sale__menu spw">
                      
                               <li class="sale__menu-item">
-                                  <a href="index.php?page=detail&id=<?php echo $product['id'] ?>"class="sale__menu-link">
+                                  <a href="index.php?page=detail&id="class="sale__menu-link">
                                       <img src="images/bowl-2.png" alt="" class="sale__img">
                                       <span class="sale__name">0đ</span>
                                       <span class="sale__price"><b>0 VNĐ</b></span>
@@ -142,7 +162,7 @@ DETAIL PRODUCTS
       </div>
   </div>
   <script>
-      const stock = <?php echo $current_product['kho_hang']?>;
+      
       const increseBtn = $('.increase');
       const decreseBtn = $('.decrease');
       const value = $('.value');
@@ -217,7 +237,7 @@ DETAIL PRODUCTS
               data: {
                   action: 'send_comment',
                   content: textArea.val(),
-                  product_id: <?php echo $_GET['id']?>
+                  product_id:
               },
               type: 'POST',
               dataType: 'json',
@@ -259,7 +279,7 @@ DETAIL PRODUCTS
               url: './api/api.php',
               data: {
                   action: 'show_comment',
-                  productID : <?php echo $_GET['id']?>
+                  productID : 
               },
               type: 'GET',
               dataType: 'json',
@@ -302,7 +322,6 @@ DETAIL PRODUCTS
       }
   </script>
 
-  <?php include_once 'view/components/footer.php'?>;
-</body>
+
 
 @endsection
