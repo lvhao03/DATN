@@ -22,7 +22,7 @@ class ProductController extends Controller
 
     function themvaogio(Request $request, $productID = 0, $soluong=1){
         if ($request->session()->exists('cart')==false) {//chưa có cart trong session           
-            $request->session()->push('cart', ['producutID'=> $productID,  'soluong'=> $soluong]);          
+            $request->session()->push('cart', ['productID'=> $productID,  'soluong'=> $soluong]);          
         } else {// đã có cart, kiểm tra id_sp có trong cart không
             $cart =  $request->session()->get('cart'); 
             $index = array_search($productID, array_column($cart, 'productID'));
@@ -45,8 +45,7 @@ class ProductController extends Controller
     }
 
     function hiengiohang(Request $request){
-        $cart =  $request->session()->get('cart'); 
-        return view('client.cart', ['cart'=> $cart]);
+        return view('client.cart');
     }
 
     function xoasptronggio(Request $request, $id_sp=0){

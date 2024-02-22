@@ -40,29 +40,29 @@ CART
                         </tr>
                       </thead>
                       <tbody>
-                      @php 
-                            $tongtien = 0; $tongsoluong = 0;
-                            // Code để hiển thị các sản phẩm trong giỏ 
-                            foreach($cart as $c) {
+                      @php
+                        $cart = session('cart');
+                        $totalMoney = 0;
+                      @endphp
+                      @foreach($cart as $c)
+                        @php
                                 $productID = $c['productID'];            
                                 $soluong = $c['soluong'];
 
-                                $ten_sp = \DB::table('product')->where('productID', '=', $productID)->value('ten_sp');
-                                $gia = \DB::table('product')->where('productID', '=', $productID)->value('gia');
-                                $hinh = \DB::table('product')->where('productID', '=', $productID)->value('hinh');
+                                $ten_sp = \DB::table('product')->where('productID', '=', $productID)->value('name');
+                        
+                                $hinh = \DB::table('product')->where('productID', '=', $productID)->value('thumnail');
                                 
-                                $thanhtien = $gia * $soluong;
-                                $tongtien += $thanhtien; 
-                                $tongsoluong += $soluong; 
-                                $thanhtien = number_format($thanhtien, 0, ',', '.');
-                                $gia = number_format($gia, 0, ',', '.');
-                                echo '
+                              
+                              
+                          
+                        @endphp
                         <tr>
                           <td class="product-thumbnail">
                             <img src="images/product-1.png" alt="Image" class="img-fluid">
                           </td>
                           <td class="product-name">
-                            <h2 class="h5 text-black">Product 1</h2>
+                            <h2 class="h5 text-black">{{$ten_sp}}</h2>
                           </td>
                           <td>$49.00</td>
                           <td>
@@ -79,9 +79,8 @@ CART
                           </td>
                           <td>$49.00</td>
                           <td><a href="#" class="btn btn-black btn-sm">X</a></td>
-                        </tr>';
-                        }
-                        @endphp
+                        </tr>
+                        @endforeach
                       </tbody>
                     </table>
                   </div>
