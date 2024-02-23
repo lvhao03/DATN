@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Variant extends Model
 {
     use HasFactory;
-    protected $table = '';
+    protected $table = 'variant';
     protected $primaryKey = 'variantID';
     protected $fillable = [ 
         'color',

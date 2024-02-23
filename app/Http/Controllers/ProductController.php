@@ -11,13 +11,19 @@ use App\Models\Variant_images;
 class ProductController extends Controller
 {
     //
+    function shop(){
+        $perpage= 9;
+        $shop = Product::paginate($perpage);
+        $variant = Variant::get();
+        // $idsp = $shop->pluck('productID')->toArray();
+        // $variant = Variant::whereIn('product_id',$idsp)->get();
+        return view ('client.shop' , ['shop'=>$shop,'variant'=>$variant]); 
+    }
 
     function Detail($id){
         $sp = Product::where ('productID', $id)->first();   
-        $idsp = $sp->productID;   
-        // $variant =  Variant::where('product_id', $idsp)
-        // ->orderBy('ngay','desc')->limit(4)->get()->except($idsp);  
-        return view('client.detail',['id'=>$id,'sp'=>$sp]);
+        $variant = Variant::where('product_id',$id)->first();  
+        return view('client.detail',['sp'=>$sp,'variant'=>$variant]);
     }
 
     function themvaogio(Request $request, $productID = 0, $soluong=1){

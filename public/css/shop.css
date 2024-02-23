@@ -37,7 +37,7 @@
     background-color: #F598A4;
 }
 
-.btn { border: #3b5d50;
+.button_shop { border: #3b5d50;
         height: 46px;
         width: 100px;
     background-color: #3b5d50;
@@ -249,7 +249,7 @@
     margin: 0;
   }
   #range-value-bar {
-    width: 100%;
+    width: 110%;
     content:"0";
     background-color: #3b5d50;
     position: absolute;
@@ -354,15 +354,10 @@
     background: #000;
     cursor: pointer;
   }
-  .button-filter{
-    position: relative;
-    left: 75px;
-}
 
   .products__heading-right{
     margin-bottom: 20px;
     position: relative;
-    bottom:     50px;
     text-align: end;
   }
   @media (max-width: 1030px) {

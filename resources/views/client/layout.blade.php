@@ -15,6 +15,8 @@
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 		<link href="{{ asset('css/tiny-slider.css') }}" rel="stylesheet">
 		<link href="{{ asset('css/style.css') }}" rel="stylesheet">
+		<link href="{{ asset('css/detail.css') }}" rel="stylesheet">
+		<link href="{{ asset('css/base.css') }}" rel="stylesheet">
         <link rel="stylesheet" href="css/shop.css">
 		<title>@yield('tieudetrang')</title>
 	</head>
@@ -87,7 +89,7 @@
 			<div class="container relative">
 
 				<div class="sofa-img">
-					<img src="images/sofa.png" alt="Image" class="img-fluid">
+					<img src="{{ asset('images/sofa.png') }}" alt="Image" class="img-fluid">
 				</div>
 
 				<div class="row">
@@ -188,9 +190,9 @@
 		<!-- End Footer Section -->	
 
 
-		<script src="js/bootstrap.bundle.min.js"></script>
-		<script src="js/tiny-slider.js"></script>
-		<script src="js/custom.js"></script>
+		<script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+		<script src="{{ asset('js/tiny-slider.js') }"></script>
+		<script src="{{ asset('js/custom.js') }"></script>
 	</body>
 
 </html>

@@ -23,9 +23,7 @@ Route::get('/', function () {
     return view('client.home');
 });
 
-Route::get('/shop', function () {
-    return view('client.shop');
-});
+Route::get('/shop', [ProductController::class,'shop']);
 
 Route::get('/detail', function () {
     return view('client.detail');
