@@ -22,145 +22,142 @@ DETAIL PRODUCTS
 		<!-- End Hero Section -->
 
   
-  <div class="app">
-      <div class="container">
-          <div class="grid">
-
-
-        
-
-
+        <div class="app">
+            <div class="containers">
+                <div class="grid">
+                    
     
-              <div class="spw">
-                  <div class="gallery">
-                      <div class="gallery__item--huge">
-                          <img src="{{ asset('images/' .$sp->thumnail) }}" alt="">
-                      </div>
-                      <div class="spw" style="margin: 0 -7px;">
-                          <div class="gallery__item">
-                              <img src="" alt="">
-                          </div>
-                          <div class="gallery__item">
-                              <img src="" alt="">
-                          </div>
-                          <div class="gallery__item">
-                              <img src="" alt="">
-                          </div>
-                          <div class="gallery__item">
-                              <img src="" alt="">
-                          </div>
-                      </div>
-                  </div>
-
-                  <div class="infor">
-                      <h1 class="infor__title">
-                      {{ $sp->name }}
-                      </h1>
-                      <span class="infor__price"><b> VNĐ</b></span>
-                      <p class="infor__paragraph"></p>
-                      <div class="spw">
-                          <span class="infor__status">
-                              Số lượng hàng tồn: <b></b>
-                          </span>
-
-                          <span class="infor__id"> SKU: NO-6700-54</span>
-                      </div>
-
-                      <hr>
-
-                      <div class="spw infor__qty-wrapper">
-                          <span class="infor__qty">SL</span>
-
-                          <div class="infor__quantity spw">
-                              <a class="infor__quantity-item decrease">-</a>
-                              <a class="infor__quantity-item value" id="soluong" value="1">1</a>
-                              <a class="infor__quantity-item increase">+</a>
-                          </div>
-                <script>
-                function themvaogio(productID){
-                    soluong = document.getElementById('soluong').value;
-                    document.location="/themvaogio/" +productID+"/"+ spluong;
-                }
-              </script>
-                         <button class="primary-btn"onclick="themvaogio({{$sp->productID}})">thêm vào giở hàng</button>
-                      </div>
-
-                      <hr>
-
-                      <div class="infor__action">
-                          <span class="infor__action-item"><img src="img/detail/🦆 icon _heart_.svg" alt="">Yêu thích</span>
-                          <span class="infor__action-item">So sánh</span>
-                      </div>
-
-                      <hr>
-
-                      <div class="infor__share">
-                          <img src="images/detail/Vector.svg" class="infor__share-item"></img>|
-                          <img src="images/detail/Vector-1.svg" class="infor__share-item"></img>|
-                          <img src="images/detail/Vector-2.svg" class="infor__share-item"></img>|
-                          <img src="images/detail/Vector-3.svg" class="infor__share-item"></img>|
-                          <img src="images/detail/Vector-4.svg" class="infor__share-item"></img>|
-                      </div>
-
-                      <hr>
-
-                      <div class="classify">
-                          <div class="classify__item"><b>DANH MỤC:</b> Nội thất trang trí</div>
-
-                          <div class="classify__item"><b>THẺ:</b> Đồ gốm</div>
-                      </div>
-                  </div>
-              </div>
-
-              <div class="description">
-                  <div class="description__header">
-                      <div href="" class="description__nav des">MÔ TẢ</div>
-                      <div href="" class="description__nav review">BÌNH LUẬN ()</div>
-                  </div>
-                  <hr>
-                  <div class="spw detail-sub-content">
-                      <div class="description__column">
-                          <h3 class="description__heading">HƯỚNG DẪN SỬ DỤNG</h3>
-                          <p class="description__paragraph">Sản phẩm được dùng để trang trí, cắm hoa để cho không gian của bạn thật là tao nhã, đẹp đẽ. Tránh để dưới ánh nắng trực tiếp.</p>
-                      </div>
-
-                      <div class="description__column">
-                          <h3 class="description__heading">THÔNG SỐ SẢN PHẨM</h3>
-                          <p class="description__paragraph">Chất liệu: Gốm<br>
-                              Kích thước: 24x24.<br>
-                              Cân nặng: 2.15 KG<br>
-                              Được thiết kế và làm thủ công tại YGshop.</p>
-                      </div>
-
-                      <div class="description__column">
-                          <h3 class="description__heading">BẠN CÓ BIẾT KHÔNG?</h3>
-                          <p class="description__paragraph">YG cung cấp cho bạn những sản phẩm thiết kế độc đáo và chất lượng cao để trang trí cho không gian sống của bạn. Với đa dạng các loại nội thất như đồ gốm, bàn ăn, giường ngủ và nhiều sản phẩm khác, chúng tôi cam kết sẽ đem đến cho bạn những trải nghiệm tuyệt vời nhất trong việc lựa chọn và sử dụng sản phẩm của chúng tôi. </p>
-                      </div>
-                  </div>
-              </div>
-
-              <div class="sale">
-                  <div class="spw">
-                      <div class="sale__title">ĐANG GIẢM GIÁ</div>
-                      <a href="./index.php?page=shop" class="sale__all">Xem tất cả</a>
-                  </div>
-
-                  <ul class="sale__menu spw">
-                     
-                              <li class="sale__menu-item">
-                                  <a href="index.php?page=detail&id="class="sale__menu-link">
-                                      <img src="images/bowl-2.png" alt="" class="sale__img">
-                                      <span class="sale__name">0đ</span>
-                                      <span class="sale__price"><b>0 VNĐ</b></span>
-                                  </a>
-                              </li>
-                      
-                  </ul>
-              </div>
-          </div>
-          <br><br><br>
-      </div>
-  </div>
+    
+          
+                    <div class="spw">
+                        <div class="gallery">
+                            <div class="gallery__item--huge">
+                                <img src="{{ asset('images/' .$sp->thumnail) }}" alt="">
+                            </div>
+                            <div class="spw" style="margin: 0 -7px;">
+                                <div class="gallery__item">
+                                    <img src="" alt="">
+                                </div>
+                                <div class="gallery__item">
+                                    <img src="" alt="">
+                                </div>
+                                <div class="gallery__item">
+                                    <img src="" alt="">
+                                </div>
+                                <div class="gallery__item">
+                                    <img src="" alt="">
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="infor">
+                            <h1 class="infor__title">
+                            {{ $sp->name }}
+                            </h1>
+                            <span class="infor__price"><b>{{ $variant->price }} VNĐ</b></span>
+                            <p class="infor__paragraph"></p>
+                            <div class="spw">
+                                <span class="infor__status">
+                                    Số lượng hàng tồn: <b></b>
+                                </span>
+    
+                                <span class="infor__id"> SKU: NO-6700-54</span>
+                            </div>
+    
+                            <hr>
+    
+                            <div class="spw infor__qty-wrapper">
+                                <span class="infor__qty">SL</span>
+    
+                                <div class="infor__quantity spw">
+                                    <a class="infor__quantity-item decrease">-</a>
+                                    <a class="infor__quantity-item value">1</a>
+                                    <a class="infor__quantity-item increase">+</a>
+                                </div>
+                                <script>
+                                    function themvaogio(productID){
+                                        soluong = document.getElementById('soluong').value;
+                                        document.location="/themvaogio/" +productID+"/"+ spluong;
+                                    }
+                                </script>
+                               <button class="button add-to-cart" onclick="themvaogio({{$sp->productID}})" id=>Thêm vào giỏ</button>
+                            </div>
+    
+                            <hr>
+    
+                            <div class="infor__action">
+                                <span class="infor__action-item"><img src="img/detail/🦆 icon _heart_.svg" alt="">Yêu thích</span>
+                                <span class="infor__action-item">So sánh</span>
+                            </div>
+    
+                            <hr>
+    
+                            <div class="infor__share">
+                                <img src="images/detail/Vector.svg" class="infor__share-item"></img>|
+                                <img src="images/detail/Vector-1.svg" class="infor__share-item"></img>|
+                                <img src="images/detail/Vector-2.svg" class="infor__share-item"></img>|
+                                <img src="images/detail/Vector-3.svg" class="infor__share-item"></img>|
+                                <img src="images/detail/Vector-4.svg" class="infor__share-item"></img>|
+                            </div>
+    
+                            <hr>
+    
+                            <div class="classify">
+                                <div class="classify__item"><b>DANH MỤC:</b> Nội thất trang trí</div>
+    
+                                <div class="classify__item"><b>THẺ:</b> Đồ gốm</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="description">
+                        <div class="description__header">
+                            <div href="" class="description__nav des">MÔ TẢ</div>
+                            <div href="" class="description__nav review">BÌNH LUẬN </div>
+                        </div>
+                        <hr>
+                        <div class="spw detail-sub-content">
+                            <div class="description__column">
+                                <h3 class="description__heading">HƯỚNG DẪN SỬ DỤNG</h3>
+                                <p class="description__paragraph">Sản phẩm được dùng để trang trí, cắm hoa để cho không gian của bạn thật là tao nhã, đẹp đẽ. Tránh để dưới ánh nắng trực tiếp.</p>
+                            </div>
+    
+                            <div class="description__column">
+                                <h3 class="description__heading">THÔNG SỐ SẢN PHẨM</h3>
+                                <p class="description__paragraph">Chất liệu: Gốm<br>
+                                    Kích thước: 24x24.<br>
+                                    Cân nặng: 2.15 KG<br>
+                                    Được thiết kế và làm thủ công tại YGshop.</p>
+                            </div>
+    
+                            <div class="description__column">
+                                <h3 class="description__heading">BẠN CÓ BIẾT KHÔNG?</h3>
+                                <p class="description__paragraph">YG cung cấp cho bạn những sản phẩm thiết kế độc đáo và chất lượng cao để trang trí cho không gian sống của bạn. Với đa dạng các loại nội thất như đồ gốm, bàn ăn, giường ngủ và nhiều sản phẩm khác, chúng tôi cam kết sẽ đem đến cho bạn những trải nghiệm tuyệt vời nhất trong việc lựa chọn và sử dụng sản phẩm của chúng tôi. </p>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="sale">
+                        <div class="spw">
+                            <div class="sale__title">ĐANG GIẢM GIÁ</div>
+                            <a href="./index.php?page=shop" class="sale__all">Xem tất cả</a>
+                        </div>
+    
+                        <ul class="sale__menu spw">
+                           
+                                    <li class="sale__menu-item">
+                                        <a href="index.php?page=detail&id="class="sale__menu-link">
+                                            <img src="images/bowl-2.png" alt="" class="sale__img">
+                                            <span class="sale__name">0đ</span>
+                                            <span class="sale__price"><b>0 VNĐ</b></span>
+                                        </a>
+                                    </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+                <br><br><br>
+            </div>
   <script>
       
       const increseBtn = $('.increase');

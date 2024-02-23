@@ -37,7 +37,7 @@ SHOP
 									</div>
 									<div class="spw">
 										<span class="sidebar__span">Giá: $7 - $56</span>
-										<button class="btn button-filter">TÌM</button>
+										<button class="button_shop button-filter">TÌM</button>
 									</div>
 								</div>
 							</ul>	
@@ -125,6 +125,7 @@ SHOP
 							
 						</sidebar>
 					</div>
+
 					<div class="col col-sm-6 col-md-8">
 						<div class="products__heading spw">
                             <div class="products__heading-left">
@@ -142,91 +143,31 @@ SHOP
                             </div>
                         </div>
 						<div class="row ">
-						
-				 
-								
+						@foreach ($shop as $sp )
 							<!-- Start Column 2 -->
 							<div class="col-12 col-md-4 col-lg-4 mb-5">
 								
-								<a class="product-item" href="#">
-									<img src="images/product-1.png" class="img-fluid product-thumbnail">
-									<h3 class="product-title">Nordic Chair</h3>
-									<strong class="product-price">$50.00</strong>
-		
+								<a class="product-item" href="/detail/{{$sp->productID}}">
+									<img src="{{ asset('images/' .$sp->thumnail) }}" class="img-fluid product-thumbnail">
+									<h3 class="product-title">{{ $sp->name }}</h3>
+									@foreach ($variant as $v )
+										@if ($v->product_id == $sp->productID)
+											<strong class="product-price">${{ $v->price }}</strong>
+										@endif
+									@endforeach
 									<span class="icon-cross">
 										<img src="images/cross.svg" class="img-fluid">
 									</span>
 								</a>
 							</div> 
 							<!-- End Column 2 -->
-		
-							<!-- Start Column 3 -->
-							<div class="col-12 col-md-4 col-lg-4 mb-5">
-								<a class="product-item" href="#">
-									<img src="images/product-2.png" class="img-fluid product-thumbnail">
-									<h3 class="product-title">Kruzo Aero Chair</h3>
-									<strong class="product-price">$78.00</strong>
-		
-									<span class="icon-cross">
-										<img src="images/cross.svg" class="img-fluid">
-									</span>
-								</a>
-							</div>
-							<!-- End Column 3 -->
-		
-							<!-- Start Column 4 -->
-							<div class="col-12 col-md-4 col-lg-4 mb-5">
-								<a class="product-item" href="#">
-									<img src="images/product-3.png" class="img-fluid product-thumbnail">
-									<h3 class="product-title">Ergonomic Chair</h3>
-									<strong class="product-price">$43.00</strong>
-		
-									<span class="icon-cross">
-										<img src="images/cross.svg" class="img-fluid">
-									</span>
-								</a>
-							</div>
-							<!-- End Column 4 -->
-								<!-- Start Column 4 -->
-								<div class="col-12 col-md-4 col-lg-4 mb-5">
-									<a class="product-item" href="#">
-										<img src="images/product-3.png" class="img-fluid product-thumbnail">
-										<h3 class="product-title">Ergonomic Chair</h3>
-										<strong class="product-price">$43.00</strong>
-			
-										<span class="icon-cross">
-											<img src="images/cross.svg" class="img-fluid">
-										</span>
-									</a>
-								</div>
-								<!-- End Column 4 -->
-									<!-- Start Column 4 -->
-							<div class="col-12 col-md-4 col-lg-4 mb-5">
-								<a class="product-item" href="#">
-									<img src="images/product-3.png" class="img-fluid product-thumbnail">
-									<h3 class="product-title">Ergonomic Chair</h3>
-									<strong class="product-price">$43.00</strong>
-		
-									<span class="icon-cross">
-										<img src="images/cross.svg" class="img-fluid">
-									</span>
-								</a>
-							</div>
-							<!-- End Column 4 -->
-
-							
-		
-		
-							
-		
-						  </div>
+						@endforeach
+						<div class="filter-bar d-flex flex-wrap align-items-center">
+							<!-- <a href=""> {{ $shop->onEachSide(5)->links() }} </a> -->
+						</div>
+						</div>
 					</div>
-					
-				</div>
-				
-
-		      	
+				</div>	 	
 		    </div>
-			
 		</div>
 @endsection
