@@ -30,6 +30,7 @@ Route::get('/shop', function () {
 Route::get('/detail', function () {
     return view('client.detail');
 });
+
 Route::get('/detail/{id}', [ProductController::class,'detail']);
 Route::get('/themvaogio/{idsp}/{soluong}', [ProductController::class,'themvaogio']);
 Route::get('/hiengiohang', [ProductController::class,'hiengiohang']);
@@ -38,6 +39,10 @@ Route::get('/xoagiohang', [ProductController::class,'xoagiohang']);
 
 Route::get('/about', function () {
     return view('client.about');
+});
+
+Route::get('/blog', function () {
+    return view('client.blog');
 });
 
 Route::get('/services', function () {

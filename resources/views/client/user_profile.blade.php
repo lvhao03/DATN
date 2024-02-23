@@ -45,15 +45,26 @@ Thông tin người dùng
 											<div class="form_infomation_left col-4">
 												<p class="user_profile_name_label">Tên</p>
 												<p class="user_profile_name_label">Email</p>
-												<p class="user_profile_name_label">Số điện thoại</p>
+												<p class="user_profile_name_label">Địa chỉ</p>
 												<!-- <p class="user_profile_name_label">Giới tính</p>
 												<p class="user_profile_name_label">Ngày sinh</p> -->
 											</div>
 
 											<div class="form_infomation_right col-8">
 													<input type="text" name="name" class="form_input" value="{{ Auth::user()->name}}">
+													@error('name')
+														<div class="badge alert-danger">{{ $message }}</div>
+													@enderror
+
 													<input type="text" name="email" class="form_input" value="{{ Auth::user()->email}}">
+													@error('email')
+														<div class="badge alert-danger">{{ $message }}</div>
+													@enderror
+
 													<input type="text" name="address" class="form_input" value="113">
+													@error('address')
+														<div class="badge alert-danger">{{ $message }}</div>
+													@enderror
 													<!-- <p style="padding-top: 10px;" class="user_profile_name_label">Account@gmail.com <label> <a style="color: blue; padding-left: 5px;" href="">Thay đổi</a></label></p>
 													<p class="user_profile_name_label">090909*** <label> <a style="color: blue; padding-left: 5px;" href="">Thay đổi</a></label></p>
 													<button style="border: none; background-color: rgb(193, 193, 193);" class="user_profile_name_label btn-sex">Nam</button>
