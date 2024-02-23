@@ -35,6 +35,10 @@ Route::get('/detail_blog', function () {
     return view('client.detail_blog');
 });
 
+Route::get('/blog_detail/{id}', function () {
+    return view('client.blog_detail');
+});
+
 Route::get('/detail/{id}', [ProductController::class,'detail']);
 Route::get('/themvaogio/{idsp}/{soluong}', [ProductController::class,'themvaogio']);
 Route::get('/hiengiohang', [ProductController::class,'hiengiohang']);
