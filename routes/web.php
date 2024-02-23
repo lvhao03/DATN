@@ -29,6 +29,8 @@ Route::get('/detail', function () {
     return view('client.detail');
 });
 
+Route::get('/variant/{variantID}', [ProductController::class,'getVariant']);
+
 Route::get('/detail_blog', function () {
     return view('client.detail_blog');
 });

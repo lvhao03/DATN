@@ -32,7 +32,7 @@ DETAIL PRODUCTS
                     <div class="spw">
                         <div class="gallery">
                             <div class="gallery__item--huge">
-                                <img src="{{ asset('images/' .$sp->thumnail) }}" alt="">
+                                <img id="productImage" src="{{ asset('images/' . $variants[0]->image_url ) }}" alt="">
                             </div>
                             <div class="spw" style="margin: 0 -7px;">
                                 <div class="gallery__item">
@@ -54,11 +54,24 @@ DETAIL PRODUCTS
                             <h1 class="infor__title">
                             {{ $sp->name }}
                             </h1>
-                            <span class="infor__price"><b>{{ $variant->price }} VNĐ</b></span>
+                            <span class="infor__price">{{ $variants[0]->price }} VNĐ</span>
+                            @if(count($variants) > 1)
+                                <div class="d-flex">
+                                    <span>Mẫu</span>
+                                    <ul class="d-flex">
+                                        @foreach($variants as $variant)
+                                            <li class="d-flex border p-2 mr-4" onclick="get_variant({{$variant->variantID}})">
+                                                <img  src="{{ asset('images/' . $variant->image_url) }}" style="width:30px; height:30px" alt="">
+                                                {{$variant->color}}
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
                             <p class="infor__paragraph"></p>
                             <div class="spw">
                                 <span class="infor__status">
-                                    Số lượng hàng tồn: <b></b>
+                                    Số lượng hàng tồn: <b id="stock_quantity"> {{$variants[0]->stock_quantity}}</b>
                                 </span>
     
                                 <span class="infor__id"> SKU: NO-6700-54</span>
@@ -207,6 +220,30 @@ DETAIL PRODUCTS
 
 
   </script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>
+        function get_variant(variantID){
+            $.ajax({
+                url: "/variant/" + variantID,
+                type: "GET",
+                success: function(response) {
+                    console.log(response);
+                    $('.infor__price').text(response.variant.price);
+                    $('#stock_quantity').text(response.variant.stock_quantity);
+                    $('#productImage').attr('src', 'http://127.0.0.1:8000/images/' + response.variantImages[0].image_url);
+                    console.log(response);
+                    // $.each(response, function(index, imageUrl) {
+                        
+                    //     $('#imageContainer').append('<img src="' + imageUrl + '" alt="Variant Image">');
+                    // });
+                },
+                error: function(xhr, status, error) {
+                    console.error(error);
+                }
+            });
+        }
+    </script>
 
   <script>
       const isLogin = <?php 
