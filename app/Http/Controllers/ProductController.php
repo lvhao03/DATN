@@ -21,9 +21,24 @@ class ProductController extends Controller
     }
 
     function Detail($id){
-        $sp = Product::where ('productID', $id)->first();   
-        $variant = Variant::where('product_id',$id)->first();  
-        return view('client.detail',['sp'=>$sp,'variant'=>$variant]);
+        $product = Product::where('productID', $id)->first();   
+        $variants = Variant::where('product_id',$id)->get();
+        foreach($variants as $variant) {
+            $image_url = Variant_images::where('variant_id' , $variant->variantID)->value('image_url');
+            $variant->image_url = $image_url;
+        }
+        return view('client.detail',['sp' => $product , 'variants' => $variants]);
+    }
+
+    function getVariant($variantID){
+        $variant = Variant::where('variantID', $variantID)->first();
+        $variantImages = Variant_images::where('variant_id' , $variantID)->get();
+
+        $data = [
+            'variant' => $variant,
+            'variantImages' => $variantImages
+        ];
+        return response()->json($data);
     }
 
     function themvaogio(Request $request, $productID = 0, $soluong=1){
