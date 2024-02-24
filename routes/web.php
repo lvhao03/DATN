@@ -6,6 +6,8 @@ use App\Http\Controllers\GoogleController;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ShopController;
+
 
 
 /*
@@ -35,6 +37,14 @@ Route::get('/themvaogio/{idsp}/{soluong}', [ProductController::class,'themvaogio
 Route::get('/hiengiohang', [ProductController::class,'hiengiohang']);
 Route::get('/xoasptronggio/{idsp}', [ProductController::class,'xoasptronggio']);
 Route::get('/xoagiohang', [ProductController::class,'xoagiohang']);
+
+/* Trang shop */
+Route::get('/',[ShopController::class,'all_products_cate'])->name('all.productscate');
+Route::get('/{idloai}',[ShopController::class,'all_products_theoloai'])->name('all.productscate');
+Route::get('/search-product',[ShopController::class,'search_products'])->name('search.products');
+Route::get('/sort-by',[ShopController::class,'sort_by'])->name('sort.by');
+/*end trang shop*/
+
 
 Route::get('/about', function () {
     return view('client.about');

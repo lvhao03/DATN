@@ -47,9 +47,9 @@ SHOP
 							
 									<li class="sidebar__category-item">
 										<div class="sidebar__category-link" onclick="filter(this)">
-											<span>SOFA</span><hr style="width: 85%;">	
-											<span>ghe</span><hr style="width: 85%;">	
-											<span>SOFA</span><hr style="width: 85%;">				
+										@php foreach($datacate as $cate) { @endphp
+											<a href="/{{$cate->catergoryID}}">@php echo "{$cate->name}" @endphp</a><hr style="width: 85%;">	
+										@php } @endphp
 										</div>
 									</li>
 								
@@ -144,13 +144,13 @@ SHOP
 						<div class="row ">
 						
 				 
-								
+						@php foreach($data as $sp) { @endphp
 							<!-- Start Column 2 -->
 							<div class="col-12 col-md-4 col-lg-4 mb-5">
 								
 								<a class="product-item" href="#">
-									<img src="images/product-1.png" class="img-fluid product-thumbnail">
-									<h3 class="product-title">Nordic Chair</h3>
+									<img src="../@php echo "{$sp->thumnail}" @endphp" class="img-fluid product-thumbnail">
+									<h3 class="product-title">@php echo "{$sp->name}" @endphp</h3>
 									<strong class="product-price">$50.00</strong>
 		
 									<span class="icon-cross">
@@ -159,63 +159,9 @@ SHOP
 								</a>
 							</div> 
 							<!-- End Column 2 -->
+							@php } @endphp
 		
-							<!-- Start Column 3 -->
-							<div class="col-12 col-md-4 col-lg-4 mb-5">
-								<a class="product-item" href="#">
-									<img src="images/product-2.png" class="img-fluid product-thumbnail">
-									<h3 class="product-title">Kruzo Aero Chair</h3>
-									<strong class="product-price">$78.00</strong>
-		
-									<span class="icon-cross">
-										<img src="images/cross.svg" class="img-fluid">
-									</span>
-								</a>
-							</div>
-							<!-- End Column 3 -->
-		
-							<!-- Start Column 4 -->
-							<div class="col-12 col-md-4 col-lg-4 mb-5">
-								<a class="product-item" href="#">
-									<img src="images/product-3.png" class="img-fluid product-thumbnail">
-									<h3 class="product-title">Ergonomic Chair</h3>
-									<strong class="product-price">$43.00</strong>
-		
-									<span class="icon-cross">
-										<img src="images/cross.svg" class="img-fluid">
-									</span>
-								</a>
-							</div>
-							<!-- End Column 4 -->
-								<!-- Start Column 4 -->
-								<div class="col-12 col-md-4 col-lg-4 mb-5">
-									<a class="product-item" href="#">
-										<img src="images/product-3.png" class="img-fluid product-thumbnail">
-										<h3 class="product-title">Ergonomic Chair</h3>
-										<strong class="product-price">$43.00</strong>
-			
-										<span class="icon-cross">
-											<img src="images/cross.svg" class="img-fluid">
-										</span>
-									</a>
-								</div>
-								<!-- End Column 4 -->
-									<!-- Start Column 4 -->
-							<div class="col-12 col-md-4 col-lg-4 mb-5">
-								<a class="product-item" href="#">
-									<img src="images/product-3.png" class="img-fluid product-thumbnail">
-									<h3 class="product-title">Ergonomic Chair</h3>
-									<strong class="product-price">$43.00</strong>
-		
-									<span class="icon-cross">
-										<img src="images/cross.svg" class="img-fluid">
-									</span>
-								</a>
-							</div>
-							<!-- End Column 4 -->
 
-							
-		
 		
 							
 		
