@@ -34,7 +34,13 @@ class ProductController extends Controller
             $image_url = Variant_images::where('variant_id' , $variant->variantID)->value('image_url');
             $variant->image_url = $image_url;
         }
-        return view('client.detail',['sp' => $product , 'variants' => $variants]);
+        $products = Product::take(4)->get();   
+        foreach($products as $product) {
+            $variant = Variant::where('product_id', $product->productID)->first();
+            $product->image_url = Variant_images::where('variant_id' , $variant->variantID)->value('image_url');
+            $product->price = $variant->price;
+        }
+        return view('client.detail',['sp' => $product , 'variants' => $variants, 'products' => $products]);
     }
 
     function getVariant($variantID){

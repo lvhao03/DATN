@@ -160,7 +160,7 @@ SHOP
 							<!-- End Column 2 -->
 						@endforeach
 						<div class="filter-bar d-flex flex-wrap align-items-center">
-							<a href=""> {{ $products->onEachSide(5)->links() }} </a>
+							<!-- <a href=""> {{ $products->onEachSide(5)->links() }} </a> -->
 						</div>
 						</div>
 					</div>

@@ -145,20 +145,20 @@ DETAIL PRODUCTS
     
                     <div class="sale">
                         <div class="spw">
-                            <div class="sale__title">ĐANG GIẢM GIÁ</div>
+                            <div class="sale__title">Có thể bạn sẽ thích</div>
                             <a href="./index.php?page=shop" class="sale__all">Xem tất cả</a>
                         </div>
     
                         <ul class="sale__menu spw">
-                           
-                                    <li class="sale__menu-item">
-                                        <a href="index.php?page=detail&id="class="sale__menu-link">
-                                            <img src="images/bowl-2.png" alt="" class="sale__img">
-                                            <span class="sale__name">0đ</span>
-                                            <span class="sale__price"><b>0 VNĐ</b></span>
-                                        </a>
-                                    </li>
-                            
+                            @foreach($products as $product)
+                                <li class="sale__menu-item">
+                                    <a href="/detail/{{$product->productID}}"class="sale__menu-link">
+                                        <img src="{{ asset('images/' . $product->image_url ) }}" alt="" class="sale__img">
+                                        <span class="sale__name">{{ $product->name }}</span>
+                                        <span class="sale__price"><b>{{ $product->price }}</b></span>
+                                    </a>
+                                </li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>
