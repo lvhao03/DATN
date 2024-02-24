@@ -35,18 +35,11 @@ DETAIL PRODUCTS
                                 <img id="productImage" src="{{ asset('images/' . $variants[0]->image_url ) }}" alt="">
                             </div>
                             <div class="spw" style="margin: 0 -7px;">
-                                <div class="gallery__item">
-                                    <img src="" alt="">
-                                </div>
-                                <div class="gallery__item">
-                                    <img src="" alt="">
-                                </div>
-                                <div class="gallery__item">
-                                    <img src="" alt="">
-                                </div>
-                                <div class="gallery__item">
-                                    <img src="" alt="">
-                                </div>
+                                @for ($i = 0; $i < 4; $i++)
+                                    <div class="gallery__item">
+                                        <img src="{{ asset('images/' . $variants[0]->image_url ) }}" alt="">
+                                    </div>
+                                @endfor
                             </div>
                         </div>
     
@@ -54,7 +47,7 @@ DETAIL PRODUCTS
                             <h1 class="infor__title">
                             {{ $sp->name }}
                             </h1>
-                            <span class="infor__price">{{ $variants[0]->price }} VNĐ</span>
+                            <span class="infor__price text-black" >{{ $variants[0]->price }} VNĐ</span>
                             @if(count($variants) > 1)
                                 <div class="d-flex">
                                     <span>Mẫu</span>
@@ -68,7 +61,7 @@ DETAIL PRODUCTS
                                     </ul>
                                 </div>
                             @endif
-                            <p class="infor__paragraph"></p>
+                            <p class="infor__paragraph">{{$sp->description}}</p>
                             <div class="spw">
                                 <span class="infor__status">
                                     Số lượng hàng tồn: <b id="stock_quantity"> {{$variants[0]->stock_quantity}}</b>
@@ -93,7 +86,7 @@ DETAIL PRODUCTS
                                         document.location="/themvaogio/" +productID+"/"+ spluong;
                                     }
                                 </script>
-                               <button class="button add-to-cart" onclick="themvaogio({{$sp->productID}})" id=>Thêm vào giỏ</button>
+                               <button class="button add-to-cart" style="background-color:#3b5d50" onclick="themvaogio({{$sp->productID}})" id=>Thêm vào giỏ</button>
                             </div>
     
                             <hr>
@@ -152,20 +145,20 @@ DETAIL PRODUCTS
     
                     <div class="sale">
                         <div class="spw">
-                            <div class="sale__title">ĐANG GIẢM GIÁ</div>
+                            <div class="sale__title">Có thể bạn sẽ thích</div>
                             <a href="./index.php?page=shop" class="sale__all">Xem tất cả</a>
                         </div>
     
                         <ul class="sale__menu spw">
-                           
-                                    <li class="sale__menu-item">
-                                        <a href="index.php?page=detail&id="class="sale__menu-link">
-                                            <img src="images/bowl-2.png" alt="" class="sale__img">
-                                            <span class="sale__name">0đ</span>
-                                            <span class="sale__price"><b>0 VNĐ</b></span>
-                                        </a>
-                                    </li>
-                            
+                            @foreach($products as $product)
+                                <li class="sale__menu-item">
+                                    <a href="/detail/{{$product->productID}}"class="sale__menu-link">
+                                        <img src="{{ asset('images/' . $product->image_url ) }}" alt="" class="sale__img">
+                                        <span class="sale__name">{{ $product->name }}</span>
+                                        <span class="sale__price"><b>{{ $product->price }}</b></span>
+                                    </a>
+                                </li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>

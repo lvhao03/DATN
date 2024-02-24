@@ -7,17 +7,24 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Variant;
 use App\Models\Variant_images;
-
+use App\Models\Category;
 class ProductController extends Controller
 {
     //
     function shop(){
         $perpage= 9;
-        $shop = Product::paginate($perpage);
-        $variant = Variant::get();
+        $products = Product::paginate($perpage);
+        // thêm ảnh và giá cho sản phẩm vì giá và ảnh ở table khác
+        foreach($products as $product){ 
+            $variant = Variant::where('product_id', $product->productID)->first();
+            $product->image_url = Variant_images::where('variant_id' , $variant->variantID)->value('image_url');
+            
+            $product->price = $variant->price;
+        };
+        $categories = Category::get();
         // $idsp = $shop->pluck('productID')->toArray();
         // $variant = Variant::whereIn('product_id',$idsp)->get();
-        return view ('client.shop' , ['shop'=>$shop,'variant'=>$variant]); 
+        return view ('client.shop' , ['products'=> $products , 'categories' => $categories]); 
     }
 
     function Detail($id){
@@ -27,7 +34,13 @@ class ProductController extends Controller
             $image_url = Variant_images::where('variant_id' , $variant->variantID)->value('image_url');
             $variant->image_url = $image_url;
         }
-        return view('client.detail',['sp' => $product , 'variants' => $variants]);
+        $products = Product::take(4)->get();   
+        foreach($products as $product) {
+            $variant = Variant::where('product_id', $product->productID)->first();
+            $product->image_url = Variant_images::where('variant_id' , $variant->variantID)->value('image_url');
+            $product->price = $variant->price;
+        }
+        return view('client.detail',['sp' => $product , 'variants' => $variants, 'products' => $products]);
     }
 
     function getVariant($variantID){
