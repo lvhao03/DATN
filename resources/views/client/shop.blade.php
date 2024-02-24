@@ -29,7 +29,7 @@ SHOP
 						<sidebar class="sidebar__filter-wrapper">
 							<ul>
 								<div class="sidebar__filter">
-									<h2 class="sidebar__heading">FILTER BY PRICE</h2>
+									<h2 class="sidebar__heading">Lọc theo giá</h2>
 									<div class="range-slider-container" >
 										<input type="range" class="range-slider" />
 										<span id="range-value-bar"></span>
@@ -43,13 +43,13 @@ SHOP
 							</ul>	
 	
 							<ul class="sidebar__category">
-								<h2 class="sidebar__heading">PRODUCT CATEGORIES</h2>
+								<h2 class="sidebar__heading">Danh mục sản phẩm</h2>
 							
 									<li class="sidebar__category-item">
 										<div class="sidebar__category-link" onclick="filter(this)">
-											<span>SOFA</span><hr style="width: 85%;">	
-											<span>ghe</span><hr style="width: 85%;">	
-											<span>SOFA</span><hr style="width: 85%;">				
+											@foreach($categories as $category)
+												<span>{{ $category->name }}</span><hr style="width: 85%;">	
+											@endforeach			
 										</div>
 									</li>
 								
@@ -69,7 +69,7 @@ SHOP
 								<li class="sidebar__tag-item"><a href="" class="sidebar__tag-link">Thời thượng</a></li>
 							</ul>
 							<ul class="sidebar__tags" >
-								<h2 class="sidebar__heading">TRENDING PRODUCTS</h2>
+								<h2 class="sidebar__heading">Sản phẩm nối bật</h2>
 								
 								<div class="sidebar__tag-item info-prod-div row" >
 									<div class="col" href="" class="image-info-prod">
@@ -143,18 +143,15 @@ SHOP
                             </div>
                         </div>
 						<div class="row ">
-						@foreach ($shop as $sp )
+						@foreach ($products as $product )
 							<!-- Start Column 2 -->
 							<div class="col-12 col-md-4 col-lg-4 mb-5">
 								
-								<a class="product-item" href="/detail/{{$sp->productID}}">
-									<img src="{{ asset('images/' .$sp->thumnail) }}" class="img-fluid product-thumbnail">
-									<h3 class="product-title">{{ $sp->name }}</h3>
-									@foreach ($variant as $v )
-										@if ($v->product_id == $sp->productID)
-											<strong class="product-price">${{ $v->price }}</strong>
-										@endif
-									@endforeach
+								<a class="product-item" href="/detail/{{$product->productID}}">
+
+									<img src="{{ asset('images/' .$product->image_url) }}" class="img-fluid product-thumbnail">
+									<h3 class="product-title">{{ $product->name }}</h3>
+									<strong class="product-price">${{ $product->price }}</strong>
 									<span class="icon-cross">
 										<img src="images/cross.svg" class="img-fluid">
 									</span>
@@ -163,7 +160,7 @@ SHOP
 							<!-- End Column 2 -->
 						@endforeach
 						<div class="filter-bar d-flex flex-wrap align-items-center">
-							<!-- <a href=""> {{ $shop->onEachSide(5)->links() }} </a> -->
+							<a href=""> {{ $products->onEachSide(5)->links() }} </a>
 						</div>
 						</div>
 					</div>
