@@ -40,9 +40,9 @@ Route::get('/blog_detail/{id}', function () {
 });
 
 Route::get('/detail/{id}', [ProductController::class,'detail']);
-Route::get('/themvaogio/{idsp}/{soluong}', [ProductController::class,'themvaogio']);
-Route::get('/hiengiohang', [ProductController::class,'hiengiohang']);
-Route::get('/xoasptronggio/{idsp}', [ProductController::class,'xoasptronggio']);
+Route::get('/addCart/{idsp}/{soluong}/{idbt}', [ProductController::class,'addCart']);
+Route::get('/cart', [ProductController::class,'cart']);
+Route::get('/deteleCart/{idsp}', [ProductController::class,'deteleCart']);
 Route::get('/xoagiohang', [ProductController::class,'xoagiohang']);
 
 Route::get('/about', function () {
@@ -64,9 +64,6 @@ Route::get('/user', function () {
     return view('client.user_profile');
 });
 
-Route::get('/cart', function () {
-    return view('client.cart');
-});
 
 Route::post('/change-info', [CustomerController::class, 'edit']);
 
