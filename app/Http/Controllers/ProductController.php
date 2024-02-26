@@ -57,7 +57,7 @@ class ProductController extends Controller
 
     function addCart(Request $request, $productID = 0, $soluong = 1, $variantID) {
         $product = Product::where('productID', $productID)->first();
-        $variant = Variant::where('product_id', $product->productID)->first();
+        $variant = Variant::where('variantID', $variantID)->first();
         $product->image_url = Variant_images::where('variant_id', $variant->variantID)->value('image_url');
         $product->price = $variant->price;
         $product->quantity = $soluong;

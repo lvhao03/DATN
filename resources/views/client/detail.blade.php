@@ -215,20 +215,13 @@ DETAIL PRODUCTS
 
         function get_variant(variantID){
             a = variantID;
-            
             $.ajax({
                 url: "/variant/" + variantID,
                 type: "GET",
                 success: function(response) {
-                    console.log(response);
                     $('.infor__price').text(response.variant.price);
                     $('#stock_quantity').text(response.variant.stock_quantity);
                     $('#productImage').attr('src', 'http://127.0.0.1:8000/images/' + response.variantImages[0].image_url);
-                    console.log(response);
-                    // $.each(response, function(index, imageUrl) {
-                        
-                    //     $('#imageContainer').append('<img src="' + imageUrl + '" alt="Variant Image">');
-                    // });
                 },
                 error: function(xhr, status, error) {
                     console.error(error);
@@ -237,8 +230,8 @@ DETAIL PRODUCTS
         }
 
         function addCart(productID){
+            console.log(a);
             soluong = document.getElementById('soluong').value;
-            // variantID = document.getElementById('variantID').value;
             document.location="/addCart/"+productID+"/"+ soluong + "/" + a;
         }
     </script>
