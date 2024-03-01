@@ -159,7 +159,7 @@ DETAIL PRODUCTS
                 </div>
                 <br><br><br>
             </div>
-  <script>
+  <!-- <script>
       
       const increseBtn = $('.increase');
       const decreseBtn = $('.decrease');
@@ -207,11 +207,102 @@ DETAIL PRODUCTS
       })
 
 
-  </script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <script>
         let a = <?php echo $variants[0]->variantID ?>
+
+        let productID = {{ $sp->productID }};
+        let customerID = {{ \Auth::user()->customerID }};
+
+        const review = $('.review');
+        const detailSubContent = $('.detail-sub-content');
+        const description = $('.des');
+        const sendCommentBtn = $('.send-comment');
+        
+        $(document).on('click', '.send-comment', function(){
+            const textArea = $('textarea'); 
+            $.ajax({
+                url: '/api/create/comment',
+                data: {
+                    content: textArea.val(),
+                    productID: productID,
+                    customerID: customerID,
+                },
+                type: 'POST',
+                dataType: 'json',
+                success: function (result){
+                    showCommentSection(result);
+                }
+            })
+        })
+
+        description.click(function(){
+            detailSubContent.html('');
+            let html = '';
+            html += `     <div class="spw detail-sub-content">
+                        <div class="description__column">
+                            <h3 class="description__heading">MÔ TẢ</h3>
+                            <p class="description__paragraph">Sản phẩm được dùng để trang trí, cắm hoa để cho không gian của bạn thật là tao nhã, đẹp đẽ. Tránh để dưới ánh nắng trực tiếp.</p>
+                        </div>
+
+                        <div class="description__column">
+                            <h3 class="description__heading">THÔNG SỐ SẢN PHẨM</h3>
+                            <p class="description__paragraph">Chất liệu: Gốm<br>
+                            Kích thước: 24x24.<br>
+                            Cân nặng: 2.15 KG<br>
+                            Được thiết kế và làm thủ công tại YGshop.</p>
+                        </div>
+
+                        <div class="description__column">
+                            <h3 class="description__heading">BẠN CÓ BIẾT KHÔNG?</h3>
+                            <p class="description__paragraph">YG cung cấp cho bạn những sản phẩm thiết kế độc đáo và chất lượng cao để trang trí cho không gian sống của bạn. Với đa dạng các loại nội thất như đồ gốm, bàn ăn, giường ngủ và nhiều sản phẩm khác, chúng tôi cam kết sẽ đem đến cho bạn những trải nghiệm tuyệt vời nhất trong việc lựa chọn và sử dụng sản phẩm của chúng tôi.</p>
+                        </div>
+                    </div>`;
+            detailSubContent.html(html);
+        })
+
+        review.click(function(){
+            detailSubContent.css('flex-direction', 'column');
+            detailSubContent.css('margin-left', '30px');
+            $.ajax({
+                url: '/api/comments/' + productID ,
+                type: 'GET',
+                dataType: 'json',
+                success: function (result){
+                    showCommentSection(result);
+                }
+            })
+
+        });
+
+        function showCommentSection(result){
+            detailSubContent.html('');
+            let html = '';
+            if (result.length > 0) {
+                $.each(result, (index, comment) => {
+                    html += `
+                        <div class="flex">
+                            <img src='http://127.0.0.1:8000/storage/${comment['image_url']}' class='user-comment-img' >
+                            <div>
+                            <div class='user-comment-name'>${comment['customer_name']}</div>
+                            <div>${comment['content']}</div>
+                        </div>
+                            `;
+                    detailSubContent.append(html);
+                    html = '';
+                });
+            } else {
+                html += '<p>Hiện chưa có bình luận nào</p>'
+            }
+            html+= `
+            <textarea required class="comment-content" placeholder="Nhập bình luận" name="content" rows="3" cols="10">  </textarea>
+                    <button class="add-to-btn send-comment" style="background-color: #3b5d50">Gửi bình luận</button>
+            `;
+            detailSubContent.append(html);
+        }
+
 
         function get_variant(variantID){
             a = variantID;
@@ -230,123 +321,8 @@ DETAIL PRODUCTS
         }
 
         function addCart(productID){
-            console.log(a);
             soluong = document.getElementById('soluong').value;
             document.location="/addCart/"+productID+"/"+ soluong + "/" + a;
         }
     </script>
-
-  <script>
-      const isLogin = <?php 
-          if (isset($_SESSION['user'])){
-              echo json_encode('true');
-          } else {
-              echo json_encode('false');
-          }
-      ?>
-
-      const review = $('.review');
-      const detailSubContent = $('.detail-sub-content');
-      const description = $('.des');
-      const sendCommentBtn = $('.send-comment');
-      
-      $(document).on('click', '.send-comment', function(){
-          const textArea = $('textarea'); 
-          if (isLogin == 'false') {
-              alert('Vui lòng đăng nhập');
-              return;
-          }
-
-          $.ajax({
-              url: './api/api.php',
-              data: {
-                  action: 'send_comment',
-                  content: textArea.val(),
-                  product_id:
-              },
-              type: 'POST',
-              dataType: 'json',
-              success: function (result){
-                  renderCommentSection(result);
-              }
-          })
-      })
-
-      description.click(function(){
-          detailSubContent.html('');
-          let html = '';
-          html += `     <div class="spw detail-sub-content">
-                      <div class="description__column">
-                          <h3 class="description__heading">MÔ TẢ</h3>
-                          <p class="description__paragraph">Sản phẩm được dùng để trang trí, cắm hoa để cho không gian của bạn thật là tao nhã, đẹp đẽ. Tránh để dưới ánh nắng trực tiếp.</p>
-                      </div>
-
-                      <div class="description__column">
-                          <h3 class="description__heading">THÔNG SỐ SẢN PHẨM</h3>
-                          <p class="description__paragraph">Chất liệu: Gốm<br>
-                          Kích thước: 24x24.<br>
-                          Cân nặng: 2.15 KG<br>
-                          Được thiết kế và làm thủ công tại YGshop.</p>
-                      </div>
-
-                      <div class="description__column">
-                          <h3 class="description__heading">BẠN CÓ BIẾT KHÔNG?</h3>
-                          <p class="description__paragraph">YG cung cấp cho bạn những sản phẩm thiết kế độc đáo và chất lượng cao để trang trí cho không gian sống của bạn. Với đa dạng các loại nội thất như đồ gốm, bàn ăn, giường ngủ và nhiều sản phẩm khác, chúng tôi cam kết sẽ đem đến cho bạn những trải nghiệm tuyệt vời nhất trong việc lựa chọn và sử dụng sản phẩm của chúng tôi.</p>
-                      </div>
-                  </div>`;
-          detailSubContent.html(html);
-      })
-
-      review.click(function(){
-          detailSubContent.css('flex-direction', 'column');
-          detailSubContent.css('margin-left', '30px');
-          $.ajax({
-              url: './api/api.php',
-              data: {
-                  action: 'show_comment',
-                  productID : 
-              },
-              type: 'GET',
-              dataType: 'json',
-              success: function (result){
-                  renderCommentSection(result);
-              }
-          })
-
-      });
-
-      function renderCommentSection(result){
-          detailSubContent.html('');
-          let html = '';
-          if (result.length > 0) {
-              $.each(result, (index, comment) => {
-                  html += `
-                      <div class="flex">
-                          <img src='view/img/user/${comment['img']}' class='user-comment-img' >
-                          <div>
-                          <div class='user-comment-name'>${comment['user_name']}</div>
-                          <div>${comment['content']}</div>
-                      </div>
-                        `;
-                  detailSubContent.append(html);
-                  html = '';
-              });
-          } else {
-              html += '<p>Hiện chưa có bình luận nào</p>'
-          }
-          html+= `
-          <textarea required class="comment-content" placeholder="Nhập bình luận" name="content" rows="3" cols="10">  </textarea>
-                  <button class="add-to-btn send-comment">Gửi bình luận</button>
-          `;
-          detailSubContent.append(html);
-      }
-
-
-      function sendComment(){
-
-      }
-  </script>
-
-
-
 @endsection
