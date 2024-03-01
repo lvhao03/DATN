@@ -7,7 +7,7 @@ use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 
-
+use App\Http\Controllers\BlogController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,13 +31,14 @@ Route::get('/detail', function () {
 
 Route::get('/variant/{variantID}', [ProductController::class,'getVariant']);
 
-Route::get('/detail_blog', function () {
-    return view('client.detail_blog');
-});
+
 
 Route::get('/blog_detail/{id}', function () {
     return view('client.blog_detail');
 });
+Route::get('/blog', [BlogController::class,'blog']);
+
+
 
 Route::get('/detail/{id}', [ProductController::class,'detail']);
 Route::get('/themvaogio/{idsp}/{soluong}', [ProductController::class,'themvaogio']);
@@ -49,8 +50,9 @@ Route::get('/about', function () {
     return view('client.about');
 });
 
-Route::get('/blog', function () {
-    return view('client.blog');
+
+Route::get('/contact', function () {
+    return view('client.contact');
 });
 
 Route::get('/services', function () {
