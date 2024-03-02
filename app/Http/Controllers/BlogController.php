@@ -19,7 +19,7 @@ class BlogController extends Controller
     }
     public function blogxemnhieu() 
     {
-        $query = DB::table('tin')
+        $query = DB::table('posts')
         ->select('*')
         ->orderBy('luotXem','desc')
         ->limit(10);
@@ -31,7 +31,7 @@ class BlogController extends Controller
     }
     public function blogtheoloai($id) 
     {
-        $query = DB::table('tin')
+        $query = DB::table('posts')
         ->select('*')
         ->where('idLT','=',$id)
         ->orderBy('ngayDang','desc')
@@ -45,7 +45,7 @@ class BlogController extends Controller
     
     public function chitietblog($id) 
     {
-        $query = DB::table('tin')
+        $query = DB::table('posts')
         ->select('*')
         ->where('id','=',$id);
         $data=$query->get();
