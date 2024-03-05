@@ -104,40 +104,7 @@ BLOG
 		</div>
 		<!-- End Testimonial Slider -->
 
-		<!-- Start Blog Section -->
-		<div class="blog-section">
-			<div class="container">
-				<div class="row mb-5">
-					<div class="col-md-6">
-						<h2 class="section-title">Recent Blog</h2>
-					</div>
-					<div class="col-md-6 text-start text-md-end">
-						<a href="#" class="more">View All Posts</a>
-					</div>
-				</div>
 
-				<div class="row">
-
-				<?php foreach( $data as $posts ){ ?>
-					<div class="col-12 col-sm-6 col-md-4 mb-4 mb-md-0">
-						<div class="post-entry">
-							<a href="/blog_detail/{{ $posts->postID }}" class="post-thumbnail"><img src="{{ asset(('images/'.$posts->thumnail)) }}" alt="Image" class="img-fluid"></a>
-							<div class="post-content-entry">
-								<h3><a href="/blog_detail/{{ $posts->postID }}">{{ $posts->title }}</a></h3>
-								<div class="meta">
-									<span>by <a href="/user">{{ $posts->name_admin }}</a></span> <span>on <a href="#">{{ date('M d, Y', strtotime($post->post_time)) }} </a></span>
-								</div>
-							</div>
-						</div>
-					</div>
-                <?php } ?>
-
-				
-
-				</div>
-			</div>
-		</div>
-		<!-- End Blog Section -->	
 
 		
 @endsection
