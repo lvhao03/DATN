@@ -23,6 +23,10 @@ Route::get('/', function () {
     return view('client.home');
 });
 
+Route::get('/home', function () {
+    return view('client.home');
+});
+
 Route::get('/shop', [ProductController::class,'shop']);
 
 Route::get('/detail', function () {
@@ -33,9 +37,7 @@ Route::get('/variant/{variantID}', [ProductController::class,'getVariant']);
 
 
 
-Route::get('/blog_detail/{id}', function () {
-    return view('client.blog_detail');
-});
+
 
 Route::get('/blog_detail/{id}', [BlogController::class,'blog_detail']);
 Route::get('/blog', [BlogController::class,'blog']);

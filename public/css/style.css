@@ -167,8 +167,8 @@ a {
   padding: 12px 30px;
   border-radius: 0px;
   color: #ffffff;
-  background: #2f2f2f;
-  border-color: #2f2f2f; }
+  background: #314d43;
+  border-color: #314d43; }
   .btn:hover {
     color: #ffffff;
     background: #222222;
@@ -971,4 +971,13 @@ textarea {
     .traloi{
       position: relative;
       top: 200px;
+    }
+
+
+    .boldfont{
+      font-weight: 650;
+    }
+
+    .boldfon{
+      font-weight: 450;
     }

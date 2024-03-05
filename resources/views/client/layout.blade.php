@@ -17,7 +17,7 @@
 		<link href="{{ asset('css/style.css') }}" rel="stylesheet">
 		<link href="{{ asset('css/detail.css') }}" rel="stylesheet">
 		<link href="{{ asset('css/base.css') }}" rel="stylesheet">
-        <link rel="stylesheet" href="css/shop.css">
+        <link href="{{ asset('css/shop.css') }}" rel="stylesheet">
 		<title>@yield('tieudetrang')</title>
 	</head>
 
@@ -191,8 +191,8 @@
 
 
 		<script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
-		<script src="{{ asset('js/tiny-slider.js') }"></script>
-		<script src="{{ asset('js/custom.js') }"></script>
+		<script src="{{ asset('js/tiny-slider.js') }}"></script>
+		<script src="{{ asset('js/custom.js') }}"></script>
 	</body>
 
 </html>

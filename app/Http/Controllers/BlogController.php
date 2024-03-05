@@ -15,7 +15,10 @@ class BlogController extends Controller
         ->select('*');
         $data=$query->get();
 
-        return view('client.blog',['data'=>$data]);
+        $query_admin = DB::table('employee')
+        ->select('*')->get();
+
+        return view('client.blog',['data'=>$data, 'query_admin'=>$query_admin]);
     }
     public function blogxemnhieu() 
     {
@@ -43,13 +46,16 @@ class BlogController extends Controller
         return view('blog',['data'=>$data,'dataloai'=>$dataloai]);
     }
     
-    public function chitietblog($id) 
+    public function blog_detail($id) 
     {
         $query = DB::table('posts')
         ->select('*')
-        ->where('id','=',$id);
+        ->where('postID','=',$id);
         $data=$query->get();
-        return view('chitietblog',['data'=>$data]);
+        $querys = DB::table('posts')
+        ->select('*');
+        $datas=$querys->get();
+        return view('client.blog_detail',['data'=>$data, 'datas'=>$datas]);
     }
 
 
