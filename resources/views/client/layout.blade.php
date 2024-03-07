@@ -189,7 +189,6 @@
 		</footer>
 		<!-- End Footer Section -->	
 
-
 	</body>
 
 </html>
