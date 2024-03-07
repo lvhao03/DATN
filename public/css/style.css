@@ -26,7 +26,8 @@ a {
   text-decoration: none; }
   a:hover {
     color: #2f2f2f;
-    text-decoration: underline; }
+    text-decoration: underline;
+    text-decoration: none; }
   a.more {
     font-weight: 600; }
 
@@ -720,213 +721,254 @@ textarea {
     background: rgba(59, 93, 80, 0.2); }
 
 
-.headerow{
-  float: left;
-}    
-
-.headerow > .icon{
- width: 80px;
- text-align: center;
-} 
-
-.headerow > .icon > button{
-  border: none;
-  padding: 5px;
-  
-}
-
-.option > .number{
-  width: 10%;
-
-}
-
-.option > .shortgrow{
-  width: 21%;
-}
-
-.row{
- 
-  
-}
-
-.post{
-  
-}
-.number{
-
-  padding-right: 50px;
-}
-
-.option{
-  float: right;
-}
-.shortgrow{
-  float: right;
-}
-ul{
-  list-style: none;
-}
-
-
-/* start css user */
-.user_left{
-  background-color: rgb(193, 193, 193);
-  height: 500px;
-  padding: 15px;
-}
-
-.avatar_left{
-  height: 90px;
-  width: 90px;
-  background-color: rgb(151, 87, 87);
-  border-radius: 50px;
-
-}
-
-.user_profile_name{
-  font-size: 17px;
-  font-weight: 700;
-  padding: 10px;
-  color: #000000;
-}
-
-.user_profile_name_label{
-  font-size: 17px;
-  font-weight: 200;
-  color: #000000;
-}
-
-.user_profile_group{
-  padding-top: 30px;
-}
-
-.user_profile_item{
-  font-size: 17px;
-  text-decoration: none;
-}
-
-.user_right{
-  background-color: rgb(193, 193, 193);
-  height: 500px;
-  width: 830px;
-  padding: 15px;
-}
-
-.user_profile_h3{
-  color: #000000;
-  font-weight: 600;
-}
-
-.user_profile_h5{
-  color: #000000;
-}
-
-.user_profile_infomation{
-  padding: 0px;
-}
-
-.form_input{
-  width: 340px;
-  outline: none;
-}
-
-.select_information{
-  width: 400px;
-  padding-top: 15px;
-}
-
-.form_select{
-  width: 110px;
-  height: 25px;
-}
-
-.user_profile_right{
-  padding: 00px;
-  text-align: center;
-}
-
-.avatar_right{
-  height: 155px;
-  width: 155px;
-  background-color: rgb(151, 87, 87);
-  border-radius: 80px;
-  position: relative;
-  left: 60px;
-}
-
-#file-input {
-  display: none;
-}
-
-#file-input-label {
-  font-size: 14px;
-  width: 80%;
-  background-color: rgb(255, 255, 255);
-  border: 1px solid black;
-  border-radius: 4%;
-  margin-top: 15px;
-}
-
-.btn_submit{
-  padding: 3px 15px;
-  border: none;
-  border-radius: 5px;
-  background-color: #3b5d50;
-  color: white;
-  margin-top: 30px;
-}
-.sale__img{
-  width: 100%;
-}
-.user_right_mobile{
-  display: none;
-}
-
-@media (max-width: 1040px) {
-  .user_left{
-    display: none;
-  }
-  .user_right{
-    display: none;    
-  }
-  .user_rightmobi{
-    display: block;
-  }
-  .avatar_right{
-
-    left: 45px;
-  }
-}
-
-
-@media (max-width: 768px) {
-  .user_left{
-    display: none;
-  }
-  .user_right{
-    display: none;    
-  }
-  .user_rightmobi{
-    display: none;
-  }
-  .user_right_mobile{
-    display: block;
-    width: 90%;
-    position: relative;
-  }
- 
-
-  .form_select{
-    width: 20%;
-  }
-  .form_input{
-    width: 100%;
-    outline: none;
-  }
-  .avatar_right{
-    left:145px;
-  }
-  .select_information{
-    width: 80%;
-  }
-}
+    .headerow{
+      float: left;
+    }    
+    
+    .headerow > .icon{
+     width: 80px;
+     text-align: center;
+    } 
+    
+    .headerow > .icon > button{
+      border: none;
+      padding: 5px;
+      
+    }
+    
+    .option > .number{
+      width: 10%;
+    
+    }
+    
+    .option > .shortgrow{
+      width: 21%;
+    }
+    
+    .row{
+     
+      
+    }
+    
+    .post{
+      
+    }
+    .number{
+    
+      padding-right: 50px;
+    }
+    
+    .option{
+      float: right;
+    }
+    .shortgrow{
+      float: right;
+    }
+    ul{
+      list-style: none;
+    }
+    
+    
+    /* start css user */
+    .user_left{
+      background-color: rgb(193, 193, 193);
+      height: 500px;
+      padding: 15px;
+    }
+    
+    .avatar_left{
+      height: 90px;
+      width: 90px;
+      background-color: rgb(151, 87, 87);
+      border-radius: 50px;
+    
+    }
+    
+    .user_profile_name{
+      font-size: 17px;
+      font-weight: 700;
+      padding: 10px;
+      color: #000000;
+    }
+    
+    .user_profile_name_label{
+      font-size: 17px;
+      font-weight: 200;
+      color: #000000;
+    }
+    
+    .user_profile_group{
+      padding-top: 30px;
+    }
+    
+    .user_profile_item{
+      font-size: 17px;
+      text-decoration: none;
+    }
+    
+    .user_right{
+      background-color: rgb(193, 193, 193);
+      height: 500px;
+      width: 830px;
+      padding: 15px;
+    }
+    
+    .user_profile_h3{
+      color: #000000;
+      font-weight: 600;
+    }
+    
+    .user_profile_h5{
+      color: #000000;
+    }
+    
+    .user_profile_infomation{
+      padding: 0px;
+    }
+    
+    .form_input{
+      width: 340px;
+      outline: none;
+    }
+    
+    .select_information{
+      width: 400px;
+      padding-top: 0px;
+    }
+    
+    .form_select{
+      width: 110px;
+      height: 25px;
+    }
+    
+    .user_profile_right{
+      padding: 00px;
+      text-align: center;
+    }
+    
+    .avatar_right{
+      height: 155px;
+      width: 155px;
+      background-color: rgb(151, 87, 87);
+      border-radius: 80px;
+      position: relative;
+      left: 60px;
+    }
+    
+    #file-input {
+      display: none;
+    }
+    
+    #file-input-label {
+      font-size: 14px;
+      width: 80%;
+      background-color: rgb(255, 255, 255);
+      border: 1px solid black;
+      border-radius: 4%;
+      margin-top: 15px;
+    }
+    
+    .btn_submit{
+      padding: 3px 15px;
+      border: none;
+      border-radius: 5px;
+      background-color: #3b5d50;
+      color: white;
+      margin-top: 30px;
+    }
+    .sale__img{
+      width: 100%;
+    }
+    .user_right_mobile{
+      display: none;
+    }
+    
+    @media (max-width: 1040px) {
+      .user_left{
+        display: none;
+      }
+      .user_right{
+        display: none;    
+      }
+      .user_rightmobi{
+        display: block;
+      }
+      .avatar_right{
+    
+        left: 45px;
+      }
+      .sidebar__filter-wrapper{
+        display: none;
+      }
+    }
+    .contain_detail_blog{
+      width: 100%;
+    }
+    
+    
+    @media (max-width: 768px) {
+      .sidebar__filter-wrapper{
+        display: none;
+      }
+      .user_left{
+        display: none;
+      }
+      .user_right{
+        display: none;    
+      }
+      .user_rightmobi{
+        display: none;
+      }
+      .user_right_mobile{
+        display: block;
+        width: 90%;
+        position: relative;
+      }
+     
+    
+      .form_select{
+        width: 20%;
+      }
+      .form_input{
+        width: 100%;
+        outline: none;
+      }
+      .avatar_right{
+        left:145px;
+      }
+      .select_information{
+        width: 80%;
+      }
+    }
+    
+    
+    .sidebar__filter-wrapper{
+      position: relative;
+      top: 50px;
+      left: 20px;
+    }
+    
+    .infor__title{
+      position: relative;
+      bottom: 0px;
+    }
+    
+    .info_user_post{
+      position: relative;
+      bottom: 0px;
+      right: 17.5px;
+    }
+    ._user_post{
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+    
+    .detailblog{
+      position: relative;
+      bottom: 60px;
+    }
+    
+    .traloi{
+      position: relative;
+      top: 200px;
+    }

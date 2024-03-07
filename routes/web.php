@@ -2,7 +2,11 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\GoogleController;
+use App\Models\Product;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -19,16 +23,34 @@ Route::get('/', function () {
     return view('client.home');
 });
 
-Route::get('/shop', function () {
-    return view('client.shop');
-});
+Route::get('/shop', [ProductController::class,'shop']);
 
 Route::get('/detail', function () {
     return view('client.detail');
 });
 
+Route::get('/variant/{variantID}', [ProductController::class,'getVariant']);
+
+Route::get('/detail_blog', function () {
+    return view('client.detail_blog');
+});
+
+Route::get('/blog_detail/{id}', function () {
+    return view('client.blog_detail');
+});
+
+Route::get('/detail/{id}', [ProductController::class,'detail']);
+Route::get('/addCart/{idsp}/{soluong}/{idbt}', [ProductController::class,'addCart']);
+Route::get('/cart', [ProductController::class,'cart']);
+Route::get('/deteleCart/{idsp}', [ProductController::class,'deteleCart']);
+Route::get('/xoagiohang', [ProductController::class,'xoagiohang']);
+
 Route::get('/about', function () {
     return view('client.about');
+});
+
+Route::get('/blog', function () {
+    return view('client.blog');
 });
 
 Route::get('/services', function () {
@@ -42,11 +64,12 @@ Route::get('/user', function () {
     return view('client.user_profile');
 });
 
-Route::get('/cart', function () {
-    return view('client.cart');
-});
 
 Route::post('/change-info', [CustomerController::class, 'edit']);
+
+Route::get('social/google', [GoogleController::class, 'redirect']);
+ 
+Route::get('social/google/callback', [GoogleController::class, 'googleCallback']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');

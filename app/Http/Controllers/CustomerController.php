@@ -11,13 +11,19 @@ class CustomerController extends Controller
         $image_url = \Auth::user()->image_url;
         if ($request->file('file_image')) {
             $image_url = $request->file('file_image')->store('images/user', 'public');
-            \Log::info($image_url);
         };
-        $validation = $request->validate([
+        
+        $request->validate([
             'name' => 'required',
-            'email' => 'required' ,
-            'address' => 'required',
+            'email' => 'required|email',
+            'address' => 'required|string|max:255',
+        ], [
+            'name.required' => 'Tên không được để trống.',
+            'email.required' => 'Email không được để trống.',
+            'email.email' => 'Email phải để đúng định dạng.',
+            'address.required' => 'Địa chỉ không được để trống.',
         ]);
+
         User::find(\Auth::user()->customerID)->update([
             'name' => $request->name,
             'email' => $request->email,

@@ -29,7 +29,7 @@ SHOP
 						<sidebar class="sidebar__filter-wrapper">
 							<ul>
 								<div class="sidebar__filter">
-									<h2 class="sidebar__heading">FILTER BY PRICE</h2>
+									<h2 class="sidebar__heading">Lọc theo giá</h2>
 									<div class="range-slider-container" >
 										<input type="range" class="range-slider" />
 										<span id="range-value-bar"></span>
@@ -37,19 +37,19 @@ SHOP
 									</div>
 									<div class="spw">
 										<span class="sidebar__span">Giá: $7 - $56</span>
-										<button class="btn button-filter">TÌM</button>
+										<button class="button_shop button-filter">TÌM</button>
 									</div>
 								</div>
 							</ul>	
 	
 							<ul class="sidebar__category">
-								<h2 class="sidebar__heading">PRODUCT CATEGORIES</h2>
+								<h2 class="sidebar__heading">Danh mục sản phẩm</h2>
 							
 									<li class="sidebar__category-item">
 										<div class="sidebar__category-link" onclick="filter(this)">
-											<span>SOFA</span><hr style="width: 85%;">	
-											<span>ghe</span><hr style="width: 85%;">	
-											<span>SOFA</span><hr style="width: 85%;">				
+											@foreach($categories as $category)
+												<span>{{ $category->name }}</span><hr style="width: 85%;">	
+											@endforeach			
 										</div>
 									</li>
 								
@@ -69,7 +69,7 @@ SHOP
 								<li class="sidebar__tag-item"><a href="" class="sidebar__tag-link">Thời thượng</a></li>
 							</ul>
 							<ul class="sidebar__tags" >
-								<h2 class="sidebar__heading">TRENDING PRODUCTS</h2>
+								<h2 class="sidebar__heading">Sản phẩm nối bật</h2>
 								
 								<div class="sidebar__tag-item info-prod-div row" >
 									<div class="col" href="" class="image-info-prod">
@@ -125,6 +125,7 @@ SHOP
 							
 						</sidebar>
 					</div>
+
 					<div class="col col-sm-6 col-md-8">
 						<div class="products__heading spw">
                             <div class="products__heading-left">
@@ -142,91 +143,28 @@ SHOP
                             </div>
                         </div>
 						<div class="row ">
-						
-				 
-								
+						@foreach ($products as $product )
 							<!-- Start Column 2 -->
 							<div class="col-12 col-md-4 col-lg-4 mb-5">
 								
-								<a class="product-item" href="#">
-									<img src="images/product-1.png" class="img-fluid product-thumbnail">
-									<h3 class="product-title">Nordic Chair</h3>
-									<strong class="product-price">$50.00</strong>
-		
+								<a class="product-item" href="/detail/{{$product->productID}}">
+
+									<img src="{{ asset('images/' .$product->image_url) }}" class="img-fluid product-thumbnail">
+									<h3 class="product-title">{{ $product->name }}</h3>
+									<strong class="product-price">${{ $product->price }}</strong>
 									<span class="icon-cross">
 										<img src="images/cross.svg" class="img-fluid">
 									</span>
 								</a>
 							</div> 
 							<!-- End Column 2 -->
-		
-							<!-- Start Column 3 -->
-							<div class="col-12 col-md-4 col-lg-4 mb-5">
-								<a class="product-item" href="#">
-									<img src="images/product-2.png" class="img-fluid product-thumbnail">
-									<h3 class="product-title">Kruzo Aero Chair</h3>
-									<strong class="product-price">$78.00</strong>
-		
-									<span class="icon-cross">
-										<img src="images/cross.svg" class="img-fluid">
-									</span>
-								</a>
-							</div>
-							<!-- End Column 3 -->
-		
-							<!-- Start Column 4 -->
-							<div class="col-12 col-md-4 col-lg-4 mb-5">
-								<a class="product-item" href="#">
-									<img src="images/product-3.png" class="img-fluid product-thumbnail">
-									<h3 class="product-title">Ergonomic Chair</h3>
-									<strong class="product-price">$43.00</strong>
-		
-									<span class="icon-cross">
-										<img src="images/cross.svg" class="img-fluid">
-									</span>
-								</a>
-							</div>
-							<!-- End Column 4 -->
-								<!-- Start Column 4 -->
-								<div class="col-12 col-md-4 col-lg-4 mb-5">
-									<a class="product-item" href="#">
-										<img src="images/product-3.png" class="img-fluid product-thumbnail">
-										<h3 class="product-title">Ergonomic Chair</h3>
-										<strong class="product-price">$43.00</strong>
-			
-										<span class="icon-cross">
-											<img src="images/cross.svg" class="img-fluid">
-										</span>
-									</a>
-								</div>
-								<!-- End Column 4 -->
-									<!-- Start Column 4 -->
-							<div class="col-12 col-md-4 col-lg-4 mb-5">
-								<a class="product-item" href="#">
-									<img src="images/product-3.png" class="img-fluid product-thumbnail">
-									<h3 class="product-title">Ergonomic Chair</h3>
-									<strong class="product-price">$43.00</strong>
-		
-									<span class="icon-cross">
-										<img src="images/cross.svg" class="img-fluid">
-									</span>
-								</a>
-							</div>
-							<!-- End Column 4 -->
-
-							
-		
-		
-							
-		
-						  </div>
+						@endforeach
+						<div class="filter-bar d-flex flex-wrap align-items-center">
+							<!-- <a href=""> {{ $products->onEachSide(5)->links() }} </a> -->
+						</div>
+						</div>
 					</div>
-					
-				</div>
-				
-
-		      	
+				</div>	 	
 		    </div>
-			
 		</div>
 @endsection
