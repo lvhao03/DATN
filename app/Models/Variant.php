@@ -10,7 +10,7 @@ class Variant extends Model
     use HasFactory;
     protected $table = 'variant';
     protected $primaryKey = 'variantID';
-    protected $fillable = [ 
+    protected $fillable = [
         'color',
         'size_id',
         'material_id',
@@ -18,4 +18,5 @@ class Variant extends Model
         'product_id',
         'price',
     ];
+    public $timestamps =false;
 }
