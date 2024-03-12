@@ -7,7 +7,7 @@
 @section('content')
     <div class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb">
         <div class="my-auto">
-            <h5 class="page-title fs-21 mb-1">Danh sách bình luận</h5>
+            <h5 class="page-title fs-21 mb-1">{{ $title }}</h5>
             <nav>
                 <ol class="breadcrumb mb-0">
                     <li class="breadcrumb-item"><a href="javascript:void(0);">Bình luận</a></li>
@@ -27,43 +27,23 @@
                 </div>
 
                 <div class="card-body">
-
-                    <table id="responsiveDataTable" class="table table-bordered text-nowrap w-100">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Nội dung</th>
-                                <td>Người bình luận</td>
-                                <th>Nội dung</th>
-                                <th>Hành động</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($data as $row)
-                                <tr>
-                                    <td>
-                                        {{ $row->commentID }}
-                                    </td>
-                                    <td>{{ Str::limit($row->content, $limit = 30, $end = '...') }}</td>
-                                    <td>{!! Helper::getNameByID($row->customer_id,'customer') !!}</td>
-                                    <td>{!! Helper::getNameByID($row->product_id,'product') !!}</td>
-                                    <td>
-                                        <div>
-                                            <a href="{{ route('admin.editComment') }}/{{ $row->commentID }}">
-                                                <i class="fa fa-edit me-2 font-success"></i>
-                                            </a>
-                                            <a href="{{ route('admin.deleteComment') }}/{{ $row->commentID }}">
-                                                <i class="fa fa-trash font-danger"></i>
-                                            </a>
-                                        </div>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                <a href="{{ route('admin.createComment') }}">
-                    <button class="btn btn-primary">Thêm bình luận</button>
-                </a>
+                    <form action="{{ route('admin.editComment_') }}" method="POST">
+                        @csrf
+                        <input type="text" value="{{ $comment->commentID }}" name="commentID" hidden>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Người bình luận</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{!! Helper::getNameByID($comment->customer_id,'customer') !!}" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Nội dung</label>
+                            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Password" name="content" value="{{ $comment->content }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Sản phẩm bình luận</label>
+                            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Password" value="{!! Helper::getNameByID($comment->product_id,'product') !!}" disabled>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Chỉnh sửa</button>
+                    </form>
                 </div>
             </div>
         </div>
