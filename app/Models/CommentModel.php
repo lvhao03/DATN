@@ -9,13 +9,12 @@ class CommentModel extends Model
 {
     use HasFactory;
     public $table="comments";
-
     protected $primaryKey = 'commentID';
-    public $fillable=[
+    public $timestamps = false;
+    public $fillable = [
         'content',
         'customer_id',
         'product_id',
     ];
 
-    public $timestamps =false;
 }

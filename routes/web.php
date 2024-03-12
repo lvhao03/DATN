@@ -80,7 +80,11 @@ Route::middleware('checkadmin')->group(function () {
             Route::prefix('comment')->group(
                 function () {
                     Route::get('/', [CommentAdminController::class, 'index'])->name('comment');
-                    Route::get('delete/{id?}', [CommentAdminController::class, 'index'])->name('deleteComment')->where(['id' => '[0-9]+']);
+                    Route::get('create/', [CommentAdminController::class, 'create'])->name('createComment');
+                    Route::post('create/', [CommentAdminController::class, 'create_'])->name('createComment_');
+                    Route::get('edit/{id?}', [CommentAdminController::class, 'edit'])->name('editComment')->where(['id' => '[0-9]+']);
+                    Route::post('edit/', [CommentAdminController::class, 'edit_'])->name('editComment_');
+                    Route::get('delete/{id?}', [CommentAdminController::class, 'delete'])->name('deleteComment')->where(['id' => '[0-9]+']);
                 }
             );
             Route::prefix('voucher')->group(
