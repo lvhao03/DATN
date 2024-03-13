@@ -17,8 +17,8 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $table = 'customer';
-    protected $primaryKey = 'customerID';
+    protected $table = 'users';
+    protected $primaryKey = 'userID';
     public $timestamps = false;
     protected $fillable = [
         'name',
@@ -26,7 +26,8 @@ class User extends Authenticatable
         'password',
         'image_url',
         'address',
-        'google_id'
+        'google_id',
+        'role'
     ];
 
     /**
@@ -37,6 +38,7 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+        'google_id'
     ];
 
     /**

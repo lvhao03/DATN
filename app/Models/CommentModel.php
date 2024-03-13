@@ -13,7 +13,7 @@ class CommentModel extends Model
     public $timestamps = false;
     public $fillable = [
         'content',
-        'customer_id',
+        'user_id',
         'product_id',
     ];
 

@@ -45,7 +45,7 @@ class Helper
                 break;
 
             case 'customer':
-                $model = User::where('customerID', $id)->value('name');
+                $model = User::where('userID', $id)->value('name');
                 break;
 
             case 'voucher_type':

@@ -17,7 +17,7 @@ class CommentController extends Controller
     public function store(Request $request){
         Comment::create([
             'content' => $request->content,
-            'customer_id' => $request->customerID,
+            'user_id' => $request->userID,
             'product_id' => $request->productID
         ]);
         return $this->index($request->productID);
@@ -25,7 +25,7 @@ class CommentController extends Controller
 
     public function getImageAndUserName($commentList){
         foreach($commentList as $comment){
-            $customer =  User::where('customerID', $comment->customer_id)->first();
+            $customer =  User::where('userID', $comment->user_id)->first();
             $comment->customer_name = $customer->name;
             $comment->image_url = $customer->image_url;
         };
