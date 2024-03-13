@@ -44,7 +44,7 @@ class Helper
                 $model = Product::where('productID', $id)->value('name');
                 break;
 
-            case 'customer':
+            case 'users':
                 $model = User::where('userID', $id)->value('name');
                 break;
 

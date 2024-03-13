@@ -45,7 +45,7 @@
                                         {{ $row->commentID }}
                                     </td>
                                     <td>{{ Str::limit($row->content, $limit = 30, $end = '...') }}</td>
-                                    <td>{!! Helper::getNameByID($row->customer_id,'customer') !!}</td>
+                                    <td>{!! Helper::getNameByID($row->user_id,'users') !!}</td>
                                     <td>{!! Helper::getNameByID($row->product_id,'product') !!}</td>
                                     <td>
                                         <div>

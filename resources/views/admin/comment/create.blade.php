@@ -10,7 +10,7 @@
             <h5 class="page-title fs-21 mb-1">{{ $title }}</h5>
             <nav>
                 <ol class="breadcrumb mb-0">
-                    <li class="breadcrumb-item"><a href="javascript:void(0);">Bình luận</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('admin.comment') }}">Danh sách bình luận</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Thêm bình luận</li>
                 </ol>
             </nav>
