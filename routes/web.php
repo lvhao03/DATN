@@ -100,11 +100,11 @@ Route::middleware(['checkauth','checkadmin'])->group(function () {
             Route::prefix('staff')->group(
                 function () {
                     Route::get('/', [StaffAdminController::class, 'index'])->name('staff');
-                    Route::get('add', [StaffAdminController::class, 'index'])->name('addStaff');
-                    Route::post('add', [StaffAdminController::class, 'index'])->name('postAddStaff');
-                    Route::get('edit/{id?}', [StaffAdminController::class, 'index'])->name('editStaff')->where(['id' => '[0-9]+']);
-                    Route::put('edit', [StaffAdminController::class, 'index'])->name('postEditStaff');
-                    Route::get('delete/{id?}', [StaffAdminController::class, 'index'])->name('deleteStaff')->where(['id' => '[0-9]+']);
+                    Route::get('create', [StaffAdminController::class, 'create'])->name('createStaff');
+                    Route::post('create', [StaffAdminController::class, 'create_'])->name('createStaff_');
+                    Route::get('edit/{id?}', [StaffAdminController::class, 'edit'])->name('editStaff')->where(['id' => '[0-9]+']);
+                    Route::post('edit', [StaffAdminController::class, 'edit_'])->name('editStaff_');
+                    Route::get('delete/{id?}', [StaffAdminController::class, 'delete'])->name('deleteStaff')->where(['id' => '[0-9]+']);
                 }
             );
             Route::prefix('blog')->group(
