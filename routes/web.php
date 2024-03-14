@@ -18,7 +18,7 @@ use App\Http\Controllers\GoogleController;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
-
+use App\Http\Controllers\BlogController;
 
 /*
 |--------------------------------------------------------------------------
@@ -151,13 +151,9 @@ Route::get('/detail', function () {
 
 Route::get('/variant/{variantID}', [ProductController::class, 'getVariant']);
 
-Route::get('/detail_blog', function () {
-    return view('client.detail_blog');
-});
+Route::get('/blog_detail/{id}', [BlogController::class,'blog_detail']);
+Route::get('/blog', [BlogController::class,'blog']);
 
-Route::get('/blog_detail/{id}', function () {
-    return view('client.blog_detail');
-});
 
 Route::get('/detail/{id}', [ProductController::class, 'detail']);
 Route::get('/themvaogio/{idsp}/{soluong}', [ProductController::class, 'themvaogio']);
