@@ -121,11 +121,11 @@ Route::middleware('checkadmin')->group(function () {
             Route::prefix('category')->group(
                 function () {
                     Route::get('/', [CategoryAdminController::class, 'index'])->name('category');
-                    Route::get('add', [CategoryAdminController::class, 'index'])->name('addCategory');
-                    Route::post('add', [CategoryAdminController::class, 'index'])->name('postAddCategory');
-                    Route::get('edit/{id?}', [CategoryAdminController::class, 'index'])->name('editCategory')->where(['id' => '[0-9]+']);
-                    Route::put('edit', [CategoryAdminController::class, 'index'])->name('postEditCategory');
-                    Route::get('delete/{id?}', [CategoryAdminController::class, 'index'])->name('deleteCategory')->where(['id' => '[0-9]+']);
+                    Route::get('view_add', [CategoryAdminController::class, 'view_add'])->name('addCategory');
+                    Route::post('add', [CategoryAdminController::class, 'add'])->name('postAddCategory');
+                    Route::get('view_edit/{id}', [CategoryAdminController::class, 'view_edit'])->name('editCategory')->where(['id' => '[0-9]+']);
+                    Route::put('edit/{id}', [CategoryAdminController::class, 'edit'])->name('postEditCategory');
+                    Route::get('delete/{id?}', [CategoryAdminController::class, 'delete'])->name('deleteCategory')->where(['id' => '[0-9]+']);
                 }
             );
 

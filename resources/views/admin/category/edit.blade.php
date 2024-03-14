@@ -20,53 +20,32 @@
         <div class="col-xl-12">
             <div class="card custom-card">
 
-                <div class="card-header">
+                <div class="card-header justify-content-between">
                     <div class="card-title">
-                        Danh mục sản phẩm
+                        Sửa danh mục sản phẩm
                     </div>
-                    <div class="card-title">
-                    <a href="{{route('admin.addCategory')}}" class="btn btn-primary mb-2 data-table-btn">Thêm chuyên mục</a>
+                    <div class="prism-toggle">
+                        <a href="{{route('admin.category')}}" class="btn btn-sm btn-primary-light">Trở về</a>
                     </div>
                 </div>
-
                 <div class="card-body">
-
-                    <table id="responsiveDataTable" class="table table-bordered text-nowrap w-100">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Tên danh mục</th>
-                                <th>Hành động</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($data as $row)
-                                <tr>
-                                    <td>{{ $row->id }}</td>
-                                    <td>
-                                        {{ $row->name }}
-                                    </td>
-
-                                    <td>
-                                        <div>
-                                            <a href="{{ route('admin.editCategory', $row->id) }}">
-                                                <i class="fa fa-edit me-2 font-success"></i>
-                                            </a>
-                                            <a href="{{ route('admin.deleteCategory', $row->id) }}">
-                                                <i class="fa fa-trash font-danger"></i>
-                                            </a>
-                                        </div>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-        @if(session('success'))
-            <div class="alert alert-success">{{ session('success') }}</div>
+                    <form class="card-body" method="post" action="{{ route('admin.postEditCategory', $category->id) }}">
+                        @csrf 
+                        @method('PUT')
+                                <div class="mb-3">
+                                    <label for="form-text" class="form-label fs-14 text-dark">Nhập ID danh mục</label>
+                                    <input type="text" required class="form-control" name="id" placeholder="{{$category->id}}">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="form-password" class="form-label fs-14 text-dark">Nhập tên danh mục</label>
+                                    <input type="text" required class="form-control" name="name" placeholder="{{$category->name}}">
+                                </div>
+                            <button class="btn btn-primary mb-3" type="submit">Sửa</button>
+                            
+                    </form>
+                    @if(session('error'))
+            <div class="alert alert-danger">{{ session('error') }}</div>
         @endif
-        @if(session('success_delete'))
-            <div class="alert alert-success">{{ session('success_delete') }}</div>
-        @endif
-                    </table>
                 </div>
             </div>
         </div>

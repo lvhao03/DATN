@@ -42,16 +42,16 @@
                         <tbody>
                             @foreach ($data as $row)
                             <tr>
-                                <td>{{$row->customerID}}</td>
+                                <td>{{$row->usersID}}</td>
                                 <td>{{ $row->name }}</td>
                                 <td>{{ $row->email }}</td>
                                 <td> <img src="{{ getImage($row->image_url) }}" style="max-width:100px"></td>
                                 <td>
                                     <div>
-                                        <a href="{{route('admin.editCustomer')}}/{{$row->customerID}}">
+                                        <a href="{{route('admin.editusers')}}/{{$row->usersID}}">
                                             <i class="fa fa-edit me-2 font-success"></i>
                                         </a>
-                                        <a href="{{route('admin.deleteCustomer')}}/{{$row->customerID}}">
+                                        <a href="{{route('admin.deleteusers')}}/{{$row->usersID}}">
                                             <i class="fa fa-trash font-danger"></i>
                                         </a>
                                     </div>
