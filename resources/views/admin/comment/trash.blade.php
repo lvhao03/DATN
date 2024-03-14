@@ -7,11 +7,11 @@
 @section('content')
     <div class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb">
         <div class="my-auto">
-            <h5 class="page-title fs-21 mb-1">Danh sách nhân viên</h5>
+            <h5 class="page-title fs-21 mb-1">Danh sách bình luận</h5>
             <nav>
                 <ol class="breadcrumb mb-0">
-                    <li class="breadcrumb-item"><a href="javascript:void(0);">Nhân viên</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Danh sách nhân viên</li>
+                    <li class="breadcrumb-item"><a href="{{ route('admin.comment') }}">Bình luận</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Thùng rác</li>
                 </ol>
             </nav>
         </div>
@@ -22,8 +22,7 @@
 
                 <div class="card-header">
                     <div class="card-title">
-                        Danh sách nhân viên
-                        <a href="{{ route('admin.trashStaff')}}">Thùng rác</a>
+                        Bình luận
                     </div>
                 </div>
 
@@ -32,37 +31,27 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Họ và tên</th>
-                                <th>Email</th>
-                                <!-- <th>Hình ảnh</th> -->
-                                <th>Địa chỉ</th>
-                                <th>Chức vụ</th>
+                                <th>Nội dung</th>
+                                <td>Người bình luận</td>
+                                <th>Nội dung</th>
                                 <th>Hành động</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($data as $row)
                                 <tr>
-                                    <td>{{ $row->userID }}</td>
-                                    <td>{{ $row->name }}</td>
-                                    <td>{{ $row->email }}</td>
-                                    <td>{{ $row->address }}</td>
-                                    <!-- <td>{{ $row->phone }}</td> -->
                                     <td>
-                                        @if($row->role == 1) 
-                                            Super Adudu
-                                        @elseif($row->role == 2)
-                                            Tác giả
-                                        @else($row->role == 2)
-                                            Admin
-                                        @endif
+                                        {{ $row->commentID }}
                                     </td>
+                                    <td>{{ Str::limit($row->content, $limit = 30, $end = '...') }}</td>
+                                    <td>{!! Helper::getNameByID($row->user_id,'users') !!}</td>
+                                    <td>{!! Helper::getNameByID($row->product_id,'product') !!}</td>
                                     <td>
                                         <div>
-                                            <a href="{{ route('admin.editStaff', $row->userID) }}">
-                                                <i class="fa fa-edit me-2 font-success"></i>
+                                            <a href="{{ route('admin.restoreComment') }}/{{ $row->commentID }}">
+                                                <i class="fa-solid fa-window-restore"></i>
                                             </a>
-                                            <a href="{{ route('admin.deleteStaff', $row->userID) }}">
+                                            <a href="{{ route('admin.forceDeleteComment') }}/{{ $row->commentID }}">
                                                 <i class="fa fa-trash font-danger"></i>
                                             </a>
                                         </div>
@@ -71,9 +60,6 @@
                             @endforeach
                         </tbody>
                     </table>
-                <a href="{{ route('admin.createStaff') }}">
-                    <button class="btn btn-primary">Thêm nhân viên</button>
-                </a>
                 </div>
             </div>
         </div>

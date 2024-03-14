@@ -10,8 +10,8 @@
             <h5 class="page-title fs-21 mb-1">{{ $title }}</h5>
             <nav>
                 <ol class="breadcrumb mb-0">
-                    <li class="breadcrumb-item"><a href="{{ route('admin.comment') }}">Danh sách bình luận</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Chỉnh sửa bình luận</li>
+                <li class="breadcrumb-item"><a href="{{ route('admin.staff')}}">Danh sách nhân viên</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Thêm nhân viên mới</li>
                 </ol>
             </nav>
         </div>
@@ -27,22 +27,29 @@
                 </div>
 
                 <div class="card-body">
-                    <form action="{{ route('admin.editComment_') }}" method="POST">
+                    <form action="{{ route('admin.createStaff_') }}" method="POST">
                         @csrf
-                        <input type="text" value="{{ $comment->commentID }}" name="commentID" hidden>
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Người bình luận</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{!! Helper::getNameByID($comment->user_id,'users') !!}" disabled>
+                            <label for="exampleInputPassword1">Tên nhân viên</label>
+                            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Nhập tên" name="name">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputPassword1">Nội dung</label>
-                            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Password" name="content" value="{{ $comment->content }}">
+                            <label for="exampleInputPassword1">Email</label>
+                            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Nhập email" name="email">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputPassword1">Sản phẩm bình luận</label>
-                            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Password" value="{!! Helper::getNameByID($comment->product_id,'product') !!}" disabled>
+                            <label for="exampleInputPassword1">Mật khẩu</label>
+                            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Nhập mật khẩu" name="password">
                         </div>
-                        <button type="submit" class="btn btn-primary">Chỉnh sửa</button>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Chức vụ</label>
+                            <select class="form-select" name="role" id="">
+                                <option value="1">Super adudu</option>
+                                <option value="2">Tác giả</option>
+                                <option value="3">Admin</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Thêm</button>
                     </form>
                 </div>
             </div>

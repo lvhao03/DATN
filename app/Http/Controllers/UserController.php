@@ -5,7 +5,7 @@ use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class CustomerController extends Controller
+class UserController extends Controller
 {
     public function edit(Request $request){ 
         $image_url = \Auth::user()->image_url;
@@ -24,7 +24,7 @@ class CustomerController extends Controller
             'address.required' => 'Địa chỉ không được để trống.',
         ]);
 
-        User::find(\Auth::user()->customerID)->update([
+        User::find(\Auth::user()->userID)->update([
             'name' => $request->name,
             'email' => $request->email,
             'address' => $request->address,
