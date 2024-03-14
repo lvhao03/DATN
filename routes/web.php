@@ -85,6 +85,9 @@ Route::middleware(['checkauth','checkadmin'])->group(function () {
                     Route::get('edit/{id?}', [CommentAdminController::class, 'edit'])->name('editComment')->where(['id' => '[0-9]+']);
                     Route::post('edit/', [CommentAdminController::class, 'edit_'])->name('editComment_');
                     Route::get('delete/{id?}', [CommentAdminController::class, 'delete'])->name('deleteComment')->where(['id' => '[0-9]+']);
+                    Route::get('trash', [CommentAdminController::class, 'showTrash'])->name('trashComment');
+                    Route::get('restore/{id?}', [CommentAdminController::class, 'restore'])->name('restoreComment');
+                    Route::get('forceDelete/{id?}', [CommentAdminController::class, 'forceDelete'])->name('forceDeleteComment');
                 }
             );
             Route::prefix('voucher')->group(
@@ -105,6 +108,9 @@ Route::middleware(['checkauth','checkadmin'])->group(function () {
                     Route::get('edit/{id?}', [StaffAdminController::class, 'edit'])->name('editStaff')->where(['id' => '[0-9]+']);
                     Route::post('edit', [StaffAdminController::class, 'edit_'])->name('editStaff_');
                     Route::get('delete/{id?}', [StaffAdminController::class, 'delete'])->name('deleteStaff')->where(['id' => '[0-9]+']);
+                    Route::get('trash', [StaffAdminController::class, 'showTrash'])->name('trashStaff');
+                    Route::get('restore/{id?}', [StaffAdminController::class, 'restore'])->name('restoreStaff');
+                    Route::get('forceDelete/{id?}', [StaffAdminController::class, 'forceDelete'])->name('forceDeleteStaff');
                 }
             );
             Route::prefix('blog')->group(

@@ -55,4 +55,25 @@ class CommentController extends Controller
         CommentModel::destroy($commentID);
         return redirect()->back();
     }
+
+    public function showTrash()
+    {
+        $title = 'Thùng rác bình luận';
+        $data = CommentModel::onlyTrashed()->get();
+        \Log::info($data);
+        return view('admin.comment.trash', compact('data','title'));
+    }
+
+    public function restore($commentID)
+    {
+        CommentModel::withTrashed()->find($commentID)->restore();
+        return redirect()->back();
+    }
+
+    public function forceDelete($commentID)
+    {
+        CommentModel::withTrashed()->find($commentID)->forceDelete();
+        return redirect()->back();
+    }
+
 }
