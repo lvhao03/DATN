@@ -29,7 +29,7 @@
                 <div class="card-body">
 
                     <table id="responsiveDataTable" class="table table-bordered text-nowrap w-100">
-                        <a href="{{ route('admin.addProduct') }}" class="btn btn-primary mb-2 data-table-btn">Thêm sản
+                        <a href="{{ route('admin.createProduct') }}" class="btn btn-primary mb-2 data-table-btn">Thêm sản
                             phẩm</a>
                         <thead>
                             <tr>
@@ -49,7 +49,7 @@
                                     </td>
                                     <td>{{ Str::limit($row->name, $limit = 30, $end = '...') }}                                    </td>
                                     {{-- <td>{{ \App\Helpers\Helper::format_cash($row->new_price) }}</td> --}}
-                                    <td> <img src="{{ getImage($row->thumbnail) }}" style="max-width:100px"></td>
+                                    <td> <img src="{{ getImage($row->thumnail) }}" style="max-width:100px"></td>
                                     <td>{!! Helper::getNameById($row->category_id,'category') !!}</td>
 
                                     <td>

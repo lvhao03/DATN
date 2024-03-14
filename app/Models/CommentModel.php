@@ -10,6 +10,8 @@ class CommentModel extends Model
     use HasFactory;
     use SoftDeletes;
     public $table="comments";
+
+
     protected $primaryKey = 'commentID';
     public $timestamps = false;
     public $fillable = [
@@ -18,5 +20,4 @@ class CommentModel extends Model
         'product_id',
         'delete_at'
     ];
-
 }
