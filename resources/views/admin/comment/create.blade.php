@@ -33,7 +33,7 @@
                             <label for="exampleInputEmail1">Người bình luận</label>
                             <select class="form-select" name="userID" id="">
                                 @foreach($users as $user)
-                                    <option value="{{ $user->customerID }}">{{ $user->name }}</option>
+                                    <option value="{{ $user->userID }}">{{ $user->name }}</option>
                                 @endforeach
                             </select>
                         </div>

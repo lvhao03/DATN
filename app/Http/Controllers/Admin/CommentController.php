@@ -30,7 +30,7 @@ class CommentController extends Controller
         CommentModel::create([
             'content' => $request->content,
             'product_id' => $request->productID,
-            'customer_id' => $request->userID,
+            'user_id' => $request->userID,
         ]);
         return redirect()->route('admin.comment');
     }
@@ -47,6 +47,7 @@ class CommentController extends Controller
         CommentModel::where('commentID', $request->commentID)->update([
             'content' => $request->content
         ]);
+        notify()->success('Cập nhật bình luận thành công', 'Cập nhật thành công');
         return redirect()->route('admin.editComment', ['id' => $request->commentID]);
     }
 
