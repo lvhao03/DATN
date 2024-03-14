@@ -162,9 +162,9 @@ Route::get('/blog', [BlogController::class,'blog']);
 
 
 Route::get('/detail/{id}', [ProductController::class, 'detail']);
-Route::get('/themvaogio/{idsp}/{soluong}', [ProductController::class, 'themvaogio']);
-Route::get('/hiengiohang', [ProductController::class, 'hiengiohang']);
-Route::get('/xoasptronggio/{idsp}', [ProductController::class, 'xoasptronggio']);
+Route::get('/addCart/{idsp}/{soluong}/{idbt}', [ProductController::class,'addCart']);
+Route::get('/cart', [ProductController::class,'cart']);
+Route::get('/deteleCart/{idsp}', [ProductController::class,'deteleCart']);
 Route::get('/xoagiohang', [ProductController::class, 'xoagiohang']);
 
 Route::get('/about', function () {

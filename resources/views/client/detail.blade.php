@@ -53,7 +53,7 @@ DETAIL PRODUCTS
                                     <span>Mẫu</span>
                                     <ul class="d-flex">
                                         @foreach($variants as $variant)
-                                            <li class="d-flex border p-2 mr-4" onclick="get_variant({{$variant->variantID}})">
+                                            <li class="d-flex border p-2 mr-4" id="variantID" onclick="get_variant({{$variant->variantID}})">
                                                 <img  src="{{ asset('images/' . $variant->image_url) }}" style="width:30px; height:30px" alt="">
                                                 {{$variant->color}}
                                             </li>
@@ -77,16 +77,10 @@ DETAIL PRODUCTS
     
                                 <div class="infor__quantity spw">
                                     <a class="infor__quantity-item decrease">-</a>
-                                    <a class="infor__quantity-item value">1</a>
+                                    <input size="" type="number" id="soluong" min="1" max="50" value="1">
                                     <a class="infor__quantity-item increase">+</a>
                                 </div>
-                                <script>
-                                    function themvaogio(productID){
-                                        soluong = document.getElementById('soluong').value;
-                                        document.location="/themvaogio/" +productID+"/"+ spluong;
-                                    }
-                                </script>
-                               <button class="button add-to-cart" style="background-color:#3b5d50" onclick="themvaogio({{$sp->productID}})" id=>Thêm vào giỏ</button>
+                                <button class="button add-to-cart" style="background-color:#3b5d50" onclick="addCart({{$id}})" id=>Thêm vào giỏ</button>
                             </div>
     
                             <hr>
@@ -306,6 +300,7 @@ DETAIL PRODUCTS
         }
 
         function get_variant(variantID){
+            a = variantID;
             $.ajax({
                 url: "/variant/" + variantID,
                 type: "GET",
