@@ -4,11 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\CommentModel;
-<<<<<<< HEAD
-=======
 use App\Models\User;
 use App\Models\Product;
->>>>>>> c2d87cbfe5e9c12810cbfef9a90434e6b71df32d
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
@@ -19,8 +16,6 @@ class CommentController extends Controller
         $data = CommentModel::all();
         return view('admin.comment.index', compact('data','title'));
     }
-<<<<<<< HEAD
-=======
 
     public function create()
     {
@@ -60,5 +55,4 @@ class CommentController extends Controller
         CommentModel::destroy($commentID);
         return redirect()->back();
     }
->>>>>>> c2d87cbfe5e9c12810cbfef9a90434e6b71df32d
 }

@@ -219,10 +219,8 @@ class PaymentController extends Controller
                 }
             } else {
                 // Voucher không tồn tại
-<<<<<<< HEAD
-=======
                 echo 'Voucher không tồn tại';
->>>>>>> c2d87cbfe5e9c12810cbfef9a90434e6b71df32d
+
             }
         } else {
             // Nếu không có voucher, kiểm tra giá của giỏ hàng có bằng tổng giá sản phẩm không
