@@ -10,7 +10,7 @@
             <h5 class="page-title fs-21 mb-1">Danh sách nhân viên</h5>
             <nav>
                 <ol class="breadcrumb mb-0">
-                    <li class="breadcrumb-item"><a href="javascript:void(0);">Nhân viên</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('admin.staff')}}">Nhân viên</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Danh sách nhân viên</li>
                 </ol>
             </nav>
@@ -23,7 +23,6 @@
                 <div class="card-header">
                     <div class="card-title">
                         Danh sách nhân viên
-                        <a href="{{ route('admin.trashStaff')}}">Thùng rác</a>
                     </div>
                 </div>
 
@@ -58,12 +57,9 @@
                                         @endif
                                     </td>
                                     <td>
-                                        <div>
-                                            <a href="{{ route('admin.editStaff', $row->userID) }}">
-                                                <i class="fa fa-edit me-2 font-success"></i>
-                                            </a>
-                                            <a href="{{ route('admin.deleteStaff', $row->userID) }}">
-                                                <i class="fa fa-trash font-danger"></i>
+                                    <div>
+                                            <a href="{{ route('admin.restoreStaff') }}/{{ $row->userID }}">
+                                                <i class="fa-solid fa-window-restore"></i>
                                             </a>
                                         </div>
                                     </td>
@@ -71,9 +67,6 @@
                             @endforeach
                         </tbody>
                     </table>
-                <a href="{{ route('admin.createStaff') }}">
-                    <button class="btn btn-primary">Thêm nhân viên</button>
-                </a>
                 </div>
             </div>
         </div>

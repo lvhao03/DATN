@@ -24,10 +24,10 @@
                     <div class="card-title">
                         Bình luận
                     </div>
+                    <a href="{{ route('admin.trashComment')}}">Thùng rác</a>
                 </div>
 
                 <div class="card-body">
-
                     <table id="responsiveDataTable" class="table table-bordered text-nowrap w-100">
                         <thead>
                             <tr>
@@ -45,7 +45,7 @@
                                         {{ $row->commentID }}
                                     </td>
                                     <td>{{ Str::limit($row->content, $limit = 30, $end = '...') }}</td>
-                                    <td>{!! Helper::getNameByID($row->customer_id,'customer') !!}</td>
+                                    <td>{!! Helper::getNameByID($row->user_id,'users') !!}</td>
                                     <td>{!! Helper::getNameByID($row->product_id,'product') !!}</td>
                                     <td>
                                         <div>

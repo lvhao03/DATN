@@ -4,7 +4,7 @@ use App\Http\Controllers\Admin\ArticleController as ArticleAdminController;
 use App\Http\Controllers\Admin\BlogController as BlogAdminController;
 use App\Http\Controllers\Admin\CategoryController as CategoryAdminController;
 use App\Http\Controllers\Admin\CommentController as CommentAdminController;
-use App\Http\Controllers\Admin\CustomerController as AdminCustomerController;
+use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\Admin\HomeController as HomeAdminController;
 use App\Http\Controllers\Admin\OrderController as OrderAdminController;
 use App\Http\Controllers\Admin\ProductController as AdminProductController;
@@ -13,12 +13,12 @@ use App\Http\Controllers\Admin\VariantController as VariantAdminController;
 use App\Http\Controllers\Admin\VoucherController as VoucherAdminController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\GoogleController;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
-
+use App\Http\Controllers\BlogController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,7 +35,7 @@ Route::get('/', function () {
     return view('client.home');
 })->name('home');
 
-Route::middleware('checkadmin')->group(function () {
+Route::middleware(['checkauth','checkadmin'])->group(function () {
     Route::prefix('admin')->name('admin.')->group(
         function () {
             Route::get('/', [HomeAdminController::class, 'index'])->name('home');
@@ -60,14 +60,14 @@ Route::middleware('checkadmin')->group(function () {
                     Route::get('delete/{id?}', [VariantAdminController::class, 'index'])->name('deleteVariant')->where(['id' => '[0-9]+']);
                 }
             );
-            Route::prefix('customer')->group(
+            Route::prefix('user')->group(
                 function () {
-                    Route::get('/', [AdminCustomerController::class, 'index'])->name('customer');
-                    Route::get('add', [AdminCustomerController::class, 'index'])->name('addCustomer');
-                    Route::post('add', [AdminCustomerController::class, 'index'])->name('postAddCustomer');
-                    Route::get('edit/{id?}', [AdminCustomerController::class, 'index'])->name('editCustomer')->where(['id' => '[0-9]+']);
-                    Route::put('edit', [AdminCustomerController::class, 'index'])->name('postEditCustomer');
-                    Route::get('delete/{id?}', [AdminCustomerController::class, 'index'])->name('deleteCustomer')->where(['id' => '[0-9]+']);
+                    Route::get('/', [AdminUserController::class, 'index'])->name('user');
+                    Route::get('add', [AdminUserController::class, 'index'])->name('addUser');
+                    Route::post('add', [AdminUserController::class, 'index'])->name('postAddUser');
+                    Route::get('edit/{id?}', [AdminUserController::class, 'index'])->name('editUser')->where(['id' => '[0-9]+']);
+                    Route::put('edit', [AdminUserController::class, 'index'])->name('postEditUser');
+                    Route::get('delete/{id?}', [AdminUserController::class, 'index'])->name('deleteUser')->where(['id' => '[0-9]+']);
                 }
             );
             Route::prefix('order')->group(
@@ -85,6 +85,9 @@ Route::middleware('checkadmin')->group(function () {
                     Route::get('edit/{id?}', [CommentAdminController::class, 'edit'])->name('editComment')->where(['id' => '[0-9]+']);
                     Route::post('edit/', [CommentAdminController::class, 'edit_'])->name('editComment_');
                     Route::get('delete/{id?}', [CommentAdminController::class, 'delete'])->name('deleteComment')->where(['id' => '[0-9]+']);
+                    Route::get('trash', [CommentAdminController::class, 'showTrash'])->name('trashComment');
+                    Route::get('restore/{id?}', [CommentAdminController::class, 'restore'])->name('restoreComment');
+                    Route::get('forceDelete/{id?}', [CommentAdminController::class, 'forceDelete'])->name('forceDeleteComment');
                 }
             );
             Route::prefix('voucher')->group(
@@ -100,11 +103,14 @@ Route::middleware('checkadmin')->group(function () {
             Route::prefix('staff')->group(
                 function () {
                     Route::get('/', [StaffAdminController::class, 'index'])->name('staff');
-                    Route::get('add', [StaffAdminController::class, 'index'])->name('addStaff');
-                    Route::post('add', [StaffAdminController::class, 'index'])->name('postAddStaff');
-                    Route::get('edit/{id?}', [StaffAdminController::class, 'index'])->name('editStaff')->where(['id' => '[0-9]+']);
-                    Route::put('edit', [StaffAdminController::class, 'index'])->name('postEditStaff');
-                    Route::get('delete/{id?}', [StaffAdminController::class, 'index'])->name('deleteStaff')->where(['id' => '[0-9]+']);
+                    Route::get('create', [StaffAdminController::class, 'create'])->name('createStaff');
+                    Route::post('create', [StaffAdminController::class, 'create_'])->name('createStaff_');
+                    Route::get('edit/{id?}', [StaffAdminController::class, 'edit'])->name('editStaff')->where(['id' => '[0-9]+']);
+                    Route::post('edit', [StaffAdminController::class, 'edit_'])->name('editStaff_');
+                    Route::get('delete/{id?}', [StaffAdminController::class, 'delete'])->name('deleteStaff')->where(['id' => '[0-9]+']);
+                    Route::get('trash', [StaffAdminController::class, 'showTrash'])->name('trashStaff');
+                    Route::get('restore/{id?}', [StaffAdminController::class, 'restore'])->name('restoreStaff');
+                    Route::get('forceDelete/{id?}', [StaffAdminController::class, 'forceDelete'])->name('forceDeleteStaff');
                 }
             );
             Route::prefix('blog')->group(
@@ -143,14 +149,6 @@ Route::post('/vnpay', [PaymentController::class, 'payWithVNPAY'])->name('payWith
 Route::get('/vnpay/check', [PaymentController::class, 'checkPayVNPAY'])->name('checkPayVNPAY');
 //END VNPAY
 
-
-
-
-
-
-
-
-
 Route::get('/shop', [ProductController::class, 'shop']);
 
 Route::get('/detail', function () {
@@ -159,13 +157,9 @@ Route::get('/detail', function () {
 
 Route::get('/variant/{variantID}', [ProductController::class, 'getVariant']);
 
-Route::get('/detail_blog', function () {
-    return view('client.detail_blog');
-});
+Route::get('/blog_detail/{id}', [BlogController::class,'blog_detail']);
+Route::get('/blog', [BlogController::class,'blog']);
 
-Route::get('/blog_detail/{id}', function () {
-    return view('client.blog_detail');
-});
 
 Route::get('/detail/{id}', [ProductController::class, 'detail']);
 Route::get('/themvaogio/{idsp}/{soluong}', [ProductController::class, 'themvaogio']);
@@ -196,7 +190,7 @@ Route::get('/cart', function () {
     return view('client.cart');
 });
 
-Route::post('/change-info', [CustomerController::class, 'edit']);
+Route::post('/change-info', [UserController::class, 'edit']);
 
 Route::get('social/google', [GoogleController::class, 'redirect']);
 
