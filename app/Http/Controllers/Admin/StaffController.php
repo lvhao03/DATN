@@ -59,4 +59,23 @@ class StaffController extends Controller
         return redirect()->back();
     }
 
+    public function showTrash()
+    {
+        $title = 'Thùng rác nhân viên';
+        $data = User::onlyTrashed()->get();
+        \Log::info($data);
+        return view('admin.employee.trash', compact('data','title'));
+    }
+
+    public function restore($userID)
+    {
+        User::withTrashed()->find($userID)->restore();
+        return redirect()->back();
+    }
+
+    public function forceDelete($userID)
+    {
+        User::withTrashed()->find($userID)->forceDelete();
+        return redirect()->back();
+    }
 }

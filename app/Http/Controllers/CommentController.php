@@ -4,18 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Comment;
+use App\Models\CommentModel;
 use App\Models\User;
 
 class CommentController extends Controller
 {
     public function index($productID){
-        $commentList = Comment::where('product_id', $productID)->get();
+        $commentList = CommentModel::where('product_id', $productID)->get();
         return response()->json($this->getImageAndUserName($commentList));
     }
 
     public function store(Request $request){
-        Comment::create([
+        CommentModel::create([
             'content' => $request->content,
             'user_id' => $request->userID,
             'product_id' => $request->productID

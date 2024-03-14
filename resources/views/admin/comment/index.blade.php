@@ -24,10 +24,10 @@
                     <div class="card-title">
                         Bình luận
                     </div>
+                    <a href="{{ route('admin.trashComment')}}">Thùng rác</a>
                 </div>
 
                 <div class="card-body">
-
                     <table id="responsiveDataTable" class="table table-bordered text-nowrap w-100">
                         <thead>
                             <tr>
