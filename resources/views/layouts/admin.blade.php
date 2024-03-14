@@ -43,6 +43,7 @@
     <!-- Jsvector Maps -->
     <link rel="stylesheet" href="{{ asset('assets/admin/libs/jsvectormap/css/jsvectormap.min.css') }}">
     @yield('css')
+    @notifyCss
     <style>
         .side-menu__icon {
             font-size: 20px !important;
@@ -53,7 +54,7 @@
 </head>
 
 <body>
-
+    @include('notify::components.notify')
 
 
 
@@ -140,6 +141,7 @@
     <!-- Custom JS -->
     <script src="{{ asset('assets/admin/js/custom.js') }}"></script>
     @yield('js')
+    @notifyJs
 </body>
 
 </html>

@@ -48,6 +48,7 @@
             </div>
         </div>
     </div>
+    <x-notify::notify />
 @endsection
 @section('js')
     <!-- Datatables Cdn -->
