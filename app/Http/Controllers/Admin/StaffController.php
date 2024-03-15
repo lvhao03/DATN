@@ -24,6 +24,21 @@ class StaffController extends Controller
 
     public function create_(Request $request)
     {
+        $request->validate([
+            'name' => 'required|string|max:100',
+            'email' => 'required|email|unique:users,email,' . $request->userID . ',userID',
+            'password' => 'required|string',
+            'role' => 'required|string|max:10',
+        ], [
+            'name.required' => 'Tên không được bỏ trống',
+            'name.max' => 'Tên không được vượt quá 100 ký tự',
+            'email.required' => 'Email không được bỏ trống',
+            'email.email' => 'Vui lòng nhập email đúng định dạng',
+            'email.unique' => 'Email đã tồn tại',
+            'password.required' => 'Mật khẩu không được bỏ trống',
+            'role.required' => 'Vui lòng chọn vai trò',
+        ]);
+        
         User::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -33,6 +48,7 @@ class StaffController extends Controller
             'address' => '',
             'google_id' => '',
         ]);
+        notify()->success('Tạo nhân viên thành công', 'Tạo thành công');
         return redirect()->route('admin.staff');
     }
 
@@ -45,11 +61,25 @@ class StaffController extends Controller
 
     public function edit_(Request $request)
     {
+        $request->validate([
+            'name' => 'required|string|max:100',
+            'email' => 'required|email|unique:users,email,' . $request->userID . ',userID',
+            'role' => 'required|string|max:10',
+        ], [
+            'name.required' => 'Tên không được bỏ trống',
+            'email.required' => 'Email không được bỏ trống',
+            'email.email' => 'Vui lòng nhập email đúng định dạng',
+            'email.unique' => 'Email đã tồn tại',
+            'role.required' => 'Vui lòng chọn vai trò',
+        ]);
+
         User::where('userID', $request->userID)->update([
             'name' => $request->name,
             'email' => $request->email,
             'role' => $request->role,
         ]);
+
+        notify()->success('Cập nhật nhân viên thành công', 'Cập nhật thành công');
         return redirect()->route('admin.editStaff', ['id' => $request->userID]);
     }
 
@@ -63,13 +93,13 @@ class StaffController extends Controller
     {
         $title = 'Thùng rác nhân viên';
         $data = User::onlyTrashed()->get();
-        \Log::info($data);
         return view('admin.employee.trash', compact('data','title'));
     }
 
     public function restore($userID)
     {
         User::withTrashed()->find($userID)->restore();
+        notify()->success('Khôi phục nhân viên thành công', 'Khôi phục thành công');
         return redirect()->back();
     }
 

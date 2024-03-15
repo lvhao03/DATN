@@ -27,11 +27,23 @@ class CommentController extends Controller
 
     public function create_(Request $request)
     {
+        $request->validate([
+            'userID' => 'required|exists:users,userID',
+            'content' => 'required|string|max:100',
+            'productID' => 'required|exists:product,productID',
+        ], [
+            'content.required' => 'Nội dung bình luận không được bỏ trống',
+            'content.max' => 'Nội dung bình luận không được vượt quá 255 ký tự',
+            'productID.required' => 'Vui lòng chọn sản phẩm',
+            'productID.exists' => 'Sản phẩm không tồn tại',
+        ]);
+
         CommentModel::create([
             'content' => $request->content,
             'product_id' => $request->productID,
             'user_id' => $request->userID,
         ]);
+        notify()->success('Tạo bình luận thành công', 'Tạo thành công');
         return redirect()->route('admin.comment');
     }
 
@@ -44,6 +56,13 @@ class CommentController extends Controller
 
     public function edit_(Request $request)
     {
+        $request->validate([
+            'content' => 'required|string|max:100',
+        ], [
+            'content.required' => 'Nội dung bình luận không được bỏ trống',
+            'content.max' => 'Nội dung bình luận không được vượt quá 255 ký tự',
+        ]);
+
         CommentModel::where('commentID', $request->commentID)->update([
             'content' => $request->content
         ]);
@@ -61,13 +80,13 @@ class CommentController extends Controller
     {
         $title = 'Thùng rác bình luận';
         $data = CommentModel::onlyTrashed()->get();
-        \Log::info($data);
         return view('admin.comment.trash', compact('data','title'));
     }
 
     public function restore($commentID)
     {
         CommentModel::withTrashed()->find($commentID)->restore();
+        notify()->success('Khôi phục bình luậnn thành công', 'Khôi phục thành công');
         return redirect()->back();
     }
 

@@ -31,24 +31,36 @@
                         @csrf
                         <div class="form-group">
                             <label for="exampleInputPassword1">Tên nhân viên</label>
-                            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Nhập tên" name="name">
+                            <input type="text" class="form-control @error('name') is-invalid @enderror" id="exampleInputPassword1" placeholder="Nhập tên" name="name">
                         </div>
+                        @error('name')
+                            <div class="text-danger" style="position: relative; top: -10px;">{{ $message }}</div>
+                        @enderror
                         <div class="form-group">
                             <label for="exampleInputPassword1">Email</label>
-                            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Nhập email" name="email">
+                            <input type="text" class="form-control @error('email') is-invalid @enderror" id="exampleInputPassword1" placeholder="Nhập email" name="email">
                         </div>
+                        @error('email')
+                            <div class="text-danger" style="position: relative; top: -10px;">{{ $message }}</div>
+                        @enderror
                         <div class="form-group">
                             <label for="exampleInputPassword1">Mật khẩu</label>
-                            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Nhập mật khẩu" name="password">
+                            <input type="text" class="form-control @error('password') is-invalid @enderror" id="exampleInputPassword1" placeholder="Nhập mật khẩu" name="password">
                         </div>
+                        @error('password')
+                            <div class="text-danger" style="position: relative; top: -10px;">{{ $message }}</div>
+                        @enderror
                         <div class="form-group">
                             <label for="exampleInputPassword1">Chức vụ</label>
-                            <select class="form-select" name="role" id="">
+                            <select class="form-select @error('role') is-invalid @enderror" name="role" id="">
                                 <option value="1">Super adudu</option>
                                 <option value="2">Tác giả</option>
                                 <option value="3">Admin</option>
                             </select>
                         </div>
+                        @error('role')
+                            <div class="text-danger" style="position: relative; top: -10px;">{{ $message }}</div>
+                        @enderror
                         <button type="submit" class="btn btn-primary">Thêm</button>
                     </form>
                 </div>
