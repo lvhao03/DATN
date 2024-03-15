@@ -39,13 +39,15 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Nội dung</label>
-                            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Nội dung" name="content">
+                            <input type="text" class="form-control @error('content') is-invalid @enderror" id="exampleInputPassword1" placeholder="Nội dung" name="content">
                         </div>
+                        @error('content')
+                            <div class="text-danger" style="position: relative; top: -10px;">{{ $message }}</div>
+                        @enderror
                         <div class="form-group">
                             <label for="exampleInputPassword1">Sản phẩm bình luận</label>
                             <select class="form-select" name="productID" id="">
                                 @foreach($products as $product)
-                                    <option value="0">Chọn danh mục</option>
                                     <option value="{{ $product->productID }}">{{ $product->name }}</option>
                                 @endforeach
                             </select>

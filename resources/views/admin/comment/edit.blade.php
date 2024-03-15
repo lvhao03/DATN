@@ -36,8 +36,11 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Nội dung</label>
-                            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Password" name="content" value="{{ $comment->content }}">
+                            <input type="text" class="form-control @error('content') is-invalid @enderror" id="exampleInputPassword1" placeholder="Password" name="content" value="{{ $comment->content }}">
                         </div>
+                        @error('content')
+                            <div class="text-danger" style="position: relative; top: -10px;">{{ $message }}</div>
+                        @enderror
                         <div class="form-group">
                             <label for="exampleInputPassword1">Sản phẩm bình luận</label>
                             <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Password" value="{!! Helper::getNameByID($comment->product_id,'product') !!}" disabled>
