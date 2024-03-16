@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.2.3/css/buttons.bootstrap5.min.css">
 @endsection
 @section('content')
+    <x-notify::notify />
     <div class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb">
         <div class="my-auto">
             <h5 class="page-title fs-21 mb-1">Danh sách nhân viên</h5>
@@ -23,6 +24,7 @@
                 <div class="card-header">
                     <div class="card-title">
                         Danh sách nhân viên
+                        <a href="{{ route('admin.trashStaff')}}">Thùng rác</a>
                     </div>
                 </div>
 
@@ -33,8 +35,8 @@
                                 <th>ID</th>
                                 <th>Họ và tên</th>
                                 <th>Email</th>
-                                <th>Hình ảnh</th>
-                                <th>Số điện thoại</th>
+                                <!-- <th>Hình ảnh</th> -->
+                                <th>Địa chỉ</th>
                                 <th>Chức vụ</th>
                                 <th>Hành động</th>
                             </tr>
@@ -42,18 +44,26 @@
                         <tbody>
                             @foreach ($data as $row)
                                 <tr>
-                                    <td>{{ $row->employeeID }}</td>
+                                    <td>{{ $row->userID }}</td>
                                     <td>{{ $row->name }}</td>
                                     <td>{{ $row->email }}</td>
-                                    <td> <img src="{{ getImage($row->image_url) }}" style="max-width:100px"></td>
-                                    <td>{{ $row->phone }}</td>
-                                    <td>{{ $row->role_id }}</td>
+                                    <td>{{ $row->address }}</td>
+                                    <!-- <td>{{ $row->phone }}</td> -->
+                                    <td>
+                                        @if($row->role == 1) 
+                                            Super Adudu
+                                        @elseif($row->role == 2)
+                                            Tác giả
+                                        @else($row->role == 2)
+                                            Admin
+                                        @endif
+                                    </td>
                                     <td>
                                         <div>
-                                            <a href="{{ route('admin.editStaff', $row->employeeID) }}">
+                                            <a href="{{ route('admin.editStaff', $row->userID) }}">
                                                 <i class="fa fa-edit me-2 font-success"></i>
                                             </a>
-                                            <a href="{{ route('admin.deleteStaff', $row->employeeID) }}">
+                                            <a href="{{ route('admin.deleteStaff', $row->userID) }}">
                                                 <i class="fa fa-trash font-danger"></i>
                                             </a>
                                         </div>
@@ -62,6 +72,9 @@
                             @endforeach
                         </tbody>
                     </table>
+                <a href="{{ route('admin.createStaff') }}">
+                    <button class="btn btn-primary">Thêm nhân viên</button>
+                </a>
                 </div>
             </div>
         </div>

@@ -10,8 +10,8 @@
             <h5 class="page-title fs-21 mb-1">{{ $title }}</h5>
             <nav>
                 <ol class="breadcrumb mb-0">
-                    <li class="breadcrumb-item"><a href="javascript:void(0);">Bình luận</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Danh sách bình luận</li>
+                    <li class="breadcrumb-item"><a href="{{ route('admin.comment') }}">Danh sách bình luận</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Chỉnh sửa bình luận</li>
                 </ol>
             </nav>
         </div>
@@ -32,12 +32,15 @@
                         <input type="text" value="{{ $comment->commentID }}" name="commentID" hidden>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Người bình luận</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{!! Helper::getNameByID($comment->customer_id,'customer') !!}" disabled>
+                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{!! Helper::getNameByID($comment->user_id,'users') !!}" disabled>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Nội dung</label>
-                            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Password" name="content" value="{{ $comment->content }}">
+                            <input type="text" class="form-control @error('content') is-invalid @enderror" id="exampleInputPassword1" placeholder="Password" name="content" value="{{ $comment->content }}">
                         </div>
+                        @error('content')
+                            <div class="text-danger" style="position: relative; top: -10px;">{{ $message }}</div>
+                        @enderror
                         <div class="form-group">
                             <label for="exampleInputPassword1">Sản phẩm bình luận</label>
                             <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Password" value="{!! Helper::getNameByID($comment->product_id,'product') !!}" disabled>
@@ -48,6 +51,7 @@
             </div>
         </div>
     </div>
+    <x-notify::notify />
 @endsection
 @section('js')
     <!-- Datatables Cdn -->

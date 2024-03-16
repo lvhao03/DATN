@@ -10,7 +10,7 @@
             <h5 class="page-title fs-21 mb-1">{{ $title }}</h5>
             <nav>
                 <ol class="breadcrumb mb-0">
-                    <li class="breadcrumb-item"><a href="javascript:void(0);">Bình luận</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('admin.comment') }}">Danh sách bình luận</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Thêm bình luận</li>
                 </ol>
             </nav>
@@ -33,14 +33,17 @@
                             <label for="exampleInputEmail1">Người bình luận</label>
                             <select class="form-select" name="userID" id="">
                                 @foreach($users as $user)
-                                    <option value="{{ $user->customerID }}">{{ $user->name }}</option>
+                                    <option value="{{ $user->userID }}">{{ $user->name }}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Nội dung</label>
-                            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Nội dung" name="content">
+                            <input type="text" class="form-control @error('content') is-invalid @enderror" id="exampleInputPassword1" placeholder="Nội dung" name="content">
                         </div>
+                        @error('content')
+                            <div class="text-danger" style="position: relative; top: -10px;">{{ $message }}</div>
+                        @enderror
                         <div class="form-group">
                             <label for="exampleInputPassword1">Sản phẩm bình luận</label>
                             <select class="form-select" name="productID" id="">
