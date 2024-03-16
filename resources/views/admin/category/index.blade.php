@@ -25,7 +25,7 @@
                         Danh mục sản phẩm
                     </div>
                     <div class="card-title">
-                    <a href="{{route('admin.addCategory')}}" class="btn btn-primary mb-2 data-table-btn">Thêm chuyên mục</a>
+                    <a href="{{route('admin.addCategory')}}" class="btn btn-primary mb-2 data-table-btn">Thêm danh mục</a>
                     </div>
                 </div>
 

@@ -13,7 +13,7 @@ class OrderModel extends Model
     protected $primaryKey = 'orderID';
     public $fillable=[
         'total_ammount',
-        'customer_id',
+        'user_id',
         'order_date',
         'coupon_id',
         'order_status',

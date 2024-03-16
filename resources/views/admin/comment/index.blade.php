@@ -24,10 +24,10 @@
                     <div class="card-title">
                         Bình luận
                     </div>
+                    <a href="{{ route('admin.trashComment')}}">Thùng rác</a>
                 </div>
 
                 <div class="card-body">
-
                     <table id="responsiveDataTable" class="table table-bordered text-nowrap w-100">
                         <thead>
                             <tr>
@@ -44,12 +44,15 @@
                                     <td>
                                         {{ $row->commentID }}
                                     </td>
-                                    <td>{{ Str::limit($row->content, $limit = 30, $end = '...') }}
-                                    <td>{!! Helper::getNameByID($row->customer_id,'customer') !!}</td>
+                                    <td>{{ Str::limit($row->content, $limit = 30, $end = '...') }}</td>
+                                    <td>{!! Helper::getNameByID($row->user_id,'users') !!}</td>
                                     <td>{!! Helper::getNameByID($row->product_id,'product') !!}</td>
                                     <td>
                                         <div>
-                                            <a href="{{ route('admin.deleteComment') }}/{{ $row->postID }}">
+                                            <a href="{{ route('admin.editComment') }}/{{ $row->commentID }}">
+                                                <i class="fa fa-edit me-2 font-success"></i>
+                                            </a>
+                                            <a href="{{ route('admin.deleteComment') }}/{{ $row->commentID }}">
                                                 <i class="fa fa-trash font-danger"></i>
                                             </a>
                                         </div>
@@ -58,6 +61,9 @@
                             @endforeach
                         </tbody>
                     </table>
+                <a href="{{ route('admin.createComment') }}">
+                    <button class="btn btn-primary">Thêm bình luận</button>
+                </a>
                 </div>
             </div>
         </div>

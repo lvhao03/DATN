@@ -33,10 +33,6 @@
                         @csrf 
                         @method('PUT')
                                 <div class="mb-3">
-                                    <label for="form-text" class="form-label fs-14 text-dark">Nhập ID danh mục</label>
-                                    <input type="text" required class="form-control" name="id" placeholder="{{$category->id}}">
-                                </div>
-                                <div class="mb-3">
                                     <label for="form-password" class="form-label fs-14 text-dark">Nhập tên danh mục</label>
                                     <input type="text" required class="form-control" name="name" placeholder="{{$category->name}}">
                                 </div>

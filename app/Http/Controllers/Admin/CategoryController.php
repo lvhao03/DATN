@@ -7,8 +7,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-class CategoryController extends Controller
-{
+class CategoryController extends Controller{
 //-------------------------------------------------------------------------------------------------------- 
     public function index()
     {
@@ -24,19 +23,17 @@ class CategoryController extends Controller
     public function add(Request $request){
         // Kiểm tra dữ liệu
         $validator = Validator::make($request->all(), [
-            'id' => 'required|numeric|unique:catergory,id',
             'name' => 'required|unique:catergory,name',
         ]);
 
         // Nếu dữ liệu không hợp lệ
         if ($validator->fails()) {
             // Trả về thông báo lỗi
-            return redirect()->route('admin.addCategory')->with('error', 'ID hoặc tên danh mục bị trùng lặp.');
+            return redirect()->route('admin.addCategory')->with('error', 'Tên danh mục bị trùng lặp.');
         }
 
         // Tạo mới danh mục
         Category::create([
-            'id' => $request->id,
             'name' => $request->name,
         ]);
 
@@ -52,7 +49,6 @@ class CategoryController extends Controller
 
     public function edit(Request $request, $id){
         $validator = Validator::make($request->all(), [
-            'id' => 'required|numeric|unique:catergory,id,' .$id,
             'name' => 'required|unique:catergory,name,' .$id,
         ]);
         // $request->validate([
@@ -65,7 +61,6 @@ class CategoryController extends Controller
 
         $category = Category::find($id);
         $category->update([
-            'id' => $request->id,
             'name' => $request->name,
         ]);
     

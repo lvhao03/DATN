@@ -33,12 +33,8 @@
                     <form class="card-body" action="{{ route('admin.postAddCategory') }}" method="POST">
                     @csrf
                                 <div class="mb-3">
-                                    <label for="form-text" class="form-label fs-14 text-dark">Nhập ID danh mục</label>
-                                    <input type="number" class="form-control" name="id" placeholder="">
-                                </div>
-                                <div class="mb-3">
                                     <label for="form-password" class="form-label fs-14 text-dark">Nhập tên danh mục</label>
-                                    <input type="text" class="form-control" name="name" placeholder="">
+                                    <input type="text" required class="form-control" name="name" placeholder="">
                                 </div>
                             <button class="btn btn-primary mb-3" type="submit">Thêm</button>
                         <!-- @if ($errors->any())
