@@ -18,6 +18,8 @@ use App\Http\Controllers\GoogleController;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ShopController;
+
 
 
 /*
@@ -53,11 +55,11 @@ Route::middleware('checkadmin')->group(function () {
             Route::prefix('variant')->group(
                 function () {
                     Route::get('/', [VariantAdminController::class, 'index'])->name('variant');
-                    Route::get('add', [VariantAdminController::class, 'index'])->name('addVariant');
-                    Route::post('add', [VariantAdminController::class, 'index'])->name('postAddVariant');
-                    Route::get('edit/{id?}', [VariantAdminController::class, 'index'])->name('editVariant')->where(['id' => '[0-9]+']);
-                    Route::put('edit', [VariantAdminController::class, 'index'])->name('postEditVariant');
-                    Route::get('delete/{id?}', [VariantAdminController::class, 'index'])->name('deleteVariant')->where(['id' => '[0-9]+']);
+                    Route::get('add', [VariantAdminController::class, 'create'])->name('addVariant');
+                    Route::post('add', [VariantAdminController::class, 'create_'])->name('postAddVariant');
+                    Route::get('edit/{id?}', [VariantAdminController::class, 'edit'])->name('editVariant')->where(['id' => '[0-9]+']);
+                    Route::post('edit', [VariantAdminController::class, 'edit_'])->name('postEditVariant');
+                    Route::get('delete/{id?}', [VariantAdminController::class, 'delete'])->name('deleteVariant')->where(['id' => '[0-9]+']);
                 }
             );
             Route::prefix('customer')->group(
@@ -90,8 +92,8 @@ Route::middleware('checkadmin')->group(function () {
             Route::prefix('voucher')->group(
                 function () {
                     Route::get('/', [VoucherAdminController::class, 'index'])->name('voucher');
-                    Route::get('add', [VoucherAdminController::class, 'index'])->name('addVoucher');
-                    Route::post('add', [VoucherAdminController::class, 'index'])->name('postAddVoucher');
+                    Route::get('add/', [VoucherAdminController::class, 'index'])->name('addVoucher');
+                    Route::post('add/', [VoucherAdminController::class, 'index'])->name('postAddVoucher');
                     Route::get('edit/{id?}', [VoucherAdminController::class, 'index'])->name('editVoucher')->where(['id' => '[0-9]+']);
                     Route::put('edit', [VoucherAdminController::class, 'index'])->name('postEditVoucher');
                     Route::get('delete/{id?}', [VoucherAdminController::class, 'index'])->name('deleteVoucher')->where(['id' => '[0-9]+']);
@@ -110,11 +112,11 @@ Route::middleware('checkadmin')->group(function () {
             Route::prefix('blog')->group(
                 function () {
                     Route::get('/', [BlogAdminController::class, 'index'])->name('blog');
-                    Route::get('add', [BlogAdminController::class, 'index'])->name('addBlog');
-                    Route::post('add', [BlogAdminController::class, 'index'])->name('postAddBlog');
-                    Route::get('edit/{id?}', [BlogAdminController::class, 'index'])->name('editBlog')->where(['id' => '[0-9]+']);
-                    Route::put('edit', [BlogAdminController::class, 'index'])->name('postEditBlog');
-                    Route::get('delete/{id?}', [BlogAdminController::class, 'index'])->name('deleteBlog')->where(['id' => '[0-9]+']);
+                    Route::get('add/', [BlogAdminController::class, 'create'])->name('addBlog');
+                    Route::post('add/', [BlogAdminController::class, 'create_'])->name('postAddBlog');
+                    Route::get('edit/{id?}', [BlogAdminController::class, 'edit'])->name('editBlog')->where(['id' => '[0-9]+']);
+                    Route::post('edit', [BlogAdminController::class, 'edit_'])->name('postEditBlog');
+                    Route::get('delete/{id?}', [BlogAdminController::class, 'delete'])->name('deleteBlog')->where(['id' => '[0-9]+']);
                 }
             );
             // Route::prefix('article')->group(
@@ -151,7 +153,7 @@ Route::get('/vnpay/check', [PaymentController::class, 'checkPayVNPAY'])->name('c
 
 
 
-Route::get('/shop', [ProductController::class, 'shop']);
+Route::get('/shop', [ShopController::class, 'index']);
 
 Route::get('/detail', function () {
     return view('client.detail');
