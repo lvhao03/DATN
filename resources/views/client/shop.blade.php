@@ -47,9 +47,9 @@ SHOP
 							
 									<li class="sidebar__category-item">
 										<div class="sidebar__category-link">
-											@foreach($categories as $category)
-												<span onclick="getProductInCategory({{ $category->catergoryID }})">{{ $category->name }}</span><hr style="width: 85%;">	
-											@endforeach			
+										@php foreach($categories as $cate) { @endphp
+											<a href="/{{$cate->catergoryID}}">{{$cate->name}} </a><hr style="width: 85%;">	
+										@php } @endphp
 										</div>
 									</li>
 								
