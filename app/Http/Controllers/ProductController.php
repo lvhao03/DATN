@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Models\Product;
 use App\Models\Variant;
 use App\Models\Variant_images;
@@ -92,5 +93,35 @@ class ProductController extends Controller
             $request->session()->put('cart', $cart);
         }
         return redirect('/cart');
+    }
+
+    function getProductInCategory($categoryID){
+        $products = DB::table('product')
+                ->join('catergory', 'product.category_id', '=', 'catergory.catergoryID')
+                ->where('catergory.catergoryID', $categoryID)                
+                ->select('product.*')
+                ->get();
+
+        foreach($products as $product){ 
+            $variant = Variant::where('product_id', $product->productID)->first();
+            $product->image_url = Variant_images::where('variant_id' , $variant->variantID)->value('image_url');
+            $product->price = $variant->price;
+        };
+
+        return response()->json($products);
+    }
+
+    public function getProductByName($productName){
+        $products = DB::table('product')
+            ->where('name', 'like', '%' . $productName . '%')
+            ->select('product.*')
+            ->get();
+
+        foreach($products as $product){ 
+            $variant = Variant::where('product_id', $product->productID)->first();
+            $product->image_url = Variant_images::where('variant_id' , $variant->variantID)->value('image_url');
+            $product->price = $variant->price;
+        };
+        return response()->json($products);
     }
 }

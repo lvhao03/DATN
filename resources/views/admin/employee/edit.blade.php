@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.2.3/css/buttons.bootstrap5.min.css">
 @endsection
 @section('content')
+    <x-notify::notify />
     <div class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb">
         <div class="my-auto">
             <h5 class="page-title fs-21 mb-1">{{ $title }}</h5>
@@ -22,7 +23,7 @@
 
                 <div class="card-header">
                     <div class="card-title">
-                        Bình luận
+                        Chỉnh sửa thông tin nhân viên
                     </div>
                 </div>
 
@@ -32,20 +33,29 @@
                         <input type="text" name="userID" value="{{ $staff->userID }}" hidden>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Tên nhân viên</label>
-                            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Nhập tên" name="name" value="{{ $staff->name }}">
+                            <input type="text" class="form-control @error('name') is-invalid @enderror" id="exampleInputPassword1" placeholder="Nhập tên" name="name" value="{{ $staff->name }}">
                         </div>
+                        @error('name')
+                            <div class="text-danger" style="position: relative; top: -10px;">{{ $message }}</div>
+                        @enderror
                         <div class="form-group">
                             <label for="exampleInputPassword1">Email</label>
-                            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Nhập email" name="email" value="{{ $staff->email }}">
+                            <input type="text" class="form-control @error('email') is-invalid @enderror" id="exampleInputPassword1" placeholder="Nhập email" name="email" value="{{ $staff->email }}">
                         </div>
+                        @error('email')
+                            <div class="text-danger" style="position: relative; top: -10px;">{{ $message }}</div>
+                        @enderror
                         <div class="form-group">
                             <label for="exampleInputPassword1">Chức vụ</label>
-                            <select class="form-select" name="role" id="">
+                            <select class="form-select @error('role') is-invalid @enderror" name="role" id="">
                                 <option value="1">Super adudu</option>
                                 <option value="2">Tác giả</option>
                                 <option value="3">Admin</option>
                             </select>
                         </div>
+                        @error('role')
+                            <div class="text-danger" style="position: relative; top: -10px;">{{ $message }}</div>
+                        @enderror
                         <button type="submit" class="btn btn-primary">Chính sửa</button>
                     </form>
                 </div>

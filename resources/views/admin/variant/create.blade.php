@@ -10,8 +10,8 @@
             <h5 class="page-title fs-21 mb-1">{{ $title }}</h5>
             <nav>
                 <ol class="breadcrumb mb-0">
-                <li class="breadcrumb-item"><a href="{{ route('admin.comment') }}">Danh sách bình luận</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Thêm bình luận</li>
+                    <li class="breadcrumb-item"><a href="javascript:void(0);">Biến thể</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Thêm Biến thể</li>
                 </ol>
             </nav>
         </div>
@@ -22,36 +22,53 @@
 
                 <div class="card-header">
                     <div class="card-title">
-                        Bình luận
+                        Biến thể
                     </div>
                 </div>
 
                 <div class="card-body">
-                    <form action="{{ route('admin.createComment_') }}" method="POST">
+                    <form action="{{ route('admin.postAddVariant') }}" method="POST">
                         @csrf
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Người bình luận</label>
-                            <select class="form-select" name="userID" id="">
-                                @foreach($users as $user)
-                                    <option value="{{ $user->userID }}">{{ $user->name }}</option>
+                            <label for="exampleInputPassword1">Màu sắc</label>
+                            <input type="text" class="form-control" id="exampleInputPassword1"  name="color">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Kích thước</label>
+                            <select class="form-select" name="size_id" id="">
+                                @foreach($sizes as $size)
+                                    <option value="{{ $size->sizeID }}">{{ $size->name }}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputPassword1">Nội dung</label>
-                            <input type="text" class="form-control @error('content') is-invalid @enderror" id="exampleInputPassword1" placeholder="Nội dung" name="content">
-                        </div>
-                        @error('content')
-                            <div class="text-danger" style="position: relative; top: -10px;">{{ $message }}</div>
-                        @enderror
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Sản phẩm bình luận</label>
-                            <select class="form-select" name="productID" id="">
+                            <label for="exampleInputEmail1">Sản phẩm</label>
+                            <select class="form-select" name="pro_id" id="">
                                 @foreach($products as $product)
                                     <option value="{{ $product->productID }}">{{ $product->name }}</option>
                                 @endforeach
                             </select>
                         </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Chất liệu</label>
+                            <select class="form-select" name="material" id="">
+                                @foreach($materials as $material)
+                                    <option value="{{ $material->materialID }}">{{ $material->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                       
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Số lượng tồn kho</label>
+                            <input type="number" class="form-control" id="exampleInputPassword1"  name="stock">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Giá</label>
+                            <input type="number" class="form-control" id="exampleInputPassword1"  name="price">
+                        </div>
+
+
+
                         <button type="submit" class="btn btn-primary">Thêm mới</button>
                     </form>
                 </div>

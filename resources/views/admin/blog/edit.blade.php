@@ -10,8 +10,8 @@
             <h5 class="page-title fs-21 mb-1">{{ $title }}</h5>
             <nav>
                 <ol class="breadcrumb mb-0">
-                <li class="breadcrumb-item"><a href="{{ route('admin.comment') }}">Danh sách bình luận</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Thêm bình luận</li>
+                    <li class="breadcrumb-item"><a href="javascript:void(0);">Bài viết</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Sửa Bài viết</li>
                 </ol>
             </nav>
         </div>
@@ -22,37 +22,35 @@
 
                 <div class="card-header">
                     <div class="card-title">
-                        Bình luận
+                        Bài viết
                     </div>
                 </div>
 
                 <div class="card-body">
-                    <form action="{{ route('admin.createComment_') }}" method="POST">
+                    <form action="{{ route('admin.postEditBlog') }}" method="POST">
                         @csrf
+                        <input type="text" value="{{ $post->postID }}" name="postID" hidden>
+
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Người bình luận</label>
-                            <select class="form-select" name="userID" id="">
-                                @foreach($users as $user)
-                                    <option value="{{ $user->userID }}">{{ $user->name }}</option>
-                                @endforeach
-                            </select>
+                            <label for="exampleInputPassword1">Tiêu đề bài viết</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{ $post->title }}" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Hình ảnh</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{ $post->thumnail }}" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Người đăng</label>
+                            @foreach($admins as $admin)
+                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{ $admin->name }}" disabled>
+                            @endforeach
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Nội dung</label>
-                            <input type="text" class="form-control @error('content') is-invalid @enderror" id="exampleInputPassword1" placeholder="Nội dung" name="content">
+                            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Password" name="content" value="{{ $post->content }}">
                         </div>
-                        @error('content')
-                            <div class="text-danger" style="position: relative; top: -10px;">{{ $message }}</div>
-                        @enderror
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Sản phẩm bình luận</label>
-                            <select class="form-select" name="productID" id="">
-                                @foreach($products as $product)
-                                    <option value="{{ $product->productID }}">{{ $product->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Thêm mới</button>
+
+                        <button type="submit" class="btn btn-primary">Sửa bài viết</button>
                     </form>
                 </div>
             </div>
