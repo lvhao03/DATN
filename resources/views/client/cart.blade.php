@@ -60,7 +60,7 @@ CART
                         @endphp
                         <tr>
                           <td class="product-thumbnail">
-                          <img src="{{ asset('images/' . $c[2] ) }}" alt="Image" class="img-fluid">
+                          <img src="{{ asset('images/shop/' . $c[2] ) }}" alt="Image" class="img-fluid">
                           </td>
                           <td class="product-name">
                             <h2 class="h5 text-black">{{$ten_sp}}</h2>

@@ -49,7 +49,7 @@
                                     </td>
                                     <td>{{ Str::limit($row->name, $limit = 30, $end = '...') }}                                    </td>
                                     {{-- <td>{{ \App\Helpers\Helper::format_cash($row->new_price) }}</td> --}}
-                                    <td> <img src="{{ getImage($row->thumnail) }}" style="max-width:100px"></td>
+                                    <td> <img src=" {{ asset('images/shop/' .$row->thumnail) }}" style="max-width:100px"></td>
                                     <td>{!! Helper::getNameById($row->category_id,'category') !!}</td>
 
                                     <td>

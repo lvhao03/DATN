@@ -32,12 +32,12 @@ DETAIL PRODUCTS
                     <div class="spw">
                         <div class="gallery">
                             <div class="gallery__item--huge">
-                                <img id="productImage" src="{{ asset('images/' . $variants[0]->image_url ) }}" alt="">
+                                <img id="productImage" src="{{ asset('images/shop/' . $variants[0]->image_url ) }}" alt="">
                             </div>
                             <div class="spw" style="margin: 0 -7px;">
                                 @for ($i = 0; $i < 4; $i++)
                                     <div class="gallery__item">
-                                        <img src="{{ asset('images/' . $variants[0]->image_url ) }}" alt="">
+                                        <img src="{{ asset('images/shop/' . $variants[0]->image_url ) }}" alt="">
                                     </div>
                                 @endfor
                             </div>
@@ -54,7 +54,7 @@ DETAIL PRODUCTS
                                     <ul class="d-flex">
                                         @foreach($variants as $variant)
                                             <li class="d-flex border p-2 mr-4" id="variantID" onclick="get_variant({{$variant->variantID}})">
-                                                <img  src="{{ asset('images/' . $variant->image_url) }}" style="width:30px; height:30px" alt="">
+                                                <img  src="{{ asset('images/shop/' . $variant->image_url) }}" style="width:30px; height:30px" alt="">
                                                 {{$variant->color}}
                                             </li>
                                         @endforeach
@@ -93,11 +93,11 @@ DETAIL PRODUCTS
                             <hr>
     
                             <div class="infor__share">
-                                <img src="images/detail/Vector.svg" class="infor__share-item"></img>|
-                                <img src="images/detail/Vector-1.svg" class="infor__share-item"></img>|
-                                <img src="images/detail/Vector-2.svg" class="infor__share-item"></img>|
-                                <img src="images/detail/Vector-3.svg" class="infor__share-item"></img>|
-                                <img src="images/detail/Vector-4.svg" class="infor__share-item"></img>|
+                                <img src="{{ asset('images/Facebook F.png') }}" class="infor__share-item"></img>|
+                                <img src="{{ asset('images/Twitter.png') }}" class="infor__share-item"></img>|
+                                <img src="{{ asset('images/Google.png') }}" class="infor__share-item"></img>|
+                                <img src="{{ asset('images/Pinterest.png') }}" class="infor__share-item"></img>|
+                                <img src="{{ asset('images/Email.png') }}" class="infor__share-item"></img>|
                             </div>
     
                             <hr>
@@ -147,7 +147,7 @@ DETAIL PRODUCTS
                             @foreach($products as $product)
                                 <li class="sale__menu-item">
                                     <a href="/detail/{{$product->productID}}"class="sale__menu-link">
-                                        <img src="{{ asset('images/' . $product->image_url ) }}" alt="" class="sale__img">
+                                        <img src="{{ asset('images/shop/' . $product->image_url ) }}" alt="" class="sale__img">
                                         <span class="sale__name">{{ $product->name }}</span>
                                         <span class="sale__price"><b>{{ $product->price }}</b></span>
                                     </a>

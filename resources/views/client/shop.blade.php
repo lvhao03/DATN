@@ -1,3 +1,14 @@
+<Style>.rounded {
+height: 50px;    border-radius: 20px; /* Góc bo tròn */
+    padding: 5px; /* Khoảng cách bên trong ô */
+    border: 1px solid #ccc; /* Viền của ô */
+    width: 300px; /* Độ rộng của ô */
+}
+
+.search__bar::placeholder {
+    color: #999; /* Màu của placeholder */
+    font-style: italic; /* Nghiêng chữ của placeholder */
+}</Style>
 @extends('client.layout')
 @section('tieudetrang')
 SHOP
@@ -153,7 +164,7 @@ SHOP
 								
 								<a class="product-item" href="/detail/{{$product->productID}}">
 
-									<img src="{{ asset('images/' .$product->image_url) }}" class="img-fluid product-thumbnail">
+									<img src="{{ asset('images/shop/' .$product->image_url) }}" class="img-fluid product-thumbnail">
 									<h3 class="product-title">{{ $product->name }}</h3>
 									<strong class="product-price">${{ $product->price }}</strong>
 									<span class="icon-cross">
@@ -199,7 +210,7 @@ SHOP
 							html += `		
 								<div class="col-12 col-md-4 col-lg-4 mb-5">
 									<a class="product-item" href="/detail/${product.productID}">
-										<img src="images/${product.image_url}" class="img-fluid product-thumbnail">
+										<img src="images/shop/${product.image_url}" class="img-fluid product-thumbnail">
 										<h3 class="product-title">${product.name}</h3>
 										<strong class="product-price">${product.price}</strong>
 										<span class="icon-cross">
@@ -225,7 +236,7 @@ SHOP
 							html += `		
 								<div class="col-12 col-md-4 col-lg-4 mb-5">
 									<a class="product-item" href="/detail/${ product.productID }">
-										<img src="{{ asset('images/' . $product->image_url) }}" class="img-fluid product-thumbnail">
+										<img src="{{ asset('images/shop/' . $product->image_url) }}" class="img-fluid product-thumbnail">
 										<h3 class="product-title">${ product.name }</h3>
 										<strong class="product-price">${ product.price }</strong>
 										<span class="icon-cross">

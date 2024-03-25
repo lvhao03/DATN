@@ -257,7 +257,7 @@ class PaymentController extends Controller
                     if ($response['code'] == 00 && $response['orderCode']) {
                         $data = [
                             'total_ammount' => $checkPrice['totalPrice'],
-                            'customer_id' => auth()->user()->customerID,
+                            'user_id' => auth()->user()->userID,
                             'order_date' => now(),
                             'coupon_id' => $checkPrice['voucherID'] ? $checkPrice['voucherID'] : NULL,
                             'order_status' => 'PENDING',
@@ -310,7 +310,7 @@ class PaymentController extends Controller
                     'order_status' => $getInfoPayment->status,
                     'shipment_status' => $getInfoPayment->status == "PAID" ? 'PACKED' : 'ORDERPLACE',
                 ];
-                $update = OrderModel::where('orderID', $order->orderID)->where('customer_id', auth()->user()->customerID)->update($data);
+                $update = OrderModel::where('orderID', $order->orderID)->where('user_id', auth()->user()->userID)->update($data);
                 if ($update) {
                     // Gửi mail cho khách, nhân viên biết,...
                     if (Session::has('vnpay_orderCode')) {

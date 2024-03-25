@@ -36,7 +36,7 @@
                                 <th>Họ và tên</th>
                                 <th>Email</th>
                                 <!-- <th>Hình ảnh</th> -->
-                                <th>Địa chỉ</th>
+                                <!-- <th>Địa chỉ</th> -->
                                 <th>Chức vụ</th>
                                 <th>Hành động</th>
                             </tr>
@@ -47,15 +47,15 @@
                                     <td>{{ $row->userID }}</td>
                                     <td>{{ $row->name }}</td>
                                     <td>{{ $row->email }}</td>
-                                    <td>{{ $row->address }}</td>
+                                    <!-- <td>{{ $row->address }}</td> -->
                                     <!-- <td>{{ $row->phone }}</td> -->
                                     <td>
                                         @if($row->role == 1) 
-                                            Super Adudu
+                                        nhân viên
                                         @elseif($row->role == 2)
-                                            Tác giả
+                                        chủ quản
                                         @else($row->role == 2)
-                                            Admin
+                                        tác giả
                                         @endif
                                     </td>
                                     <td>

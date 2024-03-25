@@ -57,7 +57,7 @@
                     <div class="col-6">
                         <div class="mt-0 text-center">
                             <span class="text-fixed-white">Khách hàng</span>
-                            <h3 class="text-fixed-white mb-0">{{ countTable('customer') }}</h3>
+                            <h3 class="text-fixed-white mb-0">{{ countTable('users') }}</h3>
                         </div>
                     </div>
                 </div>
