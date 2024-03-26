@@ -48,9 +48,9 @@
                         <div class="form-group">
                             <label for="exampleInputPassword1">Chức vụ</label>
                             <select class="form-select @error('role') is-invalid @enderror" name="role" id="">
-                                <option value="1">Super adudu</option>
-                                <option value="2">Tác giả</option>
-                                <option value="3">Admin</option>
+                                <option value="1">Nhân viên</option>
+                                <option value="2">Chủ quản</option>
+                                <option value="3">Tác giả</option>
                             </select>
                         </div>
                         @error('role')
