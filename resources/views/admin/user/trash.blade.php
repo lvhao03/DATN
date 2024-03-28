@@ -10,7 +10,7 @@
             <h5 class="page-title fs-21 mb-1">Danh sách khách hàng</h5>
             <nav>
                 <ol class="breadcrumb mb-0">
-                    <li class="breadcrumb-item"><a href="javascript:void(0);">Khách hàng</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('admin.staff')}}">khách hàng</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Danh sách khách hàng</li>
                 </ol>
             </nav>
@@ -29,35 +29,35 @@
                 <div class="card-body">
                     <table id="responsiveDataTable" class="table table-bordered text-nowrap w-100">
                         <thead>
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Họ và tên</th>
-                                    <th>Email</th>
-                                    <th>Hình ảnh</th>
-                                    <th>Hành động</th>
-                                </tr>
-                            </thead>
+                            <tr>
+                            <th>ID</th>
+                            <th>Họ và tên</th>
+                            <th>Email</th>
+                            <th>Hình ảnh</th>
+                            <th>Địa chỉ</th>
+                            <th>Hành động</th>
+                            </tr>
                         </thead>
                         <tbody>
                             @foreach ($data as $row)
-                            <tr>
-                                <td>{{$row->customerID}}</td>
-                                <td>{{ $row->name }}</td>
-                                <td>{{ $row->email }}</td>
-                                <td> <img src="{{ getImage($row->image_url) }}" style="max-width:100px"></td>
-                                <td>
-                                    <div>
-                                        <a href="{{route('admin.editCustomer')}}/{{$row->customerID}}">
-                                            <i class="fa fa-edit me-2 font-success"></i>
-                                        </a>
-                                        <a href="{{route('admin.deleteCustomer')}}/{{$row->customerID}}">
-                                            <i class="fa fa-trash font-danger"></i>
-                                        </a>
-                                    </div>
-                                </td>
-                            </tr>
-                        @endforeach
+                                <tr>
+                                    <td>{{ $row->userID }}</td>
+                                    <td>{{ $row->name }}</td>
+                                    <td>{{ $row->email }}</td>
+                                    <td> <img src="{{ asset('getImage($row->image_url') }}" style="max-width:100px"></td>
+                                    <td>{{ $row->address }}</td>
+                                    <td>
+                                        <div>
+                                            <a href="{{ route('admin.restoreUser') }}/{{ $row->userID }}">
+                                                <i class="fa-solid fa-window-restore"></i>
+                                            </a>
+                                            <a href="{{ route('admin.forceDeleteUser') }}/{{ $row->userID }}">
+                                                <i class="fa fa-trash font-danger"></i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

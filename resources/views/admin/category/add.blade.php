@@ -20,47 +20,27 @@
         <div class="col-xl-12">
             <div class="card custom-card">
 
-                <div class="card-header">
+                <div class="card-header justify-content-between">
                     <div class="card-title">
-                        Danh mục sản phẩm
+                        Thêm danh mục sản phẩm
                     </div>
-                    <div class="card-title">
-                    <a href="{{route('admin.addCategory')}}" class="btn btn-primary mb-2 data-table-btn">Thêm danh mục</a>
+                    <div class="prism-toggle">
+                        <a href="{{route('admin.category')}}" class="btn btn-sm btn-primary-light">Trở về</a>
                     </div>
                 </div>
 
                 <div class="card-body">
-
-                    <table id="responsiveDataTable" class="table table-bordered text-nowrap w-100">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Tên danh mục</th>
-                                <th>Hành động</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($data as $row)
-                                <tr>
-                                    <td>{{ $row->categoryID}}</td>
-                                    <td>
-                                        {{ $row->name }}
-                                    </td>
-
-                                    <td>
-                                        <div>
-                                            <a href="{{ route('admin.editCategory', $row->categoryID) }}">
-                                                <i class="fa fa-edit me-2 font-success"></i>
-                                            </a>
-                                            <a href="{{ route('admin.deleteCategory', $row->categoryID) }}">
-                                                <i class="fa fa-trash font-danger"></i>
-                                            </a>
-                                        </div>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                    <form class="card-body" action="{{ route('admin.postAddCategory') }}" method="POST">
+                    @csrf
+                                <div class="mb-3">
+                                    <label for="form-password" class="form-label fs-14 text-dark">Nhập tên danh mục</label>
+                                    <input type="category" required class="form-control @error('name') is-invalid @enderror" name="name" placeholder="">
+                                </div>
+                                @error('name')
+                                    <div class="text-danger" style="position: relative; top: -10px;">{{ $message }}</div>
+                                @enderror
+                            <button class="btn btn-primary mb-3" type="submit">Thêm</button>
+                    </form>
                 </div>
             </div>
         </div>

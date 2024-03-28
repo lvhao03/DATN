@@ -7,11 +7,11 @@
 @section('content')
     <div class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb">
         <div class="my-auto">
-            <h5 class="page-title fs-21 mb-1">Danh mục</h5>
+            <h5 class="page-title fs-21 mb-1">Danh sách khách hàng</h5>
             <nav>
                 <ol class="breadcrumb mb-0">
-                    <li class="breadcrumb-item"><a href="javascript:void(0);">Sản phẩm</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Danh mục sản phẩm</li>
+                    <li class="breadcrumb-item"><a href="javascript:void(0);">Khách hàng</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Danh sách khách hàng</li>
                 </ol>
             </nav>
         </div>
@@ -22,46 +22,54 @@
 
                 <div class="card-header">
                     <div class="card-title">
-                        Danh mục sản phẩm
-                    </div>
+                        Danh sách khách hàng
+                    </div> 
+
                     <div class="card-title">
-                    <a href="{{route('admin.addCategory')}}" class="btn btn-primary mb-2 data-table-btn">Thêm danh mục</a>
+                    <a href="{{route('admin.addUser')}}" class="btn btn-primary mb-2 data-table-btn">Thêm khách hàng</a>
                     </div>
                 </div>
 
                 <div class="card-body">
 
-                    <table id="responsiveDataTable" class="table table-bordered text-nowrap w-100">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Tên danh mục</th>
-                                <th>Hành động</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($data as $row)
-                                <tr>
-                                    <td>{{ $row->categoryID}}</td>
-                                    <td>
-                                        {{ $row->name }}
-                                    </td>
+<table id="responsiveDataTable" class="table table-bordered text-nowrap w-100">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Họ và tên</th>
+            <th>Email</th>
+            <th>Hình ảnh</th>
+            <th>Địa chỉ</th>
+            <th>Hành động</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach ($data as $row)
+            <tr>
+                <td>{{ $row->userID }}</td>
+                <td>{{ $row->name }}</td>
+                <td>{{ $row->email }}</td>
+                <td> <img src="{{ asset('getImage($row->image_url') }}" style="max-width:100px"></td>
+                
+                <td>{{ $row->address }}</td>
 
-                                    <td>
-                                        <div>
-                                            <a href="{{ route('admin.editCategory', $row->categoryID) }}">
-                                                <i class="fa fa-edit me-2 font-success"></i>
-                                            </a>
-                                            <a href="{{ route('admin.deleteCategory', $row->categoryID) }}">
-                                                <i class="fa fa-trash font-danger"></i>
-                                            </a>
-                                        </div>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
+                <td>
+                    <div>
+                        <a href="{{ route('admin.editUser') }}/{{ $row->userID }}">
+                            <i class="fa fa-edit me-2 font-success"></i>
+                        </a>
+                        <a href="{{ route('admin.deleteUser', $row->userID ) }}">
+                            <i class="fa fa-trash font-danger"></i>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        @endforeach
+    </tbody>
+</table>
+</table>
+<a href="{{ route('admin.trashUser')}}">Thùng rác</a>
+</div>
             </div>
         </div>
     </div>
