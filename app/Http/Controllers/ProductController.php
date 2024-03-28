@@ -27,17 +27,16 @@ class ProductController extends Controller
 
     function Detail($id){
         $product = Product::where('productID', $id)->first();
-        $id = $product->productID;  
-        $variants = Variant::where('product_id',$id)->get();
+        $variants = Variant::where('product_id', $id)->get();
         foreach($variants as $variant) {
             $image_url = Variant_images::where('variant_id' , $variant->variantID)->value('image_url');
             $variant->image_url = $image_url;
         }
         $products = Product::take(4)->get();   
-        foreach($products as $product) {
-            $variant = Variant::where('product_id', $product->productID)->first();
-            $product->image_url = Variant_images::where('variant_id' , $variant->variantID)->value('image_url');
-            $product->price = $variant->price;
+        foreach($products as $prod) {
+            $variant = Variant::where('product_id', $prod->productID)->first();
+            $prod->image_url = Variant_images::where('variant_id' , $variant->variantID)->value('image_url');
+            $prod->price = $variant->price;
         }
         return view('client.detail',['sp' => $product , 'variants' => $variants, 'products' => $products,'id'=> $id]);
     }
@@ -55,7 +54,9 @@ class ProductController extends Controller
 
     function addCart(Request $request, $productID = 0, $soluong = 1, $variantID) {
         $product = Product::where('productID', $productID)->first();
-        $variant = Variant::where('product_id', $product->productID)->first();
+        $variant = Variant::where('product_id', $product->productID)
+                    ->where('variantID', $variantID)
+                    ->first();
         $product->image_url = Variant_images::where('variant_id', $variant->variantID)->value('image_url');
         $product->price = $variant->price;
         $product->quantity = $soluong;
@@ -130,7 +131,6 @@ class ProductController extends Controller
         $cart = session('cart');
         if (isset($cart[$request->index])) { 
             $cart[$request->index][4] = $request->quantity;
-            \Log::info($cart[$request->index]);
             session(['cart' => $cart]);
         }
         return response()->json('success');

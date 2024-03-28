@@ -42,7 +42,6 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
             'image_url' => 'images/user/default-avatar.jpg',
             'address' => '',
-            'google_id' => ''
         ]);
 
         event(new Registered($user));

@@ -21,21 +21,22 @@ class GoogleController extends Controller
         try {
 
             $user = Socialite::driver('google')->user();
-
-            $current_user = User::where('google_id', $user->id)->first();
-
+            $current_user = User::where('provider_id', $user->id)->first();
+            
             if($current_user){
                 Auth::login($current_user);
+                if ($current_user->role != 0 ){
+                    return redirect('/admin');
+                }
                 return redirect('/');
-            }else{
+            } else {
                 $newUser = User::updateOrCreate(['email' => $user->email],[
                     'name' => $user->name,
-                    'google_id'=> $user->id,
-                    'password' => Hash::make('12345678'),
+                    'provider' => 'google',
+                    'provider_id' => $user->id,
                     'image_url' => 'images/user/default-avatar.jpg',
                     'address' => ''
                 ]);
-
                 Auth::login($newUser);
                 return redirect('/');
             }

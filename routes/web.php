@@ -156,12 +156,6 @@ Route::get('/vnpay/check', [PaymentController::class, 'checkPayVNPAY'])->name('c
 //END VNPAY
 
 
-
-
-
-
-
-
 Route::get('/shop', [ShopController::class, 'index']);
 
 
