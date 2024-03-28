@@ -145,14 +145,6 @@ Route::post('/vnpay', [PaymentController::class, 'payWithVNPAY'])->name('payWith
 Route::get('/vnpay/check', [PaymentController::class, 'checkPayVNPAY'])->name('checkPayVNPAY');
 //END VNPAY
 
-
-
-
-
-
-
-
-
 Route::get('/shop', [ShopController::class, 'index']);
 Route::get('/{idloai}',[ShopController::class,'pro_cate'])->name('all.productscate');
 

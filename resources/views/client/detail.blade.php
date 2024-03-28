@@ -79,7 +79,7 @@ DETAIL PRODUCTS
                                     <a class="infor__quantity-item decrease">-</a>
                                     <input size="" type="number" id="soluong" min="1" value="1" max="{{$variants[0]->stock_quantity}}">
                                     <a class="infor__quantity-item increase">+</a>
-                                </div>
+                                </div> 
                                 <button class="button add-to-cart" style="background-color:#3b5d50" onclick="addCart({{$id}})" id=>Thêm vào giỏ</button>
                             </div>
     
@@ -161,6 +161,7 @@ DETAIL PRODUCTS
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <script>
+
         const stock = <?php echo $variants[0]->stock_quantity?>;
 
         const increseBtn = $('.increase');
@@ -199,9 +200,7 @@ DETAIL PRODUCTS
             }
             return true;
         }   
-    </script>
 
-    <script>
         let a = <?php echo $variants[0]->variantID ?>
 
         let productID = {{ $sp->productID }};
@@ -259,11 +258,11 @@ DETAIL PRODUCTS
                 type: 'GET',
                 dataType: 'json',
                 success: function (result){
-                    console.log(result);
                     showCommentSection(result);
                 }
             })
         });
+
         function showCommentSection(result){
             detailSubContent.html('');
             let html = '';
@@ -296,15 +295,9 @@ DETAIL PRODUCTS
                 url: "/variant/" + variantID,
                 type: "GET",
                 success: function(response) {
-                    console.log(response);
-                    $('.infor__price').text(response.variant.price);
+                    $('.infor__price').text(addCommas(response.variant.price) + ' đ');
                     $('#stock_quantity').text(response.variant.stock_quantity);
                     $('#productImage').attr('src', 'http://127.0.0.1:8000/images/' + response.variantImages[0].image_url);
-                    console.log(response);
-                    // $.each(response, function(index, imageUrl) {
-                        
-                    //     $('#imageContainer').append('<img src="' + imageUrl + '" alt="Variant Image">');
-                    // });
                 },
                 error: function(xhr, status, error) {
                     console.error(error);
@@ -314,7 +307,11 @@ DETAIL PRODUCTS
 
         function addCart(productID){
             soluong = document.getElementById('soluong').value;
-            document.location="/addCart/"+productID+"/"+ soluong + "/" + a;
+            document.location="/addCart/"+productID+"/"+ soluong + "/" + a ;
+        }
+
+        function addCommas(number) {
+            return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         }
     </script>
 
