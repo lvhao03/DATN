@@ -59,9 +59,10 @@ class ProductController extends Controller
         $product->image_url = Variant_images::where('variant_id', $variant->variantID)->value('image_url');
         $product->price = $variant->price;
         $product->quantity = $soluong;
+        $product->stock = $variant->stock_quantity;
 
         if (!$request->session()->exists('cart')) {//chưa có cart trong session         
-            $request->session()->put('cart', [[$productID, $variantID, $product->image_url, $product->price, $product->quantity]]);
+            $request->session()->put('cart', [[$productID, $variantID, $product->image_url, $product->price, $product->quantity, $product->stock]]);
         } else {// đã có cart, kiểm tra id_sp có trong cart không
             $cart = $request->session()->get('cart');
             $index_productID = array_search($productID, array_column($cart, 0));
@@ -70,7 +71,7 @@ class ProductController extends Controller
                 $cart[$index_variantID][4] += $soluong; // Cộng vào số lượng của biến thể cụ thể
                 $request->session()->put('cart', $cart); // Cập nhật giỏ hàng sau khi thay đổi số lượng
             } else { //sp chưa có trong arrary cart thì thêm vào 
-                $request->session()->push('cart', [$productID, $variantID, $product->image_url, $product->price, $product->quantity]);
+                $request->session()->push('cart', [$productID, $variantID, $product->image_url, $product->price, $product->quantity, $product->stock]);
             }
         }
         return redirect('/cart');
@@ -123,5 +124,15 @@ class ProductController extends Controller
             $product->price = $variant->price;
         };
         return response()->json($products);
+    }
+
+    public function changeQuantityInCart(Request $request){
+        $cart = session('cart');
+        if (isset($cart[$request->index])) { 
+            $cart[$request->index][4] = $request->quantity;
+            \Log::info($cart[$request->index]);
+            session(['cart' => $cart]);
+        }
+        return response()->json('success');
     }
 }

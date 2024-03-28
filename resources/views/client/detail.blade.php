@@ -47,7 +47,7 @@ DETAIL PRODUCTS
                             <h1 class="infor__title">
                             {{ $sp->name }}
                             </h1>
-                            <span class="infor__price text-black" >{{ $variants[0]->price }} VNĐ</span>
+                            <span class="infor__price text-black" >{{ addCommas($variants[0]->price) }} VNĐ</span>
                             @if(count($variants) > 1)
                                 <div class="d-flex">
                                     <span>Mẫu</span>
@@ -77,7 +77,7 @@ DETAIL PRODUCTS
     
                                 <div class="infor__quantity spw">
                                     <a class="infor__quantity-item decrease">-</a>
-                                    <input size="" type="number" id="soluong" min="1" max="50" value="1">
+                                    <input size="" type="number" id="soluong" min="1" value="1" max="{{$variants[0]->stock_quantity}}">
                                     <a class="infor__quantity-item increase">+</a>
                                 </div>
                                 <button class="button add-to-cart" style="background-color:#3b5d50" onclick="addCart({{$id}})" id=>Thêm vào giỏ</button>
@@ -149,7 +149,7 @@ DETAIL PRODUCTS
                                     <a href="/detail/{{$product->productID}}"class="sale__menu-link">
                                         <img src="{{ asset('images/shop/' . $product->image_url ) }}" alt="" class="sale__img">
                                         <span class="sale__name">{{ $product->name }}</span>
-                                        <span class="sale__price"><b>{{ $product->price }}</b></span>
+                                        <span class="sale__price"><b>{{ addCommas($product->price) }} đ</b></span>
                                     </a>
                                 </li>
                             @endforeach
@@ -158,57 +158,48 @@ DETAIL PRODUCTS
                 </div>
                 <br><br><br>
             </div>
-
-    <!-- <script>
-      
-      const increseBtn = $('.increase');
-      const decreseBtn = $('.decrease');
-      const value = $('.value');
-
-      increseBtn.click(()=> {
-          let number = Number(value.text()) + 1;
-          if (!isStockAvalible()){
-              alert('Số lượng hàng vượt quá số lượng tồn kho');
-              return;
-          }
-          value.html(number)
-      })
-
-      decreseBtn.click(()=> {
-          let number = Number(value.text()) - 1;
-          if (isBelowOne()){
-              value.html(1)
-              return;
-          }
-          value.html(number);
-      })
-
-      function isBelowOne(){
-          if (Number(value.text()) <= 1) {
-              return true;
-          }
-          return false;
-      }
-
-      function isStockAvalible(){
-          let number = Number(value.text());
-          if (number >= stock){
-              return false;
-          }
-          return true;
-      }   
-
-
-      const addToCartBtn = $('.add-to-cart');
-
-      addToCartBtn.click(()=> {
-          let productID = addToCartBtn.attr('id');
-          window.location.href = 'index.php?page=cart_add&id=' + productID + '&quantity=' + Number(value.text());
-      })
-
-
-    </script> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>
+        const stock = <?php echo $variants[0]->stock_quantity?>;
+
+        const increseBtn = $('.increase');
+        const decreseBtn = $('.decrease');
+        const valueEle = $('#soluong');
+
+        increseBtn.click(()=> {
+            let number = Number(valueEle.val()) + 1;
+            if (!isStockAvalible()){
+                alert('Vui lòng nhập đúng số lượng hàng tồn');
+                return;
+            }
+            valueEle.val(number);
+        })
+
+        decreseBtn.click(()=> {
+            let number = Number(valueEle.val()) - 1;
+            if (isBelowOne()){
+                valueEle.val(1)
+                return;
+            }
+            valueEle.val(number);
+        })
+
+        function isBelowOne(){
+            if (Number(valueEle.val()) <= 1) {
+                return true;
+            }
+            return false;
+        }
+
+        function isStockAvalible(){
+            let number = Number(valueEle.val());
+            if (number >= stock){
+                return false;
+            }
+            return true;
+        }   
+    </script>
 
     <script>
         let a = <?php echo $variants[0]->variantID ?>

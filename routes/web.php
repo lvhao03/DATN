@@ -206,6 +206,9 @@ Route::get('/cart', function () {
 
 Route::post('/change-info', [UserController::class, 'edit']);
 
+
+Route::post('/cart/modify', [ProductController::class, 'changeQuantityInCart']);
+
 Route::get('social/google', [GoogleController::class, 'redirect']);
 
 Route::get('social/google/callback', [GoogleController::class, 'googleCallback']);
