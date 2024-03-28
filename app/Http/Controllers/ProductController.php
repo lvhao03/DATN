@@ -79,7 +79,7 @@ class ProductController extends Controller
 
     function xoagiohang( Request $request){
         $request->session()->forget('cart');
-        return redirect('/');
+        return redirect('/cart');
     }
 
     function cart(Request $request){
