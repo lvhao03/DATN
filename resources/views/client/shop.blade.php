@@ -66,7 +66,7 @@ SHOP
 								
 							</ul>
 	
-							<!-- <ul class="sidebar__tags" >
+							<ul class="sidebar__tags" >
 								<h2 class="sidebar__heading">TAGS</h2>
 								<li class="sidebar__tag-item"><a href="" class="sidebar__tag-link">Bình thường</a></li>
 								<li class="sidebar__tag-item"><a href="" class="sidebar__tag-link">Cổ điển</a></li>
@@ -78,9 +78,9 @@ SHOP
 								<li class="sidebar__tag-item"><a href="" class="sidebar__tag-link">Trang trí</a></li>
 								<li class="sidebar__tag-item"><a href="" class="sidebar__tag-link">Kiểu mới</a></li>
 								<li class="sidebar__tag-item"><a href="" class="sidebar__tag-link">Thời thượng</a></li>
-							</ul> -->
+							</ul>
 							<ul class="sidebar__tags" >
-								<h2 class="sidebar__heading">Sản phẩm liên quan</h2>
+								<h2 class="sidebar__heading">Sản phẩm nối bật</h2>
 								
 								<div class="sidebar__tag-item info-prod-div row" >
 									<div class="col" href="" class="image-info-prod">
@@ -166,7 +166,7 @@ SHOP
 
 									<img src="{{ asset('images/shop/' .$product->image_url) }}" class="img-fluid product-thumbnail">
 									<h3 class="product-title">{{ $product->name }}</h3>
-									<strong class="product-price">{{ addCommas($product->price) }} đ</strong>
+									<strong class="product-price">${{ $product->price }}</strong>
 									<span class="icon-cross">
 										<img src="images/cross.svg" class="img-fluid">
 									</span>

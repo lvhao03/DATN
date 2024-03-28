@@ -26,7 +26,3 @@ function getImage($image)
         }
     }
 }
-
-function addCommas($number) {
-    return number_format($number);
-}
