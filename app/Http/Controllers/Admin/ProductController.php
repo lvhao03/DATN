@@ -28,7 +28,7 @@ class ProductController extends Controller
 {   
     $request->validate([
         'name' => 'required|string|max:100',
-        'categoryID' => 'required|exists:catergory,catergoryID',
+        'categoryID' => 'required|exists:category,categoryID',
         'description' => 'required|string|max:255',
         'thumnail' => 'required|image',
     ], [
@@ -70,7 +70,7 @@ class ProductController extends Controller
         $categorys = Category::all();
 
         $categoryID = $product->category_id;
-        $category_id = $categorys->firstWhere('catergoryID', $categoryID);
+        $category_id = $categorys->firstWhere('categoryID', $categoryID);
         return view('admin.product.edit', compact('product','category_id','categorys','title'));
     }
 
@@ -78,7 +78,7 @@ class ProductController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:100',
-            'categoryID' => 'required|exists:catergory,catergoryID',
+            'categoryID' => 'required|exists:catergory,categoryID',
             'description' => 'required|string|max:255',
         ], [
             'name.required' => 'Tên không được để trống',
