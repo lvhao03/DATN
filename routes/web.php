@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\HomeController as HomeAdminController;
 use App\Http\Controllers\Admin\OrderController as OrderAdminController;
 use App\Http\Controllers\Admin\ProductController as AdminProductController;
 use App\Http\Controllers\Admin\StaffController as StaffAdminController;
+use App\Http\Controllers\Admin\ProfileController as ProfileAdminController;
 use App\Http\Controllers\Admin\VariantController as VariantAdminController;
 use App\Http\Controllers\Admin\VoucherController as VoucherAdminController;
 use App\Http\Controllers\PaymentController;
@@ -45,7 +46,12 @@ Route::middleware(['checkauth','checkadmin'])->group(function () {
     Route::prefix('admin')->name('admin.')->group(
         function () {
             Route::get('/', [HomeAdminController::class, 'index'])->name('home');
-
+            Route::prefix('profile')->group(
+                function (){
+                    Route::get('/', [ProfileAdminController::class, 'index'])->name('profile');
+                    Route::post('/edit', [ProfileAdminController::class, 'edit'])->name('editProfile');
+                }
+            );
             Route::prefix('product')->group(
                 function () {
                     Route::get('/', [AdminProductController::class, 'index'])->name('product');

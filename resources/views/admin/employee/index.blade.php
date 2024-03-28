@@ -24,7 +24,6 @@
                 <div class="card-header">
                     <div class="card-title">
                         Danh sách nhân viên
-                        <a href="{{ route('admin.trashStaff')}}">Thùng rác</a>
                     </div>
                 </div>
 
@@ -74,6 +73,9 @@
                     </table>
                 <a href="{{ route('admin.createStaff') }}">
                     <button class="btn btn-primary">Thêm nhân viên</button>
+                </a>
+                <a href="{{ route('admin.trashStaff')}}">
+                    <button class="btn btn-primary">Thùng rác</button>
                 </a>
                 </div>
             </div>

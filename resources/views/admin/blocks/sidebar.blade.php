@@ -71,7 +71,7 @@
                         </li>
                         <li class="slide">
                             <a href="{{ route('admin.comment') }}"
-                                class="{{ Route::is('admin.comment') ? 'active' : '' }} side-menu__item">Danh sách bình luận</a>
+                                class="{{ Route::is('admin.comment') ? 'active' : '' }} side-menu__item">Bình luận</a>
                         </li>
                     </ul>
                 </li>

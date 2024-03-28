@@ -7,11 +7,11 @@
 @section('content')
     <div class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb">
         <div class="my-auto">
-            <h5 class="page-title fs-21 mb-1">Danh sách nhân viên</h5>
+            <h5 class="page-title fs-21 mb-1">Danh sách thùng rác nhân viên</h5>
             <nav>
                 <ol class="breadcrumb mb-0">
                     <li class="breadcrumb-item"><a href="{{ route('admin.staff')}}">Nhân viên</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Danh sách nhân viên</li>
+                    <li class="breadcrumb-item active" aria-current="page">Thùng rác nhân viên</li>
                 </ol>
             </nav>
         </div>
@@ -22,7 +22,7 @@
 
                 <div class="card-header">
                     <div class="card-title">
-                        Danh sách nhân viên
+                        Thùng rác nhân viên
                     </div>
                 </div>
 

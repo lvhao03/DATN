@@ -32,7 +32,7 @@
                     <i class="header-icon fe fe-align-left"></i>
                 </a>
                 <div class="main-header-center d-none d-lg-block">
-                    <input class="form-control" placeholder="Search for anything..." type="search"> <button
+                    <input class="form-control" placeholder="Tìm kiếm" type="search"> <button
                         class="btn"><i class="fa fa-search d-none d-md-block"></i></button>
                 </div>
                 <!-- End::header-link -->
@@ -492,10 +492,8 @@
                             </div>
                         </div>
                     </li>
-                    <li><a class="dropdown-item d-flex" href="profile.html"><i
-                                class="bx bx-user-circle fs-18 me-2 op-7"></i>Profile</a></li>
-                    <li><a class="dropdown-item d-flex" href="editprofile.html"><i
-                                class="bx bx-cog fs-18 me-2 op-7"></i>Edit Profile </a></li>
+                    <li><a class="dropdown-item d-flex" href="{{ route('admin.profile')}}"><i
+                                class="bx bx-user-circle fs-18 me-2 op-7"></i>Hồ sơ</a></li>
                     <li><a class="dropdown-item d-flex border-block-end" href="mail.html"><i
                                 class="bx bxs-inbox fs-18 me-2 op-7"></i>Inbox</a></li>
                     <li><a class="dropdown-item d-flex" href="chat.html"><i

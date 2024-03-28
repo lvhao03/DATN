@@ -25,7 +25,6 @@
                     <div class="card-title">
                         Bình luận
                     </div>
-                    <a href="{{ route('admin.trashComment')}}">Thùng rác</a>
                 </div>
 
                 <div class="card-body">
@@ -64,6 +63,9 @@
                     </table>
                 <a href="{{ route('admin.createComment') }}">
                     <button class="btn btn-primary">Thêm bình luận</button>
+                </a>
+                <a href="{{ route('admin.trashComment')}}">
+                    <button class="btn btn-primary">Thùng rác</button>
                 </a>
                 </div>
             </div>
