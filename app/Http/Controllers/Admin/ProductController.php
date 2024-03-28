@@ -25,43 +25,27 @@ class ProductController extends Controller
     }
 
     public function create_(Request $request)
-{   
-    $request->validate([
-        'name' => 'required|string|max:100',
-        'categoryID' => 'required|exists:catergory,catergoryID',
-        'description' => 'required|string|max:255',
-        'thumnail' => 'required|image',
-    ], [
-        'name.required' => 'Tên không được để trống',
-        'name.max' => 'Tên không được vượt quá 100 ký tự',
-        'categoryID.required' => 'Vui lòng chọn danh mục',
-        'categoryID.exists' => 'Danh mục không tồn tại',
-        'description.required' => 'Mô tả không được để trống',
-        'description.max' => 'Nội dung mô tả không được vượt quá 255 ký tự',
-        'thumnail.required' => 'Hình không được để trống',
-        'thumnail.image' => 'Hình ảnh không hợp lệ',
-    ]);
-    
-    $data = [
-        'name' => $request->name,
-        'category_id' => $request->categoryID,
-        'description' => $request->description,
-        'thumnail' => '',
-    ];
+    {
+        $data = [
+            'name' => $request->name,
+            'category_id' => $request->categoryID,
+            'description' => $request->description,
+            'thumnail' => $request->image,
+        ];
 
-    // Kiểm tra xem có file ảnh được tải lên hay không
-    if ($request->hasFile('thumnail')) {
-        $image = $request->file('thumnail');
-        $imageName = rand(0,99) . '.' . $image->getClientOriginalExtension();
-        $image->move(public_path('images/product'), $imageName);
-        $data['thumnail'] = $imageName;
+        // Kiểm tra xem có file ảnh được tải lên hay không
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = rand(0,99) . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('images/product'), $imageName);
+            $data['thumnail'] = $imageName;
+            Product::create($data);
+            return redirect()->route('admin.product'); 
+        }
+        $data['thumnail'] = '';
+        Product::create($data); 
+        return redirect()->route('admin.product'); 
     }
-
-    Product::create($data);
-    notify()->success('Thêm sản phẩm thành công', 'Thêm sản phẩm thành công');
-    return redirect()->route('admin.product');
-}
-
     
     public function edit($productID)
     {
@@ -76,34 +60,22 @@ class ProductController extends Controller
 
     public function edit_(Request $request)
     {
-        $request->validate([
-            'name' => 'required|string|max:100',
-            'categoryID' => 'required|exists:catergory,catergoryID',
-            'description' => 'required|string|max:255',
-        ], [
-            'name.required' => 'Tên không được để trống',
-            'name.max' => 'Tên không được vượt quá 100 ký tự',
-            'categoryID.exists' => 'Danh mục không tồn tại',
-            'description.required' => 'Mô tả không được để trống',
-            'description.max' => 'Nội dung mô tả không được vượt quá 255 ký tự',
-        ]);
-
     $product = Product::find($request->productID);
     $data = [
         'name' => $request->name,
         'category_id' => $request->categoryID,
         'description' => $request->description,
-        'thumnail' => '',
     ];
 
-    if ($request->hasFile('thumnail')) {
-        $image = $request->file('thumnail');
+    if ($request->hasFile('image')) {
+        $image = $request->file('image');
         $imageName = rand(0,99) . '.' . $image->getClientOriginalExtension();
         $image->move(public_path('images/product'), $imageName);
         $data['thumnail'] = $imageName;
+        $product->update($data);
+        return redirect()->route('admin.editProduct', ['id' => $request->productID]);
     }
     $product->update($data);
-    notify()->success('Cập nhật sản phẩm thành công', 'Cập nhật thành công');
     return redirect()->route('admin.editProduct', ['id' => $request->productID]);
     }
 
