@@ -31,20 +31,21 @@ CART
                     <table class="table">
                       <thead>
                         <tr>
-                          <th class="product-thumbnail">Image</th>
-                          <th class="product-name">Product</th>
-                          <th class="product-price">Price</th>
-                          <th class="product-quantity">Quantity</th>
-                          <th class="product-total">Total</th>
-                          <th class="product-remove">Remove</th>
+                          <th class="product-thumbnail">Ảnh</th>
+                          <th class="product-name">Tên sản phẩm</th>
+                          <th class="product-price">Giá</th>
+                          <th class="product-quantity">Số lượng</th>
+                          <th class="product-total">Tổng tiền</th>
+                          <th class="product-remove">Xóa</th>
                         </tr>
                       </thead>
                       <tbody>
                       @php
                         $cart = session('cart');
                         $totalMoney = 0;
+                        
                       @endphp
-                      @foreach($cart as $c)
+                      @foreach($cart as $key => $c)
                         @php
                                 $productID = $c[0];            
                                 $variantID = $c[1];            
@@ -55,7 +56,6 @@ CART
                                 
                                 $total = $price * $quantity;
                                 $totalMoney += $total;
-                              
                           
                         @endphp
                         <tr>
@@ -65,20 +65,20 @@ CART
                           <td class="product-name">
                             <h2 class="h5 text-black">{{$ten_sp}}</h2>
                           </td>
-                          <td>${{$price}}</td>
+                          <td>{{ addCommas($price)}} đ</td>
                           <td>
                             <div class="input-group mb-3 d-flex align-items-center quantity-container" style="max-width: 120px;">
-                              <div class="input-group-prepend">
+                              <div class="input-group-prepend" onclick="decrease(this)">
                                 <button class="btn btn-outline-black decrease" type="button">&minus;</button>
                               </div>
-                              <input type="text" class="form-control text-center quantity-amount" value="{{$c[4]}}" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
-                              <div class="input-group-append">
+                              <input id="{{ $key }}" data-stock="{{ $c[5] }}" type="text" class="form-control text-center quantity-amount" value="{{$c[4]}}" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                              <div class="input-group-append" onclick="increase(this)">
                                 <button class="btn btn-outline-black increase" type="button">&plus;</button>
                               </div>
                             </div>
         
                           </td>
-                          <td>${{$total}}</td>
+                          <td>{{addCommas($total)}} đ</td>
                           <td><a href="/deteleCart/{{$variantID}}" class="btn btn-black btn-sm">X</a></td>
                         </tr>
                         @endforeach
@@ -132,7 +132,7 @@ CART
                           <span class="text-black">Total</span>
                         </div>
                         <div class="col-md-6 text-right">
-                          <strong class="text-black">{{$totalMoney}}</strong>
+                          <strong class="text-black">{{addCommas($totalMoney)}} đ</strong>
                         </div>
                       </div>
                       
@@ -148,5 +148,78 @@ CART
               </div>
             </div>
           </div>
-		
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        var csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+        function isStockAvalible(stock, number){
+            if (number > stock){
+                return false;
+            }
+            return true;
+        }   
+
+        function increase(e){
+            var element = $(e);
+            const valueEle = element.siblings('.quantity-amount');
+            let number = Number(valueEle.val()) + 1;
+            if (!isStockAvalible(valueEle.data('stock'), number)){
+                alert('Vui lòng nhập đúng số lượng hàng tồn');
+                valueEle.val(valueEle.data('stock'));
+                return;
+            }
+            let index = valueEle.attr('id');
+            valueEle.val(number);
+            $.ajax({
+                url: '/cart/modify',
+                data: {
+                    quantity: number,
+                    index: index
+                },
+                type: 'POST',
+                dataType: 'json',
+                headers: {
+                    'X-CSRF-TOKEN': csrfToken
+                },
+                success: function (result){
+                    window.location.reload();
+                }
+            })
+        }
+
+        function decrease(e){
+          var element = $(e);
+            const valueEle = element.siblings('.quantity-amount');
+            let number = Number(valueEle.val()) - 1;
+            if (isBelowOne(number)){
+                alert('Vui lòng nhập đúng số lượng đúng');
+                valueEle.val(1);
+                return;
+            }
+            let index = valueEle.attr('id');
+            valueEle.val(number);
+            $.ajax({
+                url: '/cart/modify',
+                data: {
+                    quantity: number,
+                    index: index
+                },
+                type: 'POST',
+                dataType: 'json',
+                headers: {
+                    'X-CSRF-TOKEN': csrfToken
+                },
+                success: function (result){
+                    window.location.reload();
+                }
+            })
+        }
+
+        function isBelowOne(number){
+            if (Number(number) < 1) {
+                return true;
+            }
+            return false;
+        }
+
+    </script>
 @endsection
