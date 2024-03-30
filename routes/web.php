@@ -112,6 +112,7 @@ Route::middleware(['checkauth','checkadmin'])->group(function () {
             Route::prefix('voucher')->group(
                 function () {
                     Route::get('/', [VoucherAdminController::class, 'index'])->name('voucher');
+<<<<<<< HEAD
 
                     Route::get('list', [VoucherAdminController::class, 'type_voucher'])->name('typeVoucher');
                     Route::get('add', [VoucherAdminController::class, 'add_voucher'])->name('addVoucher');
@@ -128,6 +129,8 @@ Route::middleware(['checkauth','checkadmin'])->group(function () {
                     Route::post('edit_voucher/', [VoucherAdminController::class, 'edit_voucher__'])->name('edit_voucher__');
                   
 
+=======
+>>>>>>> a39ca7f48a811345fb30d2f72e42b3dcffd8469c
                     Route::get('add/', [VoucherAdminController::class, 'index'])->name('addVoucher');
                     Route::post('add/', [VoucherAdminController::class, 'index'])->name('postAddVoucher');
                     Route::get('edit/{id?}', [VoucherAdminController::class, 'index'])->name('editVoucher')->where(['id' => '[0-9]+']);
