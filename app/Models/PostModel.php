@@ -14,7 +14,13 @@ class PostModel extends Model
         'title',
         'thumnail',
         'admin_id',
+<<<<<<< HEAD
         'content'
+=======
+        'content',
+        'name_admin',
+        'post_time',
+>>>>>>> 381b5508eacd4586eacceede5dacf85fd4dff3af
     ];
     public $timestamps =false;
 }

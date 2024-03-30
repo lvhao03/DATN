@@ -32,22 +32,47 @@
                         <div class="form-group">
                             <label for="exampleInputPassword1">Tiêu đề bài viết</label>
                             <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Tiêu đề bài viết" name="title">
+<<<<<<< HEAD
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Tiêu đề bài viết</label>
                             <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Hình ảnh" name="thumnail">
+=======
+                            @error('title')
+                            <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Hình ảnh bài viết</label>
+                            <div class="p-4 border rounded-6 mb-4 form-group">
+                                <div>
+                                    <input class="form-control" type="file" id="formFile" name="thumnail">
+                                </div>
+                            </div>
+>>>>>>> 381b5508eacd4586eacceede5dacf85fd4dff3af
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Người đăng</label>
                             <select class="form-select" name="admin_id" id="">
                                 @foreach($admins as $admin)
+<<<<<<< HEAD
                                     <option value="{{ $admin->employeeID }}">{{ $admin->name }}</option>
+=======
+                                    <option value="{{ $admin->userID }}">{{ $admin->name }}</option>
+>>>>>>> 381b5508eacd4586eacceede5dacf85fd4dff3af
                                 @endforeach
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Nội dung</label>
+<<<<<<< HEAD
                             <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Nội dung" name="content">
+=======
+                            <textarea class="form-control" name="content"> </textarea>
+                            @error('content')
+                            <div class="text-danger">{{ $message }}</div>
+                            @enderror
+>>>>>>> 381b5508eacd4586eacceede5dacf85fd4dff3af
                         </div>
 
                         <button type="submit" class="btn btn-primary">Thêm mới</button>

@@ -31,7 +31,14 @@
                         @csrf
                         <div class="form-group">
                             <label for="exampleInputPassword1">Màu sắc</label>
+<<<<<<< HEAD
                             <input type="text" class="form-control" id="exampleInputPassword1"  name="color">
+=======
+                            <input type="text" class="form-control @error('color') is-invalid @enderror" id="exampleInputPassword1"  name="color">
+                            @error('color')
+                            <div class="text-danger">{{ $message }}</div>
+                            @enderror
+>>>>>>> 381b5508eacd4586eacceede5dacf85fd4dff3af
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Kích thước</label>
@@ -60,11 +67,25 @@
                        
                         <div class="form-group">
                             <label for="exampleInputPassword1">Số lượng tồn kho</label>
+<<<<<<< HEAD
                             <input type="number" class="form-control" id="exampleInputPassword1"  name="stock">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Giá</label>
                             <input type="number" class="form-control" id="exampleInputPassword1"  name="price">
+=======
+                            <input type="number" class="form-control @error('stock') is-invalid @enderror" id="exampleInputPassword1"  name="stock">
+                            @error('stock')
+                            <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Giá</label>
+                            <input type="number" class="form-control @error('price') is-invalid @enderror" id="exampleInputPassword1"  name="price">
+                            @error('price')
+                            <div class="text-danger">{{ $message }}</div>
+                            @enderror
+>>>>>>> 381b5508eacd4586eacceede5dacf85fd4dff3af
                         </div>
 
 

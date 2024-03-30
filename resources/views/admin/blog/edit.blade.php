@@ -33,6 +33,7 @@
 
                         <div class="form-group">
                             <label for="exampleInputPassword1">Tiêu đề bài viết</label>
+<<<<<<< HEAD
                             <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{ $post->title }}" disabled>
                         </div>
                         <div class="form-group">
@@ -48,6 +49,39 @@
                         <div class="form-group">
                             <label for="exampleInputPassword1">Nội dung</label>
                             <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Password" name="content" value="{{ $post->content }}">
+=======
+                            <input type="text" name="title" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{ $post->title }}">
+                            @error('title')
+                            <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Hình ảnh bài viết</label>
+                            <div class="p-4 border rounded-6 mb-4 form-group">
+                                <div>
+                                    <input class="form-control" type="file" id="formFile" name="thumnail">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Người đăng</label>
+                            <select class="form-select" name="admin_id" id="">
+                                @foreach($admins as $admin)
+                                    <option value="{{ $admin->userID }}"
+                                    @if($admin->userID==$post->admin_id) 
+                                        selected
+                                    @endif
+                                    >{{ $admin->name }} </option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Nội dung</label>
+                            <textarea class="form-control" name="content" > {{ $post->content }}</textarea>
+                            @error('content')
+                            <div class="text-danger">{{ $message }}</div>
+                            @enderror
+>>>>>>> 381b5508eacd4586eacceede5dacf85fd4dff3af
                         </div>
 
                         <button type="submit" class="btn btn-primary">Sửa bài viết</button>

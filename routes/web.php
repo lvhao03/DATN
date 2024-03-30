@@ -72,6 +72,17 @@ Route::middleware(['checkauth','checkadmin'])->group(function () {
                     Route::get('edit/{id?}', [VariantAdminController::class, 'edit'])->name('editVariant')->where(['id' => '[0-9]+']);
                     Route::post('edit', [VariantAdminController::class, 'edit_'])->name('postEditVariant');
                     Route::get('delete/{id?}', [VariantAdminController::class, 'delete'])->name('deleteVariant')->where(['id' => '[0-9]+']);
+<<<<<<< HEAD
+=======
+                    
+                    
+                    Route::get('addimg/{id?}', [VariantAdminController::class, 'createimg'])->name('addimgVariant');
+                    Route::post('addimg', [VariantAdminController::class, 'createimg_'])->name('postAddimgVariant');
+                    Route::get('editimg/{id?}', [VariantAdminController::class, 'editimg'])->name('editimgVariant')->where(['id' => '[0-9]+']);
+                    Route::post('editimg', [VariantAdminController::class, 'editimg_'])->name('postEditimgVariant');
+                    Route::get('deleteimg/{id?}', [VariantAdminController::class, 'deleteimg'])->name('deleteimgVariant')->where(['id' => '[0-9]+']);
+
+>>>>>>> 381b5508eacd4586eacceede5dacf85fd4dff3af
                 }
             );
             Route::prefix('user')->group(
@@ -113,6 +124,7 @@ Route::middleware(['checkauth','checkadmin'])->group(function () {
                 function () {
                     Route::get('/', [VoucherAdminController::class, 'index'])->name('voucher');
 <<<<<<< HEAD
+<<<<<<< HEAD
 
                     Route::get('list', [VoucherAdminController::class, 'type_voucher'])->name('typeVoucher');
                     Route::get('add', [VoucherAdminController::class, 'add_voucher'])->name('addVoucher');
@@ -131,6 +143,8 @@ Route::middleware(['checkauth','checkadmin'])->group(function () {
 
 =======
 >>>>>>> a39ca7f48a811345fb30d2f72e42b3dcffd8469c
+=======
+>>>>>>> 381b5508eacd4586eacceede5dacf85fd4dff3af
                     Route::get('add/', [VoucherAdminController::class, 'index'])->name('addVoucher');
                     Route::post('add/', [VoucherAdminController::class, 'index'])->name('postAddVoucher');
                     Route::get('edit/{id?}', [VoucherAdminController::class, 'index'])->name('editVoucher')->where(['id' => '[0-9]+']);
