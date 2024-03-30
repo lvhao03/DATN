@@ -5,9 +5,14 @@ use Carbon\Carbon;
 use App\Http\Controllers\Controller;
 use App\Models\PostModel;
 <<<<<<< HEAD
+<<<<<<< HEAD
 use App\Models\EmployeeModel;
 
 
+=======
+use App\Models\User;
+use Illuminate\Support\Facades\DB;
+>>>>>>> 381b5508eacd4586eacceede5dacf85fd4dff3af
 =======
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
@@ -26,7 +31,11 @@ class BlogController extends Controller
     {
         $title = 'Thêm bài viết';
 <<<<<<< HEAD
+<<<<<<< HEAD
         $admins = EmployeeModel::all();
+=======
+        $admins = User::all()->where('role',1);
+>>>>>>> 381b5508eacd4586eacceede5dacf85fd4dff3af
 =======
         $admins = User::all()->where('role',1);
 >>>>>>> 381b5508eacd4586eacceede5dacf85fd4dff3af
@@ -36,7 +45,10 @@ class BlogController extends Controller
     public function create_(Request $request)
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 381b5508eacd4586eacceede5dacf85fd4dff3af
        
         $request->validate([
             'title' => 'required|string|max:100',
@@ -56,21 +68,30 @@ class BlogController extends Controller
         ->where('userID', '=', $request->admin_id)
         ->first();
         $name_admin = $name ? $name->name : null;
+<<<<<<< HEAD
+>>>>>>> 381b5508eacd4586eacceede5dacf85fd4dff3af
+=======
 >>>>>>> 381b5508eacd4586eacceede5dacf85fd4dff3af
         PostModel::create([
             'title'=> $request->title,
             'thumnail'=> $request->thumnail,
             'admin_id'=> $request->admin_id,
 <<<<<<< HEAD
+<<<<<<< HEAD
             'content' => $request->content,
         ]);
 =======
+=======
+>>>>>>> 381b5508eacd4586eacceede5dacf85fd4dff3af
             'name_admin'=>  $name_admin,
             'content' => $request->content,
             'post_time'=> Carbon::now(),
         ]);
         notify()->success('Tạo thành công', 'Tạo thành công');
 
+<<<<<<< HEAD
+>>>>>>> 381b5508eacd4586eacceede5dacf85fd4dff3af
+=======
 >>>>>>> 381b5508eacd4586eacceede5dacf85fd4dff3af
         return redirect()->route('admin.blog');
     }
@@ -78,7 +99,11 @@ class BlogController extends Controller
     {
         $title = 'Chỉnh sửa bài viết';
 <<<<<<< HEAD
+<<<<<<< HEAD
         $admins = EmployeeModel::all();
+=======
+        $admins =  User::all()->where('role',1);
+>>>>>>> 381b5508eacd4586eacceede5dacf85fd4dff3af
 =======
         $admins =  User::all()->where('role',1);
 >>>>>>> 381b5508eacd4586eacceede5dacf85fd4dff3af
@@ -88,10 +113,13 @@ class BlogController extends Controller
     public function edit_(Request $request)
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         PostModel::where('postID', $request->postID)->update([
             'content' => $request->content
         ]);
 =======
+=======
+>>>>>>> 381b5508eacd4586eacceede5dacf85fd4dff3af
         $request->validate([
             'title' => 'required|string|max:100',
             'content' => 'required|string',
@@ -120,6 +148,9 @@ class BlogController extends Controller
         ]);
         notify()->success('Chỉnh sửa thành công', 'Chỉnh sửa thành công');
 
+<<<<<<< HEAD
+>>>>>>> 381b5508eacd4586eacceede5dacf85fd4dff3af
+=======
 >>>>>>> 381b5508eacd4586eacceede5dacf85fd4dff3af
         return redirect()->route('admin.editBlog', ['id' => $request->postID]);
     }

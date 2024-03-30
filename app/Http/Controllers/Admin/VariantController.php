@@ -10,9 +10,12 @@ use App\Models\Variant_images;
 use App\Models\SizeModel;
 use App\Models\Product;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> 381b5508eacd4586eacceede5dacf85fd4dff3af
 =======
 >>>>>>> 381b5508eacd4586eacceede5dacf85fd4dff3af
 use Illuminate\Http\Request;
@@ -25,6 +28,10 @@ class VariantController extends Controller
         return view("admin.variant.index",compact("title","data"));
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+>>>>>>> 381b5508eacd4586eacceede5dacf85fd4dff3af
 =======
 
 >>>>>>> 381b5508eacd4586eacceede5dacf85fd4dff3af
@@ -39,7 +46,10 @@ class VariantController extends Controller
     public function create_(Request $request)
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 381b5508eacd4586eacceede5dacf85fd4dff3af
         $request->validate([
             'color' => 'required|string|max:100',
             'stock' => 'required|string',
@@ -50,6 +60,9 @@ class VariantController extends Controller
             'stock.required' => 'Số lượng tồn kho không được bỏ trống',
             'price.required' => 'Giá thành không được bỏ trống',
         ]);
+<<<<<<< HEAD
+>>>>>>> 381b5508eacd4586eacceede5dacf85fd4dff3af
+=======
 >>>>>>> 381b5508eacd4586eacceede5dacf85fd4dff3af
         Variant::create([
             'color'=> $request->color,
@@ -60,7 +73,11 @@ class VariantController extends Controller
             'price'=> $request->price,
         ]);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+        notify()->success('Tạo biến thể thành công', 'Tạo thành công');
+>>>>>>> 381b5508eacd4586eacceede5dacf85fd4dff3af
 =======
         notify()->success('Tạo biến thể thành công', 'Tạo thành công');
 >>>>>>> 381b5508eacd4586eacceede5dacf85fd4dff3af
@@ -78,7 +95,10 @@ class VariantController extends Controller
     public function edit_(Request $request)
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 381b5508eacd4586eacceede5dacf85fd4dff3af
         $request->validate([
             'color' => 'required|string|max:100',
             'stock' => 'required|string',
@@ -89,6 +109,9 @@ class VariantController extends Controller
             'stock.required' => 'Số lượng tồn kho không được bỏ trống',
             'price.required' => 'Giá thành không được bỏ trống',
         ]);
+<<<<<<< HEAD
+>>>>>>> 381b5508eacd4586eacceede5dacf85fd4dff3af
+=======
 >>>>>>> 381b5508eacd4586eacceede5dacf85fd4dff3af
         Variant::where('variantID', $request->variantID)->update([
             'color'=> $request->color,
@@ -104,9 +127,12 @@ class VariantController extends Controller
     public function delete($variantID)
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         Variant_images::destroy($variantID);
         Variant::destroy($variantID);
 =======
+=======
+>>>>>>> 381b5508eacd4586eacceede5dacf85fd4dff3af
         Variant::destroy($variantID);
         notify()->success('Sửa biến thể thành công', 'Xóa thành công');
         return redirect()->back();
@@ -166,6 +192,9 @@ class VariantController extends Controller
         Variant_images::where('variant_id',$variantID)->delete();
         notify()->success('Xóa ảnh thành công', 'Xóa thành công');
 
+<<<<<<< HEAD
+>>>>>>> 381b5508eacd4586eacceede5dacf85fd4dff3af
+=======
 >>>>>>> 381b5508eacd4586eacceede5dacf85fd4dff3af
         return redirect()->back();
     }

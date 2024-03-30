@@ -15,7 +15,13 @@ class PostModel extends Model
         'thumnail',
         'admin_id',
 <<<<<<< HEAD
+<<<<<<< HEAD
         'content'
+=======
+        'content',
+        'name_admin',
+        'post_time',
+>>>>>>> 381b5508eacd4586eacceede5dacf85fd4dff3af
 =======
         'content',
         'name_admin',

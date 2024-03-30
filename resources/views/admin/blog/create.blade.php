@@ -33,11 +33,14 @@
                             <label for="exampleInputPassword1">Tiêu đề bài viết</label>
                             <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Tiêu đề bài viết" name="title">
 <<<<<<< HEAD
+<<<<<<< HEAD
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Tiêu đề bài viết</label>
                             <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Hình ảnh" name="thumnail">
 =======
+=======
+>>>>>>> 381b5508eacd4586eacceede5dacf85fd4dff3af
                             @error('title')
                             <div class="text-danger">{{ $message }}</div>
                             @enderror
@@ -49,6 +52,9 @@
                                     <input class="form-control" type="file" id="formFile" name="thumnail">
                                 </div>
                             </div>
+<<<<<<< HEAD
+>>>>>>> 381b5508eacd4586eacceede5dacf85fd4dff3af
+=======
 >>>>>>> 381b5508eacd4586eacceede5dacf85fd4dff3af
                         </div>
                         <div class="form-group">
@@ -56,7 +62,11 @@
                             <select class="form-select" name="admin_id" id="">
                                 @foreach($admins as $admin)
 <<<<<<< HEAD
+<<<<<<< HEAD
                                     <option value="{{ $admin->employeeID }}">{{ $admin->name }}</option>
+=======
+                                    <option value="{{ $admin->userID }}">{{ $admin->name }}</option>
+>>>>>>> 381b5508eacd4586eacceede5dacf85fd4dff3af
 =======
                                     <option value="{{ $admin->userID }}">{{ $admin->name }}</option>
 >>>>>>> 381b5508eacd4586eacceede5dacf85fd4dff3af
@@ -66,12 +76,18 @@
                         <div class="form-group">
                             <label for="exampleInputPassword1">Nội dung</label>
 <<<<<<< HEAD
+<<<<<<< HEAD
                             <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Nội dung" name="content">
 =======
+=======
+>>>>>>> 381b5508eacd4586eacceede5dacf85fd4dff3af
                             <textarea class="form-control" name="content"> </textarea>
                             @error('content')
                             <div class="text-danger">{{ $message }}</div>
                             @enderror
+<<<<<<< HEAD
+>>>>>>> 381b5508eacd4586eacceede5dacf85fd4dff3af
+=======
 >>>>>>> 381b5508eacd4586eacceede5dacf85fd4dff3af
                         </div>
 

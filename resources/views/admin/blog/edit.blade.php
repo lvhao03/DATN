@@ -34,6 +34,7 @@
                         <div class="form-group">
                             <label for="exampleInputPassword1">Tiêu đề bài viết</label>
 <<<<<<< HEAD
+<<<<<<< HEAD
                             <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{ $post->title }}" disabled>
                         </div>
                         <div class="form-group">
@@ -50,6 +51,8 @@
                             <label for="exampleInputPassword1">Nội dung</label>
                             <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Password" name="content" value="{{ $post->content }}">
 =======
+=======
+>>>>>>> 381b5508eacd4586eacceede5dacf85fd4dff3af
                             <input type="text" name="title" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{ $post->title }}">
                             @error('title')
                             <div class="text-danger">{{ $message }}</div>
@@ -81,6 +84,9 @@
                             @error('content')
                             <div class="text-danger">{{ $message }}</div>
                             @enderror
+<<<<<<< HEAD
+>>>>>>> 381b5508eacd4586eacceede5dacf85fd4dff3af
+=======
 >>>>>>> 381b5508eacd4586eacceede5dacf85fd4dff3af
                         </div>
 

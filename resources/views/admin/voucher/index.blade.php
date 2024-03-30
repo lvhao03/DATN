@@ -53,6 +53,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                                     <td>{{  Carbon\Carbon::parse($row->expired_date)->format('d/m/Y') }} </td>
 =======
                                     <td>{{ Carbon\Carbon::parse($row->expired_date)->format('d/m/Y') }} </td>
@@ -60,6 +61,9 @@
 =======
                                     <td>{{ Carbon\Carbon::parse($row->expired_date)->format('d/m/Y') }} </td>
 >>>>>>> a39ca7f48a811345fb30d2f72e42b3dcffd8469c
+=======
+                                    <td>{{ Carbon\Carbon::parse($row->expired_date)->format('d/m/Y') }} </td>
+>>>>>>> 381b5508eacd4586eacceede5dacf85fd4dff3af
 =======
                                     <td>{{ Carbon\Carbon::parse($row->expired_date)->format('d/m/Y') }} </td>
 >>>>>>> 381b5508eacd4586eacceede5dacf85fd4dff3af

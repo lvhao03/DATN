@@ -33,12 +33,18 @@
                         <div class="form-group">
                             <label for="exampleInputPassword1">Màu sắc</label>
 <<<<<<< HEAD
+<<<<<<< HEAD
                             <input type="text" class="form-control" value="{{ $variant->color }}" id="exampleInputPassword1"  name="color">
 =======
+=======
+>>>>>>> 381b5508eacd4586eacceede5dacf85fd4dff3af
                             <input type="text"  class="form-control @error('color') is-invalid @enderror" value="{{ $variant->color }}" id="exampleInputPassword1"  name="color">
                             @error('color')
                             <div class="text-danger">{{ $message }}</div>
                             @enderror
+<<<<<<< HEAD
+>>>>>>> 381b5508eacd4586eacceede5dacf85fd4dff3af
+=======
 >>>>>>> 381b5508eacd4586eacceede5dacf85fd4dff3af
                         </div>
                         <div class="form-group">
@@ -83,12 +89,15 @@
                         <div class="form-group">
                             <label for="exampleInputPassword1">Số lượng tồn kho</label>
 <<<<<<< HEAD
+<<<<<<< HEAD
                             <input type="number" class="form-control" value="{{$variant->stock_quantity}}" id="exampleInputPassword1"  name="stock">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Giá</label>
                             <input type="number" class="form-control" value="{{$variant->price}}" id="exampleInputPassword1"  name="price">
 =======
+=======
+>>>>>>> 381b5508eacd4586eacceede5dacf85fd4dff3af
                             <input type="number"class="form-control @error('stock') is-invalid @enderror" value="{{$variant->stock_quantity}}" id="exampleInputPassword1"  name="stock">
                             @error('stock')
                             <div class="text-danger">{{ $message }}</div>
@@ -100,6 +109,9 @@
                             @error('price')
                             <div class="text-danger">{{ $message }}</div>
                             @enderror
+<<<<<<< HEAD
+>>>>>>> 381b5508eacd4586eacceede5dacf85fd4dff3af
+=======
 >>>>>>> 381b5508eacd4586eacceede5dacf85fd4dff3af
                         </div>
 
