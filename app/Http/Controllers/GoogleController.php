@@ -35,7 +35,8 @@ class GoogleController extends Controller
                     'provider' => 'google',
                     'provider_id' => $user->id,
                     'image_url' => 'images/user/default-avatar.jpg',
-                    'address' => ''
+                    'address' => '',
+                    'email_verified_at' => now()
                 ]);
                 Auth::login($newUser);
                 return redirect('/');

@@ -8,7 +8,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\SoftDeletes;
-class User extends Authenticatable
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Notifications\EmailVerification;
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable;
     use SoftDeletes;
@@ -28,7 +30,8 @@ class User extends Authenticatable
         'address',
         'provider',
         'provider_id',
-        'role'
+        'role',
+        'email_verified_at',
     ];
 
     /**
