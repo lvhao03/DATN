@@ -11,7 +11,8 @@ class OrderDetailModel extends Model
     public $table="order_detail";
     protected $primaryKey = 'order_detailID';
     public $fillable=[
-        'product_id',
+        'order_ID',
+        'product_ID',
         'quantity',
     ];
     public $timestamps =false;

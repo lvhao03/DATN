@@ -7,11 +7,11 @@
 @section('content')
     <div class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb">
         <div class="my-auto">
-            <h5 class="page-title fs-21 mb-1">Danh sách mã giảm giá</h5>
+            <h5 class="page-title fs-21 mb-1">Danh sách mã</h5>
             <nav>
                 <ol class="breadcrumb mb-0">
                     <li class="breadcrumb-item"><a href="javascript:void(0);">Mã giảm giá</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Danh sách mã giảm giá</li>
+                    <li class="breadcrumb-item active" aria-current="page">Danh sách mã </li>
                 </ol>
             </nav>
         </div>
@@ -34,10 +34,7 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Tên mã</th>
-                                <th>Mã giảm giá</th>
-                                <th>Ngày bắt đầu</th>
-                                <th>Ngày kết thúc</th>
-                                <td>Số lượng</td>
+                                <th>% giảm giá</th>
                                 <th>Hành động</th>
                             </tr>
                         </thead>
@@ -45,19 +42,17 @@
                             @foreach ($data as $row)
                                 <tr>
                                     <td>
-                                        {{ $row->voucherID }}
+                                        {{ $row->voucher_typeID }}
                                     </td>
                                     <td>{{ Str::limit($row->name, $limit = 30, $end = '...') }}
-                                    <td>{!! Helper::getNameByID($row->voucher_typeID,'voucher_type') !!}</td>
-                                    <td>{{ Carbon\Carbon::parse($row->start_date)->format('d/m/Y') }} </td>
-                                    <td>{{  Carbon\Carbon::parse($row->expired_date)->format('d/m/Y') }} </td>
-                                    <td>{{ $row->voucher_quantity }}</td>
+                                    <td>{{ $row->discount }} %  </td>
+                                   
                                     <td>
                                         <div>        
-                                            <a href="{{ route('admin.editVoucher') }}/{{ $row->voucherID }}">
+                                            <a href="{{ route('admin.editTypeVoucher') }}/{{ $row->voucher_typeID }}">
                                                 <i class="fa fa-edit me-2 font-success"></i>
                                             </a>
-                                            <a href="{{ route('admin.deleteVoucher_') }}/{{ $row->voucherID }}">
+                                            <a href="{{ route('admin.deleteVoucher') }}/{{ $row->voucher_typeID }}">
                                                 <i class="fa fa-trash font-danger"></i>
                                             </a>
                                         </div>

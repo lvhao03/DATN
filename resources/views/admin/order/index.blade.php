@@ -68,7 +68,7 @@
                                             <a href="{{ route('admin.editOrder') }}/{{ $row->orderID }}">
                                                 <i class="fa fa-edit me-2 font-success"></i>
                                             </a>
-                                            <a href="{{ route('admin.editOrder') }}/{{ $row->orderID }}">
+                                            <a href="{{ route('admin.viewOrder') }}/{{ $row->orderID }}">
                                                 <i class="fa fa-eye font-danger"></i>
                                             </a>
                                         </div>

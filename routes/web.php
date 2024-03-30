@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\ProductController as AdminProductController;
 use App\Http\Controllers\Admin\StaffController as StaffAdminController;
 use App\Http\Controllers\Admin\VariantController as VariantAdminController;
 use App\Http\Controllers\Admin\VoucherController as VoucherAdminController;
+
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CustomerController;
@@ -73,8 +74,10 @@ Route::middleware('checkadmin')->group(function () {
             Route::prefix('order')->group(
                 function () {
                     Route::get('/', [OrderAdminController::class, 'index'])->name('order');
-                    Route::get('edit/{id?}', [OrderAdminController::class, 'index'])->name('editOrder')->where(['id' => '[0-9]+']);
-                    Route::put('edit', [OrderAdminController::class, 'index'])->name('postEditOrder');
+                    Route::get('view/{id?}', [OrderAdminController::class, 'view'])->name('viewOrder')->where(['id' => '[0-9]+']);
+                    Route::get('edit/{id?}', [OrderAdminController::class, 'edit'])->name('editOrder')->where(['id' => '[0-9]+']);
+                    Route::post('edit/', [OrderAdminController::class, 'edit__'])->name('postEditOrder__');
+
                 }
             );
             Route::prefix('comment')->group(
@@ -90,11 +93,20 @@ Route::middleware('checkadmin')->group(function () {
             Route::prefix('voucher')->group(
                 function () {
                     Route::get('/', [VoucherAdminController::class, 'index'])->name('voucher');
-                    Route::get('add', [VoucherAdminController::class, 'index'])->name('addVoucher');
-                    Route::post('add', [VoucherAdminController::class, 'index'])->name('postAddVoucher');
-                    Route::get('edit/{id?}', [VoucherAdminController::class, 'index'])->name('editVoucher')->where(['id' => '[0-9]+']);
-                    Route::put('edit', [VoucherAdminController::class, 'index'])->name('postEditVoucher');
-                    Route::get('delete/{id?}', [VoucherAdminController::class, 'index'])->name('deleteVoucher')->where(['id' => '[0-9]+']);
+                    Route::get('list', [VoucherAdminController::class, 'type_voucher'])->name('typeVoucher');
+                    Route::get('add', [VoucherAdminController::class, 'add_voucher'])->name('addVoucher');
+                    Route::post('create', [VoucherAdminController::class, 'create_'])->name('createVoucherType_');
+                    Route::post('create_voucher', [VoucherAdminController::class, 'create_voucher_'])->name('createVoucher_');
+                    // Route::post('add', [VoucherAdminController::class, 'add_voucher__'])->name('postAddVoucher');
+                    Route::get('delete/{id?}', [VoucherAdminController::class, 'delete'])->name('deleteVoucher')->where(['id' => '[0-9]+']);
+                    Route::get('delete_voucher/{id?}', [VoucherAdminController::class, 'delete_voucher'])->name('deleteVoucher_')->where(['id' => '[0-9]+']);
+
+                    
+                    Route::get('edit_type_voucher/{id?}', [VoucherAdminController::class, 'edit_type_voucher'])->name('editTypeVoucher')->where(['id' => '[0-9]+']);
+                    Route::post('edit_type_voucher/', [VoucherAdminController::class, 'edit_type_voucher__'])->name('edit_type_voucher__');
+                    Route::get('edit_voucher/{id?}', [VoucherAdminController::class, 'edit_voucher'])->name('editVoucher')->where(['id' => '[0-9]+']);
+                    Route::post('edit_voucher/', [VoucherAdminController::class, 'edit_voucher__'])->name('edit_voucher__');
+                  
                 }
             );
             Route::prefix('staff')->group(
@@ -157,10 +169,14 @@ Route::get('/detail', function () {
     return view('client.detail');
 });
 
+
+Route::get('/contact', function () {
+    return view('client.contact');
+});
+
 Route::get('/variant/{variantID}', [ProductController::class, 'getVariant']);
 
-Route::get('/blog_detail/{id}', [BlogController::class,'blog_detail']);
-Route::get('/blog', [BlogController::class,'blog']);
+
 
 
 Route::get('/detail/{id}', [ProductController::class, 'detail']);
@@ -173,9 +189,8 @@ Route::get('/about', function () {
     return view('client.about');
 });
 
-Route::get('/blog', function () {
-    return view('client.blog');
-});
+Route::get('/blog_detail/{id}', [BlogController::class,'blog_detail']);
+Route::get('/blog', [BlogController::class,'blog']);
 
 Route::get('/services', function () {
     return view('client.services');
@@ -206,6 +221,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+});             
 
 require __DIR__ . '/auth.php';
