@@ -11,10 +11,13 @@ class PostModel extends Model
     protected $table = 'posts';
     protected $primaryKey = 'postID';
     protected $fillable = [
+        'postID',
         'title',
         'thumnail',
         'admin_id',
-        'content'
+        'content',
+        'name_admin',
+        'post_time',
     ];
     public $timestamps =false;
 }
