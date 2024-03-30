@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.2.3/css/buttons.bootstrap5.min.css">
 @endsection
 @section('content')
+    <x-notify::notify />
     <div class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb">
         <div class="my-auto">
             <h5 class="page-title fs-21 mb-1">Danh sách bình luận</h5>
@@ -27,7 +28,6 @@
                 </div>
 
                 <div class="card-body">
-
                     <table id="responsiveDataTable" class="table table-bordered text-nowrap w-100">
                         <thead>
                             <tr>
@@ -45,7 +45,7 @@
                                         {{ $row->commentID }}
                                     </td>
                                     <td>{{ Str::limit($row->content, $limit = 30, $end = '...') }}</td>
-                                    <td>{!! Helper::getNameByID($row->customer_id,'customer') !!}</td>
+                                    <td>{!! Helper::getNameByID($row->user_id,'users') !!}</td>
                                     <td>{!! Helper::getNameByID($row->product_id,'product') !!}</td>
                                     <td>
                                         <div>
@@ -63,6 +63,9 @@
                     </table>
                 <a href="{{ route('admin.createComment') }}">
                     <button class="btn btn-primary">Thêm bình luận</button>
+                </a>
+                <a href="{{ route('admin.trashComment')}}">
+                    <button class="btn btn-primary">Thùng rác</button>
                 </a>
                 </div>
             </div>

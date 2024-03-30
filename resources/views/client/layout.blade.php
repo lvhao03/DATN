@@ -6,12 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="author" content="Untree.co">
   <link rel="shortcut icon" href="favicon.png">
-
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <meta name="description" content="" />
   <meta name="keywords" content="bootstrap, bootstrap4" />
 
 		<!-- Bootstrap CSS -->
-		<link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+		<link href="{{ asset('../css/bootstrap.min.css') }}" rel="stylesheet">
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 		<link href="{{ asset('css/tiny-slider.css') }}" rel="stylesheet">
 		<link href="{{ asset('css/style.css') }}" rel="stylesheet">
@@ -40,9 +40,7 @@
 						</li>
 						<li><a class="nav-link" href="/shop">Cửa hàng</a></li>
 						<li><a class="nav-link" href="/about">Về chúng tôi</a></li>
-						<li><a class="nav-link" href="/services">Services</a></li>
-						<li><a class="nav-link" href="/blog">Blog</a></li>
-						<li><a class="nav-link" href="/contact">Contact us</a></li>
+						<li><a class="nav-link" href="/blog">Bài viết</a></li>
 					</ul>
 
 					<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
@@ -95,7 +93,7 @@
 				<div class="row">
 					<div class="col-lg-8">
 						<div class="subscription-form">
-							<h3 class="d-flex align-items-center"><span class="me-1"><img src="{{ asset('images/envelope-outline.svg') }}" alt="Image" class="img-fluid"></span><span>Subscribe to Newsletter</span></h3>
+							<h3 class="d-flex align-items-center"><span class="me-1"><img src="{{ asset('images/envelope-outline.svg') }}" alt="Image" class="img-fluid"></span><span>Đăng ký nhận tin</span></h3>
 
 							<form action="#" class="row g-3">
 								<div class="col-auto">
@@ -118,7 +116,7 @@
 				<div class="row g-5 mb-5">
 					<div class="col-lg-4">
 						<div class="mb-4 footer-logo-wrap"><a href="#" class="footer-logo">Furni<span>.</span></a></div>
-						<p class="mb-4">Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique. Pellentesque habitant</p>
+						<p class="mb-4">Studio của chúng tôi chuyên thiết kế nội thât, cung cấp những mặt hàng nội thất hiện đại, đẹp mắt, giá thành phải chăng mà vừa bền bỉ.</p>
 
 						<ul class="list-unstyled custom-social">
 							<li><a href="#"><span class="fa fa-brands fa-facebook-f"></span></a></li>
@@ -132,35 +130,33 @@
 						<div class="row links-wrap">
 							<div class="col-6 col-sm-6 col-md-3">
 								<ul class="list-unstyled">
-									<li><a href="#">About us</a></li>
-									<li><a href="#">Services</a></li>
-									<li><a href="#">Blog</a></li>
-									<li><a href="#">Contact us</a></li>
+									<li><a href="#">Về chúng tôi</a></li>
+									<li><a href="#">Bài viết</a></li>
 								</ul>
 							</div>
 
 							<div class="col-6 col-sm-6 col-md-3">
 								<ul class="list-unstyled">
-									<li><a href="#">Support</a></li>
-									<li><a href="#">Knowledge base</a></li>
-									<li><a href="#">Live chat</a></li>
+									<li><a href="#">Ủng hộ</a></li>
+									<li><a href="#">Kiến thức cơ bản</a></li>
+									<li><a href="#">Trò chuyện trực tiếp</a></li>
 								</ul>
 							</div>
 
 							<div class="col-6 col-sm-6 col-md-3">
 								<ul class="list-unstyled">
-									<li><a href="#">Jobs</a></li>
-									<li><a href="#">Our team</a></li>
-									<li><a href="#">Leadership</a></li>
-									<li><a href="#">Privacy Policy</a></li>
+									<li><a href="#">Việc làm</a></li>
+									<li><a href="#">Đội của chúng tôi</a></li>
+									<li><a href="#">Khả năng lãnh đạo</a></li>
+									<li><a href="#">Chính sách bảo mật</a></li>
 								</ul>
 							</div>
 
 							<div class="col-6 col-sm-6 col-md-3">
 								<ul class="list-unstyled">
-									<li><a href="#">Nordic Chair</a></li>
-									<li><a href="#">Kruzo Aero</a></li>
-									<li><a href="#">Ergonomic Chair</a></li>
+									<li><a href="#">Ghế Bắc Âu</a></li>
+									<li><a href="#">Cruzo Aero</a></li>
+									<li><a href="#">Ghế làm việc</a></li>
 								</ul>
 							</div>
 						</div>
@@ -171,14 +167,14 @@
 				<div class="border-top copyright">
 					<div class="row pt-4">
 						<div class="col-lg-6">
-							<p class="mb-2 text-center text-lg-start">Copyright &copy;<script>document.write(new Date().getFullYear());</script>. All Rights Reserved. &mdash; Designed with love by <a href="https://untree.co">Untree.co</a> Distributed By <a hreff="https://themewagon.com">ThemeWagon</a>  <!-- License information: https://untree.co/license/ -->
+							<p class="mb-2 text-center text-lg-start">Webiste YÊN GIA &copy;<script>document.write(new Date().getFullYear());</script>. Bản quyền của YÊN GIA SHOP.
             </p>
 						</div>
 
 						<div class="col-lg-6 text-center text-lg-end">
 							<ul class="list-unstyled d-inline-flex ms-auto">
-								<li class="me-4"><a href="#">Terms &amp; Conditions</a></li>
-								<li><a href="#">Privacy Policy</a></li>
+								<li class="me-4"><a href="#">Điều khoản &amp; điều kiện</a></li>
+								<li><a href="#">Chính sách bảo mật</a></li>
 							</ul>
 						</div>
 

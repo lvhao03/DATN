@@ -9,9 +9,9 @@ HOME
 					<div class="row justify-content-between">
 						<div class="col-lg-5">
 							<div class="intro-excerpt">
-								<h1>Modern Interior <span clsas="d-block">Design Studio</span></h1>
-								<p class="mb-4">Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique.</p>
-								<p><a href="" class="btn btn-secondary me-2">Shop Now</a><a href="#" class="btn btn-white-outline">Explore</a></p>
+								<h1>Studio Chuyên Thiết Kế<span clsas="d-block"> Nội Thất Hiện Đại</span></h1>
+								<p class="mb-4">Cho đến cuối đời, chẳng ai là không muốn sắm cho mình một bộ nội thất thật là hiện đại, đẹp mắt, bền bỉ cho ngôi nhà của mình đúng không nào.</p>
+								<p><a href="" class="btn btn-secondary me-2">Mua Ngay</a><a href="#" class="btn btn-white-outline">Khám Phá</a></p>
 							</div>
 						</div>
 						<div class="col-lg-7">
@@ -31,18 +31,18 @@ HOME
 
 					<!-- Start Column 1 -->
 					<div class="col-md-12 col-lg-3 mb-5 mb-lg-0">
-						<h2 class="mb-4 section-title">Crafted with excellent material.</h2>
-						<p class="mb-4">Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique. </p>
-						<p><a href="shop.html" class="btn">Explore</a></p>
+						<h2 class="mb-4 section-title">Được chế tạo bằng vật liệu tuyệt vời.</h2>
+						<p class="mb-4">Những sản phẩm mà chúng tôi đưa đến tay quý khách là những sản phẩm tuyệt vời với chất liệu đặc biệt.</p>
+						<p><a href="shop.html" class="btn">Khám Phá</a></p>
 					</div> 
 					<!-- End Column 1 -->
-
-					<!-- Start Column 2 -->
+			@foreach($products as $pd)
+					<!-- Start Column 2 -->			
 					<div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
 						<a class="product-item" href="cart.html">
-							<img src="images/product-1.png" class="img-fluid product-thumbnail">
-							<h3 class="product-title">Nordic Chair</h3>
-							<strong class="product-price">$50.00</strong>
+							<img src="{{ asset('images/shop/' .$pd->thumnail) }}" class="img-fluid product-thumbnail">
+							<h3 class="product-title">{{ $pd->name }}</h3>
+							<strong class="product-price">{{ addCommas($pd->price) }} đ</strong>
 
 							<span class="icon-cross">
 								<img src="images/cross.svg" class="img-fluid">
@@ -50,35 +50,7 @@ HOME
 						</a>
 					</div> 
 					<!-- End Column 2 -->
-
-					<!-- Start Column 3 -->
-					<div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
-						<a class="product-item" href="cart.html">
-							<img src="images/product-2.png" class="img-fluid product-thumbnail">
-							<h3 class="product-title">Kruzo Aero Chair</h3>
-							<strong class="product-price">$78.00</strong>
-
-							<span class="icon-cross">
-								<img src="images/cross.svg" class="img-fluid">
-							</span>
-						</a>
-					</div>
-					<!-- End Column 3 -->
-
-					<!-- Start Column 4 -->
-					<div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
-						<a class="product-item" href="cart.html">
-							<img src="images/product-3.png" class="img-fluid product-thumbnail">
-							<h3 class="product-title">Ergonomic Chair</h3>
-							<strong class="product-price">$43.00</strong>
-
-							<span class="icon-cross">
-								<img src="images/cross.svg" class="img-fluid">
-							</span>
-						</a>
-					</div>
-					<!-- End Column 4 -->
-
+			@endforeach
 				</div>
 			</div>
 		</div>
@@ -89,8 +61,8 @@ HOME
 			<div class="container">
 				<div class="row justify-content-between">
 					<div class="col-lg-6">
-						<h2 class="section-title">Why Choose Us</h2>
-						<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique.</p>
+						<h2 class="section-title">Tại Sao Lại Chọn Chúng Tôi</h2>
+						<p>Cửa hàng của chúng tôi sẽ mang lại những chất lượng trải nghiệm và dịch vụ tuyệt vời đến với quý khách.</p>
 
 						<div class="row my-5">
 							<div class="col-6 col-md-6">
@@ -98,8 +70,8 @@ HOME
 									<div class="icon">
 										<img src="images/truck.svg" alt="Image" class="imf-fluid">
 									</div>
-									<h3>Fast &amp; Free Shipping</h3>
-									<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
+									<h3>Vận chuyển nhanh &amp; miễn phí</h3>
+									<p>Chúng tôi sẽ miễn phí vận chuyển cho những ai trong khu vực TPHCM.</p>
 								</div>
 							</div>
 
@@ -108,8 +80,8 @@ HOME
 									<div class="icon">
 										<img src="images/bag.svg" alt="Image" class="imf-fluid">
 									</div>
-									<h3>Easy to Shop</h3>
-									<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
+									<h3>Dễ dàng mua sắm</h3>
+									<p>Quý khách có thể dễ dàng mua sắm tại cửa hàng của chúng tôi hoặc trên trang web.</p>
 								</div>
 							</div>
 
@@ -118,8 +90,8 @@ HOME
 									<div class="icon">
 										<img src="images/support.svg" alt="Image" class="imf-fluid">
 									</div>
-									<h3>24/7 Support</h3>
-									<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
+									<h3>Hỗ trợ 24/7</h3>
+									<p>Luôn có những đội ngũ nhân viên trực 24/7 để hỗ trợ thắc mắc của quý khách.</p>
 								</div>
 							</div>
 
@@ -128,8 +100,8 @@ HOME
 									<div class="icon">
 										<img src="images/return.svg" alt="Image" class="imf-fluid">
 									</div>
-									<h3>Hassle Free Returns</h3>
-									<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
+									<h3>Bảo hành hoàn trả</h3>
+									<p>Tất cả sản phẩm của chúng tôi sẽ được bảo hành dài lâu và sẽ đổi trả nếu sản phẩm lỗi.</p>
 								</div>
 							</div>
 
@@ -159,16 +131,16 @@ HOME
 						</div>
 					</div>
 					<div class="col-lg-5 ps-lg-5">
-						<h2 class="section-title mb-4">We Help You Make Modern Interior Design</h2>
-						<p>Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique. Pellentesque habitant morbi tristique senectus et netus et malesuada</p>
+						<h2 class="section-title mb-4">Chúng Tôi Giúp Bạn Thiết Kế Nội Thất Hiện Đại</h2>
+						<p>Quý khách đang thiếu nội thất trong nhà, chưa biết mua nội thất gì hay thiết kế như thế nào? Hãy để Studio của chúng tôi giúp quý khách thiết kế những nội thất hiện đại</p>
 
 						<ul class="list-unstyled custom-list my-4">
-							<li>Donec vitae odio quis nisl dapibus malesuada</li>
-							<li>Donec vitae odio quis nisl dapibus malesuada</li>
-							<li>Donec vitae odio quis nisl dapibus malesuada</li>
-							<li>Donec vitae odio quis nisl dapibus malesuada</li>
+							<li>Thiết kế nội thất phù hợp với không gian phòng</li>
+							<li>Chúng tôi lựa chọn những nội thất hiện đại</li>
+							<li>Tư vấn chọn lọc kỹ càng với yêu cầu của khách</li>
+							<li>Bảo đảm chất lượng cao, giá tốt nhất thị trường</li>
 						</ul>
-						<p><a herf="#" class="btn">Explore</a></p>
+						<p><a herf="#" class="btn">Khám Phá</a></p>
 					</div>
 				</div>
 			</div>
@@ -186,9 +158,9 @@ HOME
 								<img src="images/product-1.png" alt="Image" class="img-fluid">
 							</div>
 							<div class="pt-3">
-								<h3>Nordic Chair</h3>
-								<p>Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio </p>
-								<p><a href="#">Read More</a></p>
+								<h3>Ghế Bắc Âu</h3>
+								<p>Với thiết kế hiện đại, ghế Bắc Âu mang lại cảm giác ngồi êm hơn, thư giãn hơn </p>
+								<p><a href="#">Xem thêm</a></p>
 							</div>
 						</div>
 					</div>
@@ -199,9 +171,9 @@ HOME
 								<img src="images/product-2.png" alt="Image" class="img-fluid">
 							</div>
 							<div class="pt-3">
-								<h3>Kruzo Aero Chair</h3>
-								<p>Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio </p>
-								<p><a href="#">Read More</a></p>
+								<h3>Ghế Kruzo Aero </h3>
+								<p>Ghế với phong cách hiện đại, thoải mái, phù hợp với phòng khách  </p>
+								<p><a href="#">Xem thêm</a></p>
 							</div>
 						</div>
 					</div>
@@ -212,9 +184,9 @@ HOME
 								<img src="images/product-3.png" alt="Image" class="img-fluid">
 							</div>
 							<div class="pt-3">
-								<h3>Ergonomic Chair</h3>
-								<p>Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio </p>
-								<p><a href="#">Read More</a></p>
+								<h3>Ghế làm việc</h3>
+								<p>Với giá thành vừa phải, chiếc ghế này mang lại cho bạn cảm hiacs êm ái khi làm việc </p>
+								<p><a href="#">Xem thêm</a></p>
 							</div>
 						</div>
 					</div>
@@ -224,66 +196,15 @@ HOME
 		</div>
 		<!-- End Popular Product -->
 
-		<!-- Start Testimonial Slider -->
-		<div class="testimonial-section">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-7 mx-auto text-center">
-						<h2 class="section-title">Testimonials</h2>
-					</div>
-				</div>
-
-				<div class="row justify-content-center">
-					<div class="col-lg-12">
-						<div class="testimonial-slider-wrap text-center">
-
-							<div id="testimonial-nav">
-								<span class="prev" data-controls="prev"><span class="fa fa-chevron-left"></span></span>
-								<span class="next" data-controls="next"><span class="fa fa-chevron-right"></span></span>
-							</div>
-
-							<div class="testimonial-slider">
-								
-								<div class="item">
-									<div class="row justify-content-center">
-										<div class="col-lg-8 mx-auto">
-
-											<div class="testimonial-block text-center">
-												<blockquote class="mb-5">
-													<p>&ldquo;Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer convallis volutpat dui quis scelerisque.&rdquo;</p>
-												</blockquote>
-
-												<div class="author-info">
-													<div class="author-pic">
-														<img src="images/person-1.png" alt="Maria Jones" class="img-fluid">
-													</div>
-													<h3 class="font-weight-bold">Maria Jones</h3>
-													<span class="position d-block mb-3">CEO, Co-Founder, XYZ Inc.</span>
-												</div>
-											</div>
-
-										</div>
-									</div>
-								</div> 
-
-							</div>
-
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- End Testimonial Slider -->
-
 		<!-- Start Blog Section -->
 		<div class="blog-section">
 			<div class="container">
 				<div class="row mb-5">
 					<div class="col-md-6">
-						<h2 class="section-title">Recent Blog</h2>
+						<h2 class="section-title">Các Bài Viết Gần Đây</h2>
 					</div>
 					<div class="col-md-6 text-start text-md-end">
-						<a href="#" class="more">View All Posts</a>
+						<a href="#" class="more">Xem tất cả bài viết</a>
 					</div>
 				</div>
 

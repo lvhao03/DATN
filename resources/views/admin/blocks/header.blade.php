@@ -32,7 +32,7 @@
                     <i class="header-icon fe fe-align-left"></i>
                 </a>
                 <div class="main-header-center d-none d-lg-block">
-                    <input class="form-control" placeholder="Search for anything..." type="search"> <button
+                    <input class="form-control" placeholder="Tìm kiếm" type="search"> <button
                         class="btn"><i class="fa fa-search d-none d-md-block"></i></button>
                 </div>
                 <!-- End::header-link -->
@@ -487,23 +487,21 @@
                     <li>
                         <div class="main-header-profile bg-primary menu-header-content text-fixed-white">
                             <div class="my-auto">
-                                <h6 class="mb-0 lh-1 text-fixed-white">Petey Cruiser</h6><span
-                                    class="fs-11 op-7 lh-1">Premium Member</span>
+                                <h6 class="mb-0 lh-1 text-fixed-white">{{ \Auth::user()->name }}</h6><span
+                                    class="fs-11 op-7 lh-1">Nhân viên</span>
                             </div>
                         </div>
                     </li>
-                    <li><a class="dropdown-item d-flex" href="profile.html"><i
-                                class="bx bx-user-circle fs-18 me-2 op-7"></i>Profile</a></li>
-                    <li><a class="dropdown-item d-flex" href="editprofile.html"><i
-                                class="bx bx-cog fs-18 me-2 op-7"></i>Edit Profile </a></li>
+                    <li><a class="dropdown-item d-flex" href="{{ route('admin.profile')}}"><i
+                                class="bx bx-user-circle fs-18 me-2 op-7"></i>Hồ sơ</a></li>
                     <li><a class="dropdown-item d-flex border-block-end" href="mail.html"><i
                                 class="bx bxs-inbox fs-18 me-2 op-7"></i>Inbox</a></li>
                     <li><a class="dropdown-item d-flex" href="chat.html"><i
                                 class="bx bx-envelope fs-18 me-2 op-7"></i>Messages</a></li>
                     <li><a class="dropdown-item d-flex border-block-end" href="editprofile.html"><i
                                 class="bx bx-slider-alt fs-18 me-2 op-7"></i>Account Settings</a></li>
-                    <li><a class="dropdown-item d-flex" href="signin.html"><i
-                                class="bx bx-log-out fs-18 me-2 op-7"></i>Sign Out</a></li>
+                    <li><a class="dropdown-item d-flex" href="/logout"><i
+                                class="bx bx-log-out fs-18 me-2 op-7"></i>Đăng xuất</a></li>
                 </ul>
             </div>
             <!-- End::header-element -->

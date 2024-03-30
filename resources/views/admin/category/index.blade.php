@@ -24,12 +24,14 @@
                     <div class="card-title">
                         Danh mục sản phẩm
                     </div>
+                    <div class="card-title">
+                    <a href="{{route('admin.addCategory')}}" class="btn btn-primary mb-2 data-table-btn">Thêm danh mục</a>
+                    </div>
                 </div>
 
                 <div class="card-body">
 
                     <table id="responsiveDataTable" class="table table-bordered text-nowrap w-100">
-                        <a href="{{route('admin.addCategory')}}" class="btn btn-primary mb-2 data-table-btn">Thêm chuyên mục</a>
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -40,17 +42,17 @@
                         <tbody>
                             @foreach ($data as $row)
                                 <tr>
-                                    <td>{{ $row->catergoryID }}</td>
+                                    <td>{{ $row->categoryID}}</td>
                                     <td>
                                         {{ $row->name }}
                                     </td>
 
                                     <td>
                                         <div>
-                                            <a href="{{ route('admin.editCategory') }}/{{ $row->catergoryID }}">
+                                            <a href="{{ route('admin.editCategory', $row->categoryID) }}">
                                                 <i class="fa fa-edit me-2 font-success"></i>
                                             </a>
-                                            <a href="{{ route('admin.deleteCategory') }}/{{ $row->catergoryID }}">
+                                            <a href="{{ route('admin.deleteCategory', $row->categoryID) }}">
                                                 <i class="fa fa-trash font-danger"></i>
                                             </a>
                                         </div>

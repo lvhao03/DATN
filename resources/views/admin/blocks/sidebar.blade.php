@@ -71,7 +71,7 @@
                         </li>
                         <li class="slide">
                             <a href="{{ route('admin.comment') }}"
-                                class="{{ Route::is('admin.comment') ? 'active' : '' }} side-menu__item">Danh sách bình luận</a>
+                                class="{{ Route::is('admin.comment') ? 'active' : '' }} side-menu__item">Bình luận</a>
                         </li>
                     </ul>
                 </li>
@@ -85,8 +85,8 @@
                     </a>
                 </li>
                 <li class="slide">
-                    <a href="{{ route('admin.customer') }}"
-                        class="side-menu__item  {{ Route::is('admin.customer') ? 'active' : '' }}">
+                    <a href="{{ route('admin.user') }}"
+                        class="side-menu__item  {{ Route::is('admin.user') ? 'active' : '' }}">
                         <i class="fa-solid fa-user side-menu__icon"></i>
                         <span class="side-menu__label">Khách hàng</span>
                     </a>

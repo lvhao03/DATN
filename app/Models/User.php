@@ -7,18 +7,20 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-
-class User extends Authenticatable
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Notifications\EmailVerification;
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable;
-
+    use SoftDeletes;
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
-    protected $table = 'customer';
-    protected $primaryKey = 'customerID';
+    protected $table = 'users';
+    protected $primaryKey = 'userID';
     public $timestamps = false;
     protected $fillable = [
         'name',
@@ -26,7 +28,10 @@ class User extends Authenticatable
         'password',
         'image_url',
         'address',
-        'google_id'
+        'provider',
+        'provider_id',
+        'role',
+        'email_verified_at',
     ];
 
     /**
@@ -37,6 +42,7 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+        'google_id'
     ];
 
     /**

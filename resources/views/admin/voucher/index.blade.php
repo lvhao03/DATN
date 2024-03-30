@@ -50,7 +50,11 @@
                                     <td>{{ Str::limit($row->name, $limit = 30, $end = '...') }}
                                     <td>{!! Helper::getNameByID($row->voucher_typeID,'voucher_type') !!}</td>
                                     <td>{{ Carbon\Carbon::parse($row->start_date)->format('d/m/Y') }} </td>
+<<<<<<< HEAD
                                     <td>{{  Carbon\Carbon::parse($row->expired_date)->format('d/m/Y') }} </td>
+=======
+                                    <td>{{ Carbon\Carbon::parse($row->expired_date)->format('d/m/Y') }} </td>
+>>>>>>> a39ca7f48a811345fb30d2f72e42b3dcffd8469c
                                     <td>{{ $row->voucher_quantity }}</td>
                                     <td>
                                         <div>        
